@@ -17,8 +17,8 @@ var pasword = customer.pasword
 
 var connect = mysql.createConnection('mysql://avnadmin:AVNS_om8uYVTBL50tPl05R_4@mysql-1e9f0822-jpbreaux225-37e4.h.aivencloud.com:25589/defaultdb?ssl-mode=REQUIRED')
 
-  connect.query(`SELECT * FROM Customers WHERE username == ? AND pasword = ?`,[username,pasword],(err,results)=>{
-if(results.length>0){res.send(`
+  connect.query(`SELECT COUNT(*) FROM Customers WHERE username == ? AND pasword = ?`,[username,pasword],(err,results)=>{
+if(results[0]["count(*)"]>0){res.send(`
 <header id="main-header" style="height:600px;background-color:#0b4ecc"><div style="z-index:-1;background-color: #35e8fe;"><div style="z-index:1;position:absolute;top:50%;background-color:transparent;margin:auto;width:100%;height:100px"><div style="font-weight:bold;font-family:Raleway;opacity:100%;color:white;background-color:transparent"><p style="font-family:'Varela Round';top:-450px;font-size:120px;position:absolute;left:100px;width:50%"><br>The<br>Medicator</p><p style="position:absolute;right:20px;width:50%">The premier healthcare app in managing your prescriptions, writing new ones, and staying safe on medication<br></p></div></div><img style="opacity:60%;width:100%;height:100%;" src="https://harcourthealth.com/wp-content/uploads/2019/10/technology-in-healthcare.jpg"></div>
 <div style="background-color:transparent;height:50%;width:100%">
 
