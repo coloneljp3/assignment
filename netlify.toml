@@ -1,0 +1,23 @@
+[[build]]
+functions = "/functions"
+command = "npm run"
+
+
+[[redirects]]
+from = "/home"
+to = "/.netlify/functions/home"
+
+[[redirects]]
+from = "/login"
+to = "/.netlify/functions/login"
+
+[[redirects]]
+from = "/medical-forms"
+to = "/.netlify/functions/medical-forms"
+
+[[redirects]]
+from = "/account-page"
+to = "/.netlify/functions/account-page"
+[[redirects]]
+from = "/suggestions-page"
+to = "/.netlify/functions/suggestions-page"
