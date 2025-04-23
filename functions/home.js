@@ -189,7 +189,7 @@ width.style.width = '0px'}
 " style="z-index:1;width:30px;height:20px;">
 <circle cx="8" cy="8" stroke-width="3" stroke="black" r="6"></circle>
 <polyline points="12 12 20 20 " stroke-width="3" stroke="black" fill="none"></polyline>
-</svg><input placeholder="Find Out More About Us" onkeyup="" id="search" type="search" style="width: 0px;float:left"></div>
+</svg><input placeholder="Find Out More About Us" onkeyup="" id="search" type="search" style="width: 350px; float: left;"></div>
 
 <div style="position:relative"> 
     
@@ -235,8 +235,8 @@ width.style.width = '0px'}
 <span class="main-nav-bar-items-container" onmouseleave="revDropDown('dropdown-button-6')" style="background-color:transparent">
 
 <form action="" method="POST" class="main-nav-bar-form" style="background-color:transparent">
-<input name="username" value = `+username+` style="display:none">
-<input name="pasword" value = `+pasword+` style="display:none">
+<input name="username" value="undefined" style="display:none">
+<input name="pasword" value="undefined" style="display:none">
 <button onmouseover="" type="submit" id="home-button" class="main-nav-bar-form-button" style="background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke">Medical Forms</button>
 
 </form>
@@ -258,8 +258,8 @@ width.style.width = '0px'}
 <span class="main-nav-bar-items-container" onmouseleave="revDropDown('dropdown-button-7')" style="background-color:transparent">
 
 <form action="" method="POST" class="main-nav-bar-form" style="background-color:transparent">
-<input name="username" value = `+username+` style="display:none">
-<input name="pasword" value = `+pasword+` style="display:none">
+<input name="username" value="undefined" style="display:none">
+<input name="pasword" value="undefined" style="display:none">
 <button onmouseover="" type="submit" id="home-button" class="main-nav-bar-form-button" style="background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke">Accounts</button>
 
 </form>
@@ -276,8 +276,8 @@ width.style.width = '0px'}
 </span><span class="main-nav-bar-items-container" onmouseleave="revDropDown('dropdown-button-8')" style="background-color:transparent">
 
 <form action="" method="POST" class="main-nav-bar-form" style="background-color:transparent">
-<input name="username" value = `+username+` style="display:none">
-<input name="pasword" value = `+pasword+` style="display:none">
+<input name="username" value="undefined" style="display:none">
+<input name="pasword" value="undefined" style="display:none">
 <button onmouseover="" type="submit" id="home-button" class="main-nav-bar-form-button" style="background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke">APIs</button>
 
 </form>
@@ -294,8 +294,8 @@ width.style.width = '0px'}
 </span><span class="main-nav-bar-items-container" onmouseleave="revDropDown('dropdown-button-9')" style="background-color:transparent">
 
 <form action="" method="POST" class="main-nav-bar-form" style="background-color:transparent">
-<input name="username" value = `+username+` style="display:none">
-<input name="pasword" value = `+pasword+` style="display:none">
+<input name="username" value="undefined" style="display:none">
+<input name="pasword" value="undefined" style="display:none">
 <button onmouseover="" type="submit" id="home-button" class="main-nav-bar-form-button" style="background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke">About</button>
 
 </form>
@@ -332,41 +332,41 @@ width.style.width = '0px'}
 ">
     <button class="buy-button">Add to Cart</button>
   </div></div>
-<div class="alert-item" id="account-forms" style="z-index: 3; opacity: 0.8; background-color: rgb(75, 85, 118); width: 100%; height: 100%; position: fixed; color: white; text-align: center; top: 0px; visibility: hidden;">
+<div class="alert-item" id="account-forms" style="z-index: 3; opacity: 0.8; background-color: rgb(75, 85, 118); width: 100%; height: 100%; position: fixed; color: white; text-align: center; top: 0px; visibility: visible;">
 <span style="float:left;font-size:20px;font-family:Raleway;font-weight:bold" onclick="document.getElementById('account-forms').style.visibility = 'hidden'">X</span>
 
-<div id="2_dif_forms" style="border-color:rgb(145 151 81);border-style: solid;width:500px;border-width: .3cm; text-align: center;margin:auto"><button onclick="var x = document.getElementById('sgnp'); x.style.color = 'rgb(145 151 81)';x.style.backgroundColor = 'white';var c =document.getElementById('lgin'); c.style.color = 'white';c.style.backgroundColor = 'rgb(145 151 81)';var form_1 = document.getElementById('form_1');var form_2 = document.getElementById('form_2'); form_1.style.display = 'none';form_2.style.display = 'block'" id="lgin" style="border-color: whitesmoke; border-radius: 0%; width: 100px; height: 50px; background-color: white; color: rgb(145, 151, 81); font-family: Raleway; font-size: large;">Login</button><button onclick="var x = document.getElementById('lgin'); x.style.color = 'rgb(145 151 81)';x.style.backgroundColor = 'white'; var c =document.getElementById('sgnp'); c.style.color = 'white';c.style.backgroundColor = 'rgb(145 151 81)';var form_1 = document.getElementById('form_1');var form_2 = document.getElementById('form_2');form_2.style.display = 'none';form_1.style.display = 'block'" id="sgnp" style="border-color: whitesmoke; border-radius: 0%; width: 100px; height: 50px; color: white; background-color: rgb(145, 151, 81); font-family: Arial; font-size: large;">Sign up</button><form name="form_1" style="font-family:Raleway;display: block; margin: 0% 1cm 1cm; border-width: 0.3cm; border-style: solid; border-color: rgb(145, 151, 81);" action="/signup" method="post" id="form_1"><br><h1 style="font-family:Raleway;font-size: 1cm;text-align: center;">Create Account</h1><span style="text-align: center;">_____________</span><br><br><input style="width: 200px;height:60px;font-size: .5cm;border-style: solid;border-color: rgb(145 151 81);text-align: center;" id="User" name="User" placeholder="Type your username" type="text"><br><br><input style="width: 200px;height:60px;font-size: .5cm;border-style: solid;border-color: rgb(145 151 81);text-align: center;" id="psw" name="psw" placeholder="Type your password" type="text"><br><br><input style="width: 200px;height:60px;font-size: .5cm;border-style: solid;border-color: rgb(145 151 81);text-align: center;" name="cell" id="cell" placeholder="Type your cell" type="text"><br><br><input style="width: 200px;height:60px;font-size: .5cm;border-style: solid;border-color: rgb(145 151 81);text-align: center;" name="email_user" id="email_user" placeholder="Type your email" type="text"><br><br><input style="width: 200px;height:60px;font-size: .5cm;border-style: solid;border-color: rgb(145 151 81);text-align: center;" name="email_psw" id="email_psw" placeholder="Type your password for your email" type="text"><br><button style="border-color:rgb(145 151 81);border-radius: 0%; width:100px;height:50px;color:white;background-color:rgb(145 151 81) ;font-family:Arial;font-size: large;border-style: none;" onclick="formCheck();" id="register" type="submit">Register</button><script>function formCheck(){var user = document.getElementById('User').value;var email,email_psw,cell,psw;psw = document.getElementById('psw').value;email =  document.getElementById('email_user').value;email_psw =  document.getElementById('email_psw').value;cell =  document.getElementById('cell').value;if((email == ""||email=="undefined")||(cell == ""||cell== "undefined")||(email_psw ==""||email_psw== "undefined")||(User == "" || User== "undefined")||(psw == ""||psw == "undefined")){document.getElementById('register').type = 'text';document.getElementById('form_1').action = '/login';alert("Please fill all fields");}}</script></form><form name="form_2" id="form_2" action="/.netlify/functions/login_sub" method="post" style="display: none; margin: 0% 1cm 1cm; border-width: 0.3cm; border-style: solid; border-color: rgb(145, 151, 81); font-family: Raleway;"><label><h1 style="font-size: 1cm;">Login</h1><span style="text-align: center;">_____________</span><br><br><input style="width: 200px;height:60px;font-size: .5cm;border-style: solid;border-color: rgb(145 151 81);text-align: center;" placeholder="Type your username" name="login_user" id="lu"><br><br><input style="width: 200px;height:60px;font-size: .5cm;border-style: solid;border-color: rgb(145 151 81);text-align: center;" placeholder="Type your password" id="pw" name="login_psw"><input style="width: 200px;height:60px;font-size: .5cm;border-style: solid;border-color: rgb(145 151 81);text-align: center;display:none" name="cell" placeholder="Type your cell" type="text"><input style="width: 200px;height:60px;font-size: .5cm;border-style: solid;border-color: rgb(145 151 81);text-align: center;display:none" name="email_user" placeholder="Type your cell" type="text"></label><br><br><button style="border-color:whitesmoke;border-radius: 0%; width:100px;height:50px;color:white;background-color:rgb(145 151 81) ;font-family:Arial;font-size: large;border-style:none" type="submit">Login</button></form></div>
+<div id="2_dif_forms" style="border-color:#9f00ff;border-style: solid;width:500px;border-width: .3cm; text-align: center;margin:auto"><button onclick="var x = document.getElementById('sgnp'); x.style.color = '#9f00ff';x.style.backgroundColor = 'white';var c =document.getElementById('lgin'); c.style.color = 'white';c.style.backgroundColor = '#9f00ff';var form_1 = document.getElementById('form_1');var form_2 = document.getElementById('form_2'); form_1.style.display = 'none';form_2.style.display = 'block'" id="lgin" style="border-color: whitesmoke; border-radius: 0%; width: 100px; height: 50px; background-color: rgb(159, 0, 255); color: white; font-family: Raleway; font-size: large;">Login</button><button onclick="var x = document.getElementById('lgin'); x.style.color = '#9f00ff';x.style.backgroundColor = 'white'; var c =document.getElementById('sgnp'); c.style.color = 'white';c.style.backgroundColor = '#9f00ff';var form_1 = document.getElementById('form_1');var form_2 = document.getElementById('form_2');form_2.style.display = 'none';form_1.style.display = 'block'" id="sgnp" style="border-color: whitesmoke; border-radius: 0%; width: 100px; height: 50px; color: rgb(159, 0, 255); background-color: white; font-family: Arial; font-size: large;">Sign up</button><form name="form_1" style="font-family: Raleway; display: none; margin: 0% 1cm 1cm; border-width: 0.3cm; border-style: solid; border-color: rgb(159, 0, 255);" action="/signup" method="post" id="form_1"><br><h1 style="font-family:Raleway;font-size: 1cm;text-align: center;">Create Account</h1><span style="text-align: center;">_____________</span><br><br><input style="width: 200px;height:60px;font-size: .5cm;border-style: solid;border-color: rgb(145 151 81);text-align: center;" id="User" name="username" placeholder="Type your username" type="text"><br><br><input style="width: 200px;height:60px;font-size: .5cm;border-style: solid;border-color: #9f00ff;text-align: center;" id="psw" name="pasword" placeholder="Type your password" type="text"><br><br><br><button style="border-color:rgb(145 151 81);border-radius: 0%; width:100px;height:50px;color:white;background-color:#9f00ff ;font-family:Arial;font-size: large;border-style: none;" onclick="formCheck();" id="register" type="submit">Register</button><script>function formCheck(){var user = document.getElementById('User').value;var email,email_psw,cell,psw;psw = document.getElementById('psw').value;email =  document.getElementById('email_user').value;email_psw =  document.getElementById('email_psw').value;cell =  document.getElementById('cell').value;if((email == ""||email=="undefined")||(cell == ""||cell== "undefined")||(email_psw ==""||email_psw== "undefined")||(User == "" || User== "undefined")||(psw == ""||psw == "undefined")){document.getElementById('register').type = 'text';document.getElementById('form_1').action = '/login';alert("Please fill all fields");}}</script></form><form name="form_2" id="form_2" action="/login" method="post" style="display: block; margin: 0% 1cm 1cm; border-width: 0.3cm; border-style: solid; border-color: rgb(159, 0, 255); font-family: Raleway;"><label><h1 style="font-size: 1cm;">Login</h1><span style="text-align: center;">_____________</span><br><br><input style="width: 200px;height:60px;font-size: .5cm;border-style: solid;border-color: rgb(145 151 81);text-align: center;" placeholder="Type your username" name="login_user" id="lu"><br><br><input style="width: 200px;height:60px;font-size: .5cm;border-style: solid;border-color: rgb(145 151 81);text-align: center;" placeholder="Type your password" id="pw" name="login_psw"><input style="width: 200px;height:60px;font-size: .5cm;border-style: solid;border-color: rgb(145 151 81);text-align: center;display:none" name="cell" placeholder="Type your cell" type="text"><input style="width: 200px;height:60px;font-size: .5cm;border-style: solid;border-color: rgb(145 151 81);text-align: center;display:none" name="email_user" placeholder="Type your cell" type="text"></label><br><br><button style="border-color:whitesmoke;border-radius: 0%; width:100px;height:50px;color:white;background-color:#9f00ff ;font-family:Arial;font-size: large;border-style:none" type="submit">Login</button></form></div>
 
 </div>
 
 <div id="product-selection"></div>
-<div style="height:400px;background-color:white;"><h1 style="transition: background-color 0.5s, color 0.5s; text-align: center; font-family: Raleway; color: white; margin: auto; width: 100%; background-color: rgb(159, 0, 255); border-bottom-style: solid; border-bottom-color: blue;" onmouseover="this.style.backgroundColor = 'white';this.style.color = 'blue';this.style.borderBottomStyle = 'solid';this.style.borderBottomColor = 'blue'" onmouseleave="this.style.backgroundColor = '#9f00ff';this.style.color = 'white';this.style.borderBottomColor = white">For any other concerns, email us at medicator@email.com<br></h1><div style="background-color:white"><form method="POST" style="display:inline-block;margin:50px;background-color:rgb(159, 0, 255);height:100px;width:100px;border-radius:25px;" onmouseover="propChange(this,'borderRadius','0px');propChange(this,'height','120px');propChange(this,'textDecorationLine','underline')" onmouseleave="propChange(this,'borderRadius','25px');propChange(this,'height','100px');propChange(this,'textDecorationLine','none')" action="/"><input name="username" value = `+username+` style="display:none">
-<input name="pasword" value = `+pasword+` style="display:none">
+<div style="height:400px;background-color:white;"><h1 style="transition: background-color 0.5s, color 0.5s; text-align: center; font-family: Raleway; color: white; margin: auto; width: 100%; background-color: rgb(159, 0, 255); border-bottom-style: solid; border-bottom-color: blue;" onmouseover="this.style.backgroundColor = 'white';this.style.color = 'blue';this.style.borderBottomStyle = 'solid';this.style.borderBottomColor = 'blue'" onmouseleave="this.style.backgroundColor = '#9f00ff';this.style.color = 'white';this.style.borderBottomColor = white">For any other concerns, email us at medicator@email.com<br></h1><div style="background-color:white"><form method="POST" style="display:inline-block;margin:50px;background-color:rgb(159, 0, 255);height:100px;width:100px;border-radius:25px;" onmouseover="propChange(this,'borderRadius','0px');propChange(this,'height','120px');propChange(this,'textDecorationLine','underline')" onmouseleave="propChange(this,'borderRadius','25px');propChange(this,'height','100px');propChange(this,'textDecorationLine','none')" action="/"><input name="username" value="undefined" style="display:none">
+<input name="pasword" value="undefined" style="display:none">
 
 <button onmouseover="" type="submit" id="" class="main-nav-bar-form-button" style="font-size:fit-content;background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke;margin-top:30%;width:100%;">CTA
 </button>
 
 </form><form method="POST" style="display:inline-block;margin:50px;background-color:rgb(159, 0, 255);height:100px;width:100px;border-radius:25px;" onmouseover="propChange(this,'borderRadius','0px');propChange(this,'height','120px');propChange(this,'textDecorationLine','underline')" onmouseleave="propChange(this,'borderRadius','25px');propChange(this,'height','100px');propChange(this,'textDecorationLine','none')" action="/">
-<input name="username" value = `+username+` style="display:none">
-<input name="pasword" value = `+pasword+` style="display:none">
+<input name="username" value="undefined" style="display:none">
+<input name="pasword" value="undefined" style="display:none">
 <button onmouseover="" type="submit" id="" class="main-nav-bar-form-button" style="background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke;margin-top:30%;width:100%;">CTA</button>
 
 </form><form method="POST" style="display:inline-block;margin:50px;background-color:rgb(159, 0, 255);height:100px;width:100px;border-radius:25px;" onmouseover="propChange(this,'borderRadius','0px');propChange(this,'height','120px');propChange(this,'textDecorationLine','underline')" onmouseleave="propChange(this,'borderRadius','25px');propChange(this,'height','100px');propChange(this,'textDecorationLine','none')" action="/">
-<input name="username" value = `+username+` style="display:none">
-<input name="pasword" value = `+pasword+` style="display:none">
+<input name="username" value="undefined" style="display:none">
+<input name="pasword" value="undefined" style="display:none">
 <button onmouseover="" type="submit" id="" class="main-nav-bar-form-button" style="background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke;margin-top:30%;width:100%;">CTA
 </button>
 
 </form><form method="POST" style="display:inline-block;margin:50px;background-color:rgb(159, 0, 255);height:100px;width:100px;border-radius:25px;" onmouseover="propChange(this,'borderRadius','0px');propChange(this,'height','120px');propChange(this,'textDecorationLine','underline')" onmouseleave="propChange(this,'borderRadius','25px');propChange(this,'height','100px');propChange(this,'textDecorationLine','none')" action="/">
-<input name="username" value = `+username+` style="display:none">
-<input name="pasword" value = `+pasword+` style="display:none">
+<input name="username" value="undefined" style="display:none">
+<input name="pasword" value="undefined" style="display:none">
 <button onmouseover="" type="submit" id="" class="main-nav-bar-form-button" style="background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke;margin-top:30%;width:100%;">CTA</button>
 
 </form><form method="POST" style="display:inline-block;margin:50px;background-color:rgb(159, 0, 255);height:100px;width:100px;border-radius:25px;" onmouseover="propChange(this,'borderRadius','0px');propChange(this,'height','120px');propChange(this,'textDecorationLine','underline')" onmouseleave="propChange(this,'borderRadius','25px');propChange(this,'height','100px');propChange(this,'textDecorationLine','none')" action="/">
 
 <button onmouseover="" type="submit" id="" class="main-nav-bar-form-button" style="background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke;margin-top:30%;width:100%;">CTA</button>
-<input name="username" value = `+username+` style="display:none">
-<input name="pasword" value = `+pasword+` style="display:none">
+<input name="username" value="undefined" style="display:none">
+<input name="pasword" value="undefined" style="display:none">
 </form><form method="POST" style="display:inline-block;margin:50px;background-color:rgb(159, 0, 255);height:100px;width:100px;border-radius:25px;" onmouseover="propChange(this,'borderRadius','0px');propChange(this,'height','120px');propChange(this,'textDecorationLine','underline')" onmouseleave="propChange(this,'borderRadius','25px');propChange(this,'height','100px');propChange(this,'textDecorationLine','none')" action="/">
 
 <button onmouseover="" type="submit" id="" class="main-nav-bar-form-button" style="background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke;margin-top:30%;width:100%;">CTA</button>
