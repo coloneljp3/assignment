@@ -286,6 +286,6 @@ else(res.send('This account doesnt exist'))
   
 })
 
-app.use('/login',router)
+app.use('/.netlify/functions/login',router)
 module.exports.handler = serverless(app)
 
