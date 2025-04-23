@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const serverless = require('serverless-http');
 const router = express.Router();
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true}));
+app.use(bodyParser.urlencoded({extended:true}));
 
 
 
@@ -478,13 +478,12 @@ width.style.width = '0px'}
 
 
 </body></html>`)
-	
-
-	
-	
+		
 })
 
 app.get('/',(req,res)=>{
+var username = req.body.username
+var pasword = req.body.pasword
 res.send(`
 <html><head>
 <link href="https://fonts.googleapis.com/css2?family=Varela+Round&amp;display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.googleapis.com">
