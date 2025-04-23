@@ -402,5 +402,5 @@ res.send(`<style>
   
 })
 
-app.use('/account-page',router)
+app.use('/.netlify/functions/account-page',router)
 module.exports.handler = serverless(app)
