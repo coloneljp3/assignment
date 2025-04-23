@@ -10,6 +10,15 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
 
 app.use('/',(req,res)=>{
+var username = req.body.username
+var pasword = req.body.pasword
+var prescription_drugs =[]
+var medical_conditions = []
+var connect = mysql.createConnection(process.env.DATABASE_URL)
+connect.query(`INSERT INTO Records VALUES(?,?,?,?)
+`,[username,date,medical_data, prescription_data])
+connect.query(`UPDATE Customers SET medical_conditions = ?, prescription_drugs = ?
+WHERE username =?`,[medical_conditions,prescription_drugs,username],(err,results)=>{
 res.send(`
 <html><head>
 <link href="https://fonts.googleapis.com/css2?family=Varela+Round&amp;display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.googleapis.com">
@@ -234,7 +243,7 @@ width.style.width = '0px'}
 
 <form action="" method="POST" class="main-nav-bar-form" style="background-color:transparent">
 <input name="username" value = `+user+` style="display:none">
-<input name="pasword" value = `+password+` style="display:none">
+<input name="pasword" value = `+pasword+` style="display:none">
 <button onmouseover="" type="submit" id="home-button" class="main-nav-bar-form-button" style="background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke">Medical Forms</button>
 
 </form>
@@ -257,7 +266,7 @@ width.style.width = '0px'}
 
 <form action="" method="POST" class="main-nav-bar-form" style="background-color:transparent">
 <input name="username" value = `+user+` style="display:none">
-<input name="pasword" value = `+password+` style="display:none">
+<input name="pasword" value = `+pasword+` style="display:none">
 <button onmouseover="" type="submit" id="home-button" class="main-nav-bar-form-button" style="background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke">Accounts</button>
 
 </form>
@@ -275,7 +284,7 @@ width.style.width = '0px'}
 
 <form action="" method="POST" class="main-nav-bar-form" style="background-color:transparent">
 <input name="username" value = `+user+` style="display:none">
-<input name="pasword" value = `+password+` style="display:none">
+<input name="pasword" value = `+pasword+` style="display:none">
 <button onmouseover="" type="submit" id="home-button" class="main-nav-bar-form-button" style="background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke">APIs</button>
 
 </form>
@@ -293,7 +302,7 @@ width.style.width = '0px'}
 
 <form action="" method="POST" class="main-nav-bar-form" style="background-color:transparent">
 <input name="username" value = `+user+` style="display:none">
-<input name="pasword" value = `+password+` style="display:none">
+<input name="pasword" value = `+pasword+` style="display:none">
 <button onmouseover="" type="submit" id="home-button" class="main-nav-bar-form-button" style="background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke">About</button>
 
 </form>
@@ -573,6 +582,8 @@ width.style.width = '0px'}
 
 </body></html>
 `)
+
+})
 	
 })
 
