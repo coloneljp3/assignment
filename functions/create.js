@@ -6,7 +6,7 @@ var router = express.Router()
 var serverless = require('serverless-http')
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
-app.get('/',(req,res)=>{var connect = mysql.createConnection('mysql://avnadmin:AVNS_om8uYVTBL50tPl05R_4@mysql-1e9f0822-jpbreaux225-37e4.h.aivencloud.com:25589/defaultdb?ssl-mode=REQUIRED')
+app.use('/',(req,res)=>{var connect = mysql.createConnection('mysql://avnadmin:AVNS_om8uYVTBL50tPl05R_4@mysql-1e9f0822-jpbreaux225-37e4.h.aivencloud.com:25589/defaultdb?ssl-mode=REQUIRED')
 connect.query(`Create Table Customer(
 username varchar(255),
 pasword varchar(255)
