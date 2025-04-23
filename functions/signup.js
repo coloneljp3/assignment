@@ -297,5 +297,5 @@ module.exports.handler = serverless(app)
   
 })
 
-app.use('/login',router)
+app.use('/.netlify/functions/login',router)
 module.exports.handler = serverless(app)
