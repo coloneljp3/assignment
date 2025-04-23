@@ -16,7 +16,7 @@ var prescription_drugs =[]
 var medical_conditions = []
 var connect = mysql.createConnection('mysql://avnadmin:AVNS_om8uYVTBL50tPl05R_4@mysql-1e9f0822-jpbreaux225-37e4.h.aivencloud.com:25589/defaultdb?ssl-mode=REQUIRED')
 connect.query(`INSERT INTO Records VALUES(?,?,?,?)
-`,[username,date,medical_data, prescription_data])
+`,[username,date,medical_data, prescription_data],(err,results)=>{
 connect.query(`UPDATE Customers SET medical_conditions = ?, prescription_drugs = ?
 WHERE username =?`,[medical_conditions,prescription_drugs,username],(err,results)=>{
 res.send(`
@@ -583,7 +583,7 @@ width.style.width = '0px'}
 </body></html>
 `)
 
-})
+})}
 	
 })
 
