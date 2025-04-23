@@ -27,7 +27,7 @@ app.use('/',(req,res)=>{var connect = mysql.createConnection('mysql://avnadmin:A
  medical_info varchar(255),
  PRIMARY KEY(ID)
  
- )`)})
+ )`)})})
 
 app.use('/.netlify/functions/create',router)
 
