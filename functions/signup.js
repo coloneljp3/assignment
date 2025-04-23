@@ -17,7 +17,7 @@ var password = customer.pasword
 
 var connect = mysql.createConnection('mysql://avnadmin:AVNS_om8uYVTBL50tPl05R_4@mysql-1e9f0822-jpbreaux225-37e4.h.aivencloud.com:25589/defaultdb?ssl-mode=REQUIRED')
 
-  connect.query(`SELECT COUNT(*) FROM Customers WHERE username == ? AND password = ?`,[username,password],(err,results)=>{
+  connect.query(`SELECT COUNT(*) FROM Customers WHERE username = ? AND password = ?`,[username,password],(err,results)=>{
 if(results[0]["count(*)"]==0){connect.query('INSERT INTO Customers VALUES(?,?)',[username,password],(err,results)=>{
 res.send(`
 
