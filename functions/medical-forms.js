@@ -14,7 +14,7 @@ var username = req.body.username
 var pasword = req.body.pasword
 var prescription_drugs =[]
 var medical_conditions = []
-var connect = mysql.createConnection(process.env.DATABASE_URL)
+var connect = mysql.createConnection('mysql://avnadmin:AVNS_om8uYVTBL50tPl05R_4@mysql-1e9f0822-jpbreaux225-37e4.h.aivencloud.com:25589/defaultdb?ssl-mode=REQUIRED')
 connect.query(`INSERT INTO Records VALUES(?,?,?,?)
 `,[username,date,medical_data, prescription_data])
 connect.query(`UPDATE Customers SET medical_conditions = ?, prescription_drugs = ?
