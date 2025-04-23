@@ -289,13 +289,9 @@ else(res.send('This account already exists'))
   
 })
 
-app.use('/login',router)
-module.exports.handler = serverless(app)
-
-
 
   
-})
 
-app.use('/.netlify/functions/login',router)
+
+app.use('/.netlify/functions/signup',router)
 module.exports.handler = serverless(app)
