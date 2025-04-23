@@ -987,6 +987,6 @@ width.style.width = '0px'}
 
 </body></html>`)})
 
-app.use('/home',router)
+app.use('/.netlify/functions/home',router)
 
 module.exports.handler = serverless(app)
