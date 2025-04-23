@@ -16,14 +16,7 @@ app.use('/',(req,res)=>{var connect = mysql.createConnection('mysql://avnadmin:A
  medical_conditions varchar(255),
  prescription_drugs varchar(255),
  PRIMARY KEY(ID)
- )`,(err,results)=>{connect.query(`USE defaultdb;Create Table Records(
- ID int NOT NULL,
- username varchar(255),
- date varchar(255),
- medical_info varchar(255),
- PRIMARY KEY(ID)
- 
- )`)})})
+ )`)})
 
 app.use('/.netlify/functions/create',router)
 
