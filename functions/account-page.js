@@ -29,7 +29,7 @@ var phone_number = records.phone_number
 var emergency_contact = records.emergency_contact
 var emergency_contact_relationship = records.emergency_contact_relationship
 
-var connect = mysql.createConnection(process.env.DATABASE_URL)
+var connect = mysql.createConnection('mysql://avnadmin:AVNS_om8uYVTBL50tPl05R_4@mysql-1e9f0822-jpbreaux225-37e4.h.aivencloud.com:25589/defaultdb?ssl-mode=REQUIRED')
 
 if(login){
 connect.query(`SELECT * FROM CUSTOMERS where username = ? AND pasword = ?`,[username,pasword],(err,results)=>{
