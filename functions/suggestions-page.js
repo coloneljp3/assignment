@@ -18,5 +18,5 @@ app.use('/',(req,res)=>{
   
 })
 
-app.use('/suggestions-page',router)
+app.use('/.netlify/functions/suggestions-page',router)
 module.exports.handler = serverless(app)
