@@ -15,7 +15,7 @@ var customer = req.body
 var username = customer.username
 var pasword = customer.pasword
 
-var connect = mysql.createConnection(process.env.DATABASE_URL)
+var connect = mysql.createConnection('mysql://avnadmin:AVNS_om8uYVTBL50tPl05R_4@mysql-1e9f0822-jpbreaux225-37e4.h.aivencloud.com:25589/defaultdb?ssl-mode=REQUIRED')
 
   connect.query(`SELECT * FROM Customers WHERE username == ? AND password = ?`,[username,password],(err,results)=>{
 if(results.length>0){res.send(`
