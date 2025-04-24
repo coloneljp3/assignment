@@ -12,7 +12,6 @@ app.use('/',(req,res)=>{var connect = mysql.createConnection('mysql://avnadmin:A
  PRIMARY KEY ID int NOT NULL,
  username varchar(255),
  date_of_creation varchar(255),
- medical_conditions varchar(255),
  prescription_drugs varchar(255),
  )`)})
 
