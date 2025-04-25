@@ -8,7 +8,7 @@ const bodyParser = require('body-parser')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
-
+app.get('/',(req,res)=>{res.send("med")})
 app.post('/',(req,res)=>{
 var path_of_form = req.body.path_of_form
 var username = req.body.username
