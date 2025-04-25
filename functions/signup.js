@@ -17,12 +17,6 @@ var pasword = customer.pasword
 
 var connect = mysql.createConnection('mysql://avnadmin:AVNS_om8uYVTBL50tPl05R_4@mysql-1e9f0822-jpbreaux225-37e4.h.aivencloud.com:25589/defaultdb?ssl-mode=REQUIRED')
 
-  connect.query(`SELECT COUNT(*) FROM Customer WHERE username = ? AND pasword = ?`,[username,pasword],(err,results)=>{
-if(results[0]["count(*)"]==0){connect.query('INSERT INTO Customer VALUES(?,?)',[username,pasword],(err,results)=>{
-res.send(`
-
-var username = req.body.username
-var pasword = req.body.pasword
 var records = req.body
 var full_name = records.full_name
 var address = records.address
@@ -111,9 +105,8 @@ var prescriptions = []
 
 var connect = mysql.createConnection('mysql://avnadmin:AVNS_om8uYVTBL50tPl05R_4@mysql-1e9f0822-jpbreaux225-37e4.h.aivencloud.com:25589/defaultdb?ssl-mode=REQUIRED')
 
-if(login){
 connect.query(`SELECT COUNT(*) FROM Customer where username = ? AND pasword = ?`,[username,pasword],(err,results)=>{
-if(results.length == 0){res.send(`This account doesn't exist. You need to create an account first`)}
+if(results.length != 0){res.send(`This account already exists.`)}
 
 else{
 res.send(`<html><head><link href="https://fonts.googleapis.com/css2?family=Varela+Round&amp;display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -723,23 +716,7 @@ width.style.width = '0px'}
 </style>
 
 <br>
-</body></html>`)
-
-  
-})}
-else(res.send('This account already exists'))
-    
-  })
-  
-
-
-
-  
-})
-
-
-  
-
+</body></html>`)})})})
 
 app.use('/.netlify/functions/signup',router)
 module.exports.handler = serverless(app)
