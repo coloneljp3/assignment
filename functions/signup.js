@@ -30,7 +30,7 @@ var zip_code = records.zip_code
 var phone_number = records.phone_number
 var emergency_contact = records.emergency_contact
 var emergency_contact_relationship = records.emergency_contact_relationship
-
+var date = new Date()
 var dise = req.body
 var substance_abuse = {name:"Alcohol/Drug Abuse",check:dise.alc_drug_checkbox,start:dise.alc_drug_start,
                     end:dise.alc_drug_end,
@@ -106,9 +106,10 @@ var prescriptions = []
 var connect = mysql.createConnection('mysql://avnadmin:AVNS_om8uYVTBL50tPl05R_4@mysql-1e9f0822-jpbreaux225-37e4.h.aivencloud.com:25589/defaultdb?ssl-mode=REQUIRED')
 
 connect.query(`SELECT COUNT(*) FROM Customer where username = ? AND pasword = ?`,[username,pasword],(err,results)=>{
-if(results.length != 0){res.send(`This account already exists.`)}
+if(results[0]["count(*)"].length != 0){res.send(`This account already exists.`)}
 
 else{
+connect.query(`INSERT INTO Customer(username,pasword,date_of_creation,prescriptions) VALUES(?,?,?,?)`,[username,pasword,date,prescriptions],(err,results)=>{
 res.send(`<html><head><link href="https://fonts.googleapis.com/css2?family=Varela+Round&amp;display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&amp;display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -716,7 +717,7 @@ width.style.width = '0px'}
 </style>
 
 <br>
-</body></html>`)}})})
+</body></html>`)})}})})
 
 app.use('/.netlify/functions/signup',router)
 module.exports.handler = serverless(app)
