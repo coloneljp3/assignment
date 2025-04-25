@@ -10,9 +10,10 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
 router.get('/',(req,res)=>{res.send("med")})
 router.post('/',(req,res)=>{
+var body = JSON.parse(req.body)
 var path_of_form = req.body.path_of_form
-var username = req.body.username
-var pasword = req.body.pasword
+var username = body.username
+var pasword = body.pasword
 var date = new Date()
 var medical_data = {};
 var prescription_data = {}
@@ -23,7 +24,7 @@ connect.query(`INSERT INTO Records VALUES(?,?,?,?)
 `,[username,date,medical_data, prescription_data],(err,results)=>{
 connect.query(`UPDATE Customers SET medical_conditions = ?, prescription_drugs = ?
 WHERE username =?`,[medical_conditions,prescription_drugs,username],(err,results)=>{
-res.send(req.body+`
+res.send(req.body, body+`
 <html><head>
 <link href="https://fonts.googleapis.com/css2?family=Varela+Round&amp;display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -357,8 +358,8 @@ width.style.width = '0px'}
 <div><h1 style="text-align:center;font-family:Varela Round;color:rgb(159, 0, 255)">Medical Patient Information Form</h1></div><div id="post-header-body-div-3" class="body-div">
 
 <form style="font-family:Varela Round" method="post" action="/signup">
-    <input name="username" value="`+username+`" style="display:none">
-<input name="pasword" value="`+pasword+`" style="display:none">
+    <input name="username" value=`+req.body.username+` style="display:none">
+<input name="pasword" value=`+req.body.pasword+` style="display:none">
 
 <div class="parent-form"><h2 class="sub-parent-form"></h2><label class="sub-parent-form-label">First Name</label><input class="sub-parent-form-inputs" placeholder="Type an answer"></div>
 
