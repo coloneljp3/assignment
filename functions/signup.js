@@ -106,7 +106,7 @@ var prescriptions = []
 var connect = mysql.createConnection('mysql://avnadmin:AVNS_om8uYVTBL50tPl05R_4@mysql-1e9f0822-jpbreaux225-37e4.h.aivencloud.com:25589/defaultdb?ssl-mode=REQUIRED')
 
 connect.query(`SELECT COUNT(*) FROM Customer where username = ? AND pasword = ?`,[username,pasword],(err,results)=>{
-if(results[0]["count(*)"] != 0){res.send(`This account already exists.`)}
+if(results[0]["count(*)"] != 0){res.send(results[0]["count(*)"]+`This account already exists.`)}
 
 else{
 connect.query(`INSERT INTO Customer(username,pasword,date_of_creation,prescriptions) VALUES(?,?,?,?)`,[username,pasword,date,prescriptions],(err,results)=>{
