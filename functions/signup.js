@@ -85,13 +85,13 @@ var prescriptions = []
 	for(let i of Object.keys(req.body)){
 	if(i.includes("drug_")){
 		prescriptions.push(req.body.i)
-		)
+		
 	}	
 }
 	for(let i of Object.keys(req.body)){
 	if(i.includes("symptom_")){
 		medical_conditions.push(req.body.i)
-		)
+		
 	}	
 }
 	for(let i of Object.values(req.body)){
