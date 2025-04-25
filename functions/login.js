@@ -18,8 +18,8 @@ var pasword = customer.pasword
 var connect = mysql.createConnection('mysql://avnadmin:AVNS_om8uYVTBL50tPl05R_4@mysql-1e9f0822-jpbreaux225-37e4.h.aivencloud.com:25589/defaultdb?ssl-mode=REQUIRED')
 
   connect.query(`SELECT COUNT(*) FROM Customer WHERE username = ? AND pasword = ?`,[username,pasword],(err,results,fields)=>{
-//var result = results[0]["count(*)"];
-	  if(true){res.send(err + `
+var result = results[0]["count(*)"];
+	  if(result==1){res.send(`<html><head><link href="https://fonts.googleapis.com/css2?family=Varela+Round&amp;display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.googleapis.com">
 <header id="main-header" style="height:600px;background-color:#0b4ecc"><div style="z-index:-1;background-color: #35e8fe;"><div style="z-index:1;position:absolute;top:50%;background-color:transparent;margin:auto;width:100%;height:100px"><div style="font-weight:bold;font-family:Raleway;opacity:100%;color:white;background-color:transparent"><p style="font-family:'Varela Round';top:-450px;font-size:120px;position:absolute;left:100px;width:50%"><br>The<br>Medicator</p><p style="position:absolute;right:20px;width:50%">The premier healthcare app in managing your prescriptions, writing new ones, and staying safe on medication<br></p></div></div><img style="opacity:60%;width:100%;height:100%;" src="https://harcourthealth.com/wp-content/uploads/2019/10/technology-in-healthcare.jpg"></div>
 <div style="background-color:transparent;height:50%;width:100%">
 
@@ -194,8 +194,8 @@ width.style.width = '0px'}
 <span class="main-nav-bar-items-container" onmouseleave="revDropDown('dropdown-button-6')" style="background-color:transparent">
 
 <form action="" method="POST" class="main-nav-bar-form" style="background-color:transparent">
-<input name="username" value = `+username+` style="display:none">
-<input name="pasword" value = `+pasword+` style="display:none">
+<input name="username" value = `+user+` style="display:none">
+<input name="pasword" value = `+password+` style="display:none">
 <button onmouseover="" type="submit" id="home-button" class="main-nav-bar-form-button" style="background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke">Medical Forms</button>
 
 </form>
@@ -217,8 +217,8 @@ width.style.width = '0px'}
 <span class="main-nav-bar-items-container" onmouseleave="revDropDown('dropdown-button-7')" style="background-color:transparent">
 
 <form action="" method="POST" class="main-nav-bar-form" style="background-color:transparent">
-<input name="username" value = `+username+` style="display:none">
-<input name="pasword" value = `+pasword+` style="display:none">
+<input name="username" value = `+user+` style="display:none">
+<input name="pasword" value = `+password+` style="display:none">
 <button onmouseover="" type="submit" id="home-button" class="main-nav-bar-form-button" style="background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke">Accounts</button>
 
 </form>
@@ -235,8 +235,8 @@ width.style.width = '0px'}
 </span><span class="main-nav-bar-items-container" onmouseleave="revDropDown('dropdown-button-8')" style="background-color:transparent">
 
 <form action="" method="POST" class="main-nav-bar-form" style="background-color:transparent">
-<input name="username" value = `+username+` style="display:none">
-<input name="pasword" value = `+pasword+` style="display:none">
+<input name="username" value = `+user+` style="display:none">
+<input name="pasword" value = `+password+` style="display:none">
 <button onmouseover="" type="submit" id="home-button" class="main-nav-bar-form-button" style="background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke">APIs</button>
 
 </form>
@@ -253,8 +253,8 @@ width.style.width = '0px'}
 </span><span class="main-nav-bar-items-container" onmouseleave="revDropDown('dropdown-button-9')" style="background-color:transparent">
 
 <form action="" method="POST" class="main-nav-bar-form" style="background-color:transparent">
-<input name="username" value = `+username+` style="display:none">
-<input name="pasword" value = `+pasword+` style="display:none">
+<input name="username" value = `+user+` style="display:none">
+<input name="pasword" value = `+password+` style="display:none">
 <button onmouseover="" type="submit" id="home-button" class="main-nav-bar-form-button" style="background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke">About</button>
 
 </form>
@@ -275,6 +275,96 @@ width.style.width = '0px'}
 </nav>
 
 </div></header>
+<style>
+.profile-data-unit{
+    display:block;border-radius:25px;height:200px;box-shadow: 1px 1px 1px 1px gray;width:49%;display:inline-block
+}
+
+    .past-product-item{display:block
+    }.h2_styles{background-color:#f6f6f6};.h4_styles{background-color:whitesmoke}
+</style>
+
+</head><body><div id="profile-container" style="height:700px;font-family:Raleway"><div id="image-container" style="display:inline-block;padding-right:40px"><img id="profile-picture" style="background-color:red;box-shadow: 0 200px #f55353 inset;border-radius:200px;width:200px;height:200px;opacity:40%;top:0px" src="/pic_1.jpg"><h4 style="text-align:center">John Doe</h4></div><div id="profile-info" style="float:right;display:inline-block">
+<div class="profile-data-unit" style="" id="profile-name" onmouseover="propChange(this,'boxShadow','2px 2px 14px black')" onmouseleave="propChange(this,'boxShadow','1px 1px 1px 1px gray')"><h2 class="h2_styles">Profile Name</h2><h4 class="h4_styles">John Smith</h4></div>
+
+
+
+
+
+<div class="profile-data-unit" style="" onmouseover="propChange(this,'boxShadow','2px 2px 14px black')" onmouseleave="propChange(this,'boxShadow','1px 1px 1px 1px gray')"><h2 class="h2_styles">Account Created</h2><h4 class="h4_styles">January 15, 2025</h4></div><div class="profile-data-unit" style="" onmouseover="propChange(this,'boxShadow','2px 2px 14px black')" onmouseleave="propChange(this,'boxShadow','1px 1px 1px 1px gray')"><h2 class="h2_styles">Email</h2><h4 class="h4_styles" style="">johnsmith@gmail.com</h4></div><div class="profile-data-unit" style="" onmouseover="propChange(this,'boxShadow','2px 2px 14px black')" onmouseleave="propChange(this,'boxShadow','1px 1px 1px 1px gray')"><h2 class="h2_styles">Medical Information</h2><div><h3>Medical Conditions</h3>
+<ol id="medical_conditions" style="font-family:Varela Round">
+<div><input value="Cancer" name="medical_condition_1" style="border-style:none;border-bottom-style:solid;font-size:20px"><button style="font-size:20px;border-style:none;background-color:transparent">&gt;</button>
+    <ol style="width:0%;height:0%;visibility:hidden" id="cancer_attr_list"><li style="width:inherit;height:inherit">Symptoms<ol>
+    <li style="width:inherit;height:inherit">Nausea</li>
+    <li style="width:inherit;height:inherit">Vomiting</li>
+    <li style="width:inherit;height:inherit">Disorientation</li>
+    <li style="width:inherit;height:inherit">Hair Loss</li>
+
+
+</ol></li>
+<li style="width:inherit;height:inherit">Treatments</li>
+<li style="width:inherit;height:inherit;"><ol style="width:inherit;height:inherit">
+<li style="width:inherit;height:inherit">Chemotherapy</li>
+</ol></li></ol></div>
+
+</ol>
+<h3>Current Prescriptions</h3>
+<ol id="current_prescriptions">
+<table>
+    <tbody><tr><td>Drug</td><td>Side Effects</td><td>Description</td><td>Drug Experience</td></tr>
+    <tr><td><li><input value="Naltrexone" name="prescrip_1"></li></td><td><input value="Nausea"></td><td></td><td><input name="" value="It helps with addiction"></td></tr>
+
+<tr><td><li><input value="Naltrexone" name="prescrip_1"></li></td><td><input value="Nausea"></td><td></td><td><input name="" value="It helps with addiction"></td></tr><tr><td><li><input value="Naltrexone" name="prescrip_1"></li></td><td><input value="Nausea"></td><td></td><td><input name="" value="It helps with addiction"></td></tr><tr><td><li><input value="Naltrexone" name="prescrip_1"></li></td><td><input value="Nausea"></td><td></td><td><input name="" value="It helps with addiction"></td></tr></tbody></table>
+</ol>
+</div>
+</div></div></div><div><h2>Drug Suggestions</h2>
+    
+    <p>-Ex. Ibuprofen and Tylenol are redundant
+    - Too high of ibuprofen can cause stomach bleeding, which you may be more succeptible to because of stomach surgery
+    </p></div><button onclick="function addField(form_id,input_clas,name_of_field){
+    var elem = document.getElementById(form_id)
+    var inp = document.createElement('input');console.log(inp.class);inp.class = input_clas;
+  	var total_inp = document.getElementsByClassName(input_clas);
+    ;inp.name = name_of_field +(total_inp.length+1);
+    elem.appendChild(inp)
+    };addField('form','form_inputs','pasword')">Add another illness</button>
+    <button onclick="function addField(form_id,input_clas,name_of_field){
+    var elem = document.getElementById(form_id)
+    var inp = document.createElement('input');console.log(inp.class);inp.class = input_clas;
+  	var total_inp = document.getElementsByClassName(input_clas);
+    ;inp.name = name_of_field +(total_inp.length+1);
+    elem.appendChild(inp)
+    };addField('form','form_inputs','pasword')">Add another drug</button><div><h2>Drug Experiences</h2>
+</div><br></body></html>`)
+  
+}
+  
+})
+  
+}
+else{
+
+  connect.query(`SELECT * FROM CUSTOMERS where username = ? OR pasword = ?`,[username,pasword],(err,results)=>{
+if(results.length ==0){
+connect.query(`INSERT INTO Customers VALUES(?,?)`,[username,pasword],(err,results)=>{
+res.send(`<style>
+.profile-data-unit{
+    display:block;border-radius:25px;height:200px;box-shadow: 1px 1px 1px 1px gray;width:49%;display:inline-block
+}
+
+    .past-product-item{display:block
+    }.h2_styles{background-color:#f6f6f6};.h4_styles{background-color:whitesmoke}
+</style>
+
+<div id="profile-container" style="height:700px;font-family:Raleway"><div id="image-container" style="display:inline-block;padding-right:40px"><img id="profile-picture" style="background-color:red;box-shadow: 0 200px #f55353 inset;border-radius:200px;width:200px;height:200px;opacity:40%;top:0px" src="/pic_1.jpg"><h4 style="text-align:center">John Doe</h4></div><div id="profile-info" style="float:right;display:inline-block">
+<div class="profile-data-unit" style="" id="profile-name" onmouseover="propChange(this,'boxShadow','2px 2px 14px black')" onmouseleave="propChange(this,'boxShadow','1px 1px 1px 1px gray')"><h2 class="h2_styles">Profile Name</h2><h4 class="h4_styles">John Smith</h4></div>
+
+
+
+
+
+<div class="profile-data-unit" style="" onmouseover="propChange(this,'boxShadow','2px 2px 14px black')" onmouseleave="propChange(this,'boxShadow','1px 1px 1px 1px gray')"><h2 class="h2_styles">Account Created</h2><h4 class="h4_styles">January 15, 2025</h4></div><div class="profile-data-unit" style="" onmouseover="propChange(this,'boxShadow','2px 2px 14px black')" onmouseleave="propChange(this,'boxShadow','1px 1px 1px 1px gray')"><h2 class="h2_styles">Email</h2><h4 class="h4_styles" style="">johnsmith@gmail.com</h4></div><div class="profile-data-unit" style="" onmouseover="propChange(this,'boxShadow','2px 2px 14px black')" onmouseleave="propChange(this,'boxShadow','1px 1px 1px 1px gray')"><h2 class="h2_styles">Product Purchase History</h2>
+</div></div></div><br>
 
 `)}
 else(res.send('This account doesnt exist'))
