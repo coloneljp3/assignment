@@ -356,7 +356,7 @@ width.style.width = '0px'}
 
 <div><h1 style="text-align:center;font-family:Varela Round;color:rgb(159, 0, 255)">Medical Patient Information Form</h1></div><div id="post-header-body-div-3" class="body-div">
 
-<form style="font-family:Varela Round" method="post" action="undefined">
+<form style="font-family:Varela Round" method="post" action=`+path_of_form+`>
     
 
 <div class="parent-form"><h2 class="sub-parent-form"></h2><label class="sub-parent-form-label">First Name</label><input class="sub-parent-form-inputs" placeholder="Type an answer"></div>
