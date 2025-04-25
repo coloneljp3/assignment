@@ -716,7 +716,7 @@ width.style.width = '0px'}
 </style>
 
 <br>
-</body></html>`)})})})
+</body></html>`)}})})
 
 app.use('/.netlify/functions/signup',router)
 module.exports.handler = serverless(app)
