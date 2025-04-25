@@ -245,7 +245,7 @@ width.style.width = '0px'}
 <span class="main-nav-bar-items-container" onmouseleave="revDropDown('dropdown-button-6')" style="background-color:transparent">
 
 <form action="" method="POST" class="main-nav-bar-form" style="background-color:transparent">
-<input name="username" value = `+user+` style="display:none">
+<input name="username" value = `+username+` style="display:none">
 <input name="pasword" value = `+pasword+` style="display:none">
 <button onmouseover="" type="submit" id="home-button" class="main-nav-bar-form-button" style="background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke">Medical Forms</button>
 
@@ -268,7 +268,7 @@ width.style.width = '0px'}
 <span class="main-nav-bar-items-container" onmouseleave="revDropDown('dropdown-button-7')" style="background-color:transparent">
 
 <form action="" method="POST" class="main-nav-bar-form" style="background-color:transparent">
-<input name="username" value = `+user+` style="display:none">
+<input name="username" value = `+username+` style="display:none">
 <input name="pasword" value = `+pasword+` style="display:none">
 <button onmouseover="" type="submit" id="home-button" class="main-nav-bar-form-button" style="background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke">Accounts</button>
 
@@ -286,7 +286,7 @@ width.style.width = '0px'}
 </span><span class="main-nav-bar-items-container" onmouseleave="revDropDown('dropdown-button-8')" style="background-color:transparent">
 
 <form action="" method="POST" class="main-nav-bar-form" style="background-color:transparent">
-<input name="username" value = `+user+` style="display:none">
+<input name="username" value = `+username+` style="display:none">
 <input name="pasword" value = `+pasword+` style="display:none">
 <button onmouseover="" type="submit" id="home-button" class="main-nav-bar-form-button" style="background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke">APIs</button>
 
@@ -304,7 +304,7 @@ width.style.width = '0px'}
 </span><span class="main-nav-bar-items-container" onmouseleave="revDropDown('dropdown-button-9')" style="background-color:transparent">
 
 <form action="" method="POST" class="main-nav-bar-form" style="background-color:transparent">
-<input name="username" value = `+user+` style="display:none">
+<input name="username" value = `+username+` style="display:none">
 <input name="pasword" value = `+pasword+` style="display:none">
 <button onmouseover="" type="submit" id="home-button" class="main-nav-bar-form-button" style="background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke">About</button>
 
