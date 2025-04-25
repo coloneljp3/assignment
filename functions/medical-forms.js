@@ -9,7 +9,7 @@ const bodyParser = require('body-parser')
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
 
-app.use('/',(req,res)=>{
+router.use('/',(req,res)=>{
 var path_of_form = req.body.path_of_form
 var username = req.body.username
 var pasword = req.body.pasword
