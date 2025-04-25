@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true}));
 
 
 
-app.post('/',(req,res)=>{
+app.use('/',(req,res)=>{
 var customer = req.body
 var username = customer.username
 var pasword = customer.pasword
