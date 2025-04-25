@@ -9,7 +9,7 @@ const bodyParser = require('body-parser')
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
 
-router.use('/',(req,res)=>{
+app.use('/',(req,res)=>{
 var path_of_form = req.body.path_of_form
 var username = req.body.username
 var pasword = req.body.pasword
@@ -23,7 +23,7 @@ connect.query(`INSERT INTO Records VALUES(?,?,?,?)
 `,[username,date,medical_data, prescription_data],(err,results)=>{
 connect.query(`UPDATE Customers SET medical_conditions = ?, prescription_drugs = ?
 WHERE username =?`,[medical_conditions,prescription_drugs,username],(err,results)=>{
-res.send(username+`
+res.send(req.body+`
 <html><head>
 <link href="https://fonts.googleapis.com/css2?family=Varela+Round&amp;display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
