@@ -110,7 +110,7 @@ if(results[0]["count(*)"] != 0){res.send(results[0]["count(*)"]+`This account al
 
 else{
 connect.query(`INSERT INTO Customer(username,pasword,date_of_creation,prescriptions) VALUES(?,?,?,?)`,[username,pasword,date,prescriptions],(err,results)=>{
-res.send(`<html><head><link href="https://fonts.googleapis.com/css2?family=Varela+Round&amp;display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+res.send(username+`<html><head><link href="https://fonts.googleapis.com/css2?family=Varela+Round&amp;display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&amp;display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
