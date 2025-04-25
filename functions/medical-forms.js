@@ -585,7 +585,7 @@ width.style.width = '0px'}
 
 })}
 	
-})
+)})
 
 app.use('/.netlify/functions/medical-forms',router)
 module.exports.handler = serverless(app)
