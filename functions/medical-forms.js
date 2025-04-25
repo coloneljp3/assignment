@@ -356,7 +356,7 @@ width.style.width = '0px'}
 
 <div><h1 style="text-align:center;font-family:Varela Round;color:rgb(159, 0, 255)">Medical Patient Information Form</h1></div><div id="post-header-body-div-3" class="body-div">
 
-<form style="font-family:Varela Round" method="post" action=`+path_of_form+`>
+<form style="font-family:Varela Round" method="post" action="undefined">
     
 
 <div class="parent-form"><h2 class="sub-parent-form"></h2><label class="sub-parent-form-label">First Name</label><input class="sub-parent-form-inputs" placeholder="Type an answer"></div>
@@ -493,21 +493,25 @@ width.style.width = '0px'}
 
 </tr>
    
-</tbody></table><button onclick="function addField(form_id,input_clas,name_of_field){
-    var elem = document.getElementById(form_id)
-    var inp = document.createElement('input');console.log(inp.class);inp.class = input_clas;
-  	var total_inp = document.getElementsByClassName(input_clas);
-    ;inp.name = name_of_field +(total_inp.length+1);
-    elem.appendChild(inp)
-    };addField('form','form_inputs','pasword')">Add another illness</button><div class="parent-form"><h2 class="sub-parent-form"></h2><label class="sub-parent-form-label">Symptoms</label><input class="sub-parent-form-inputs" placeholder="enter symptoms" name="symptoms"></div><div class="parent-form"><h2 class="sub-parent-form"></h2><label class="sub-parent-form-label">Current Medication:</label><input class="sub-parent-form-inputs" placeholder="Type an answer" style="display:block" name="drug_1"><input class="sub-parent-form-inputs" placeholder="Type an answer" style="display:block" name="drug_2"><input class="sub-parent-form-inputs" placeholder="Type an answer" style="display:block" name="drug_3"><input class="sub-parent-form-inputs" placeholder="Type an answer" style="display:block" name="drug_4"></div></form>
+</tbody></table><div class="parent-form" id="other_symptoms"><h2 class="sub-parent-form"></h2><label class="sub-parent-form-label">Symptoms</label><input class="sub-parent-form-inputs" placeholder="enter symptoms" name="symptoms"></div><div class="parent-form" id="medication"><h2 class="sub-parent-form"></h2><label class="sub-parent-form-label">Current Medication:</label></div></form>
     
 <button onclick="function addField(form_id,input_clas,name_of_field){
     var elem = document.getElementById(form_id)
-    var inp = document.createElement('input');console.log(inp.class);inp.class = input_clas;
+    var inp = document.createElement('input');
   	var total_inp = document.getElementsByClassName(input_clas);
+    inp.className = input_clas
     ;inp.name = name_of_field +(total_inp.length+1);
-    elem.appendChild(inp)
-    };addField('form','form_inputs','pasword')">Add another drug</button><div onmouseover="this.style.backgroundColor = 'white';this.style.color = 'rgb(159, 0, 255)';this.style.borderStyle = 'solid';this.style.borderColor = 'rgb(159, 0, 255)'" onmouseleave="this.style.backgroundColor = 'rgb(159, 0, 255)'; this.style.color = 'white';this.style.borderStyle = 'none';this.style.borderColor = 'white'" id="home-info-1" class="home-info" style="background-color: rgb(159, 0, 255); color: white; border-style: none; border-color: white; font-family: &quot;Varela Round&quot;;">
+    elem.appendChild(inp);    ;
+
+    };addField('other_symptoms','symptom_form_inputs','symptom_')">Add another illness</button><button onclick="function addField(form_id,input_clas,name_of_field){
+    var elem = document.getElementById(form_id)
+    var inp = document.createElement('input');
+  	var total_inp = document.getElementsByClassName(input_clas);
+    inp.className = input_clas
+    ;inp.name = name_of_field +(total_inp.length+1);
+    elem.appendChild(inp);    ;
+
+    };addField('medication','form_inputs','drug_')">Add another drug</button><div onmouseover="this.style.backgroundColor = 'white';this.style.color = 'rgb(159, 0, 255)';this.style.borderStyle = 'solid';this.style.borderColor = 'rgb(159, 0, 255)'" onmouseleave="this.style.backgroundColor = 'rgb(159, 0, 255)'; this.style.color = 'white';this.style.borderStyle = 'none';this.style.borderColor = 'white'" id="home-info-1" class="home-info" style="background-color: rgb(159, 0, 255); color: white; border-style: none; border-color: white; font-family: &quot;Varela Round&quot;;">
 <h2 class="secondary-headings" id="home-info-1-secondary-headings">Getting Specifications</h2>
 <p>Fill out a form regarding your medical history, the drugs you take, and any new symptoms you have. 
 </p>
@@ -576,6 +580,7 @@ width.style.width = '0px'}
 
 
 </div>
+
 
 
 
