@@ -21,3 +21,7 @@ to = "/.netlify/functions/account-page"
 [[redirects]]
 from = "/suggestions-page"
 to = "/.netlify/functions/suggestions-page"
+
+[[redirects]]
+from = "/signup"
+to = "/.netlify/functions/signup"
