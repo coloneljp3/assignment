@@ -10,6 +10,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
 
 app.use('/',(req,res)=>{
+var path_of_form = req.body.path_of_form
 var username = req.body.username
 var pasword = req.body.pasword
 var date = new Date()
@@ -199,7 +200,7 @@ width.style.width = '0px'}
 " style="z-index:1;width:30px;height:20px;">
 <circle cx="8" cy="8" stroke-width="3" stroke="black" r="6"></circle>
 <polyline points="12 12 20 20 " stroke-width="3" stroke="black" fill="none"></polyline>
-</svg><input placeholder="Find Out More About Us" onkeyup="" id="search" type="search" style="width: 0px;float:left"></div>
+</svg><input placeholder="Find Out More About Us" onkeyup="" id="search" type="search" style="width: 350px; float: left;"></div>
 
 <div style="position:relative"> 
     
@@ -245,8 +246,8 @@ width.style.width = '0px'}
 <span class="main-nav-bar-items-container" onmouseleave="revDropDown('dropdown-button-6')" style="background-color:transparent">
 
 <form action="" method="POST" class="main-nav-bar-form" style="background-color:transparent">
-<input name="username" value = `+username+` style="display:none">
-<input name="pasword" value = `+pasword+` style="display:none">
+<input name="username" value="undefined" style="display:none">
+<input name="pasword" value="undefined" style="display:none">
 <button onmouseover="" type="submit" id="home-button" class="main-nav-bar-form-button" style="background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke">Medical Forms</button>
 
 </form>
@@ -268,8 +269,8 @@ width.style.width = '0px'}
 <span class="main-nav-bar-items-container" onmouseleave="revDropDown('dropdown-button-7')" style="background-color:transparent">
 
 <form action="" method="POST" class="main-nav-bar-form" style="background-color:transparent">
-<input name="username" value = `+username+` style="display:none">
-<input name="pasword" value = `+pasword+` style="display:none">
+<input name="username" value="undefined" style="display:none">
+<input name="pasword" value="undefined" style="display:none">
 <button onmouseover="" type="submit" id="home-button" class="main-nav-bar-form-button" style="background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke">Accounts</button>
 
 </form>
@@ -286,8 +287,8 @@ width.style.width = '0px'}
 </span><span class="main-nav-bar-items-container" onmouseleave="revDropDown('dropdown-button-8')" style="background-color:transparent">
 
 <form action="" method="POST" class="main-nav-bar-form" style="background-color:transparent">
-<input name="username" value = `+username+` style="display:none">
-<input name="pasword" value = `+pasword+` style="display:none">
+<input name="username" value="undefined" style="display:none">
+<input name="pasword" value="undefined" style="display:none">
 <button onmouseover="" type="submit" id="home-button" class="main-nav-bar-form-button" style="background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke">APIs</button>
 
 </form>
@@ -304,8 +305,8 @@ width.style.width = '0px'}
 </span><span class="main-nav-bar-items-container" onmouseleave="revDropDown('dropdown-button-9')" style="background-color:transparent">
 
 <form action="" method="POST" class="main-nav-bar-form" style="background-color:transparent">
-<input name="username" value = `+username+` style="display:none">
-<input name="pasword" value = `+pasword+` style="display:none">
+<input name="username" value="undefined" style="display:none">
+<input name="pasword" value="undefined" style="display:none">
 <button onmouseover="" type="submit" id="home-button" class="main-nav-bar-form-button" style="background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke">About</button>
 
 </form>
@@ -355,7 +356,7 @@ width.style.width = '0px'}
 
 <div><h1 style="text-align:center;font-family:Varela Round;color:rgb(159, 0, 255)">Medical Patient Information Form</h1></div><div id="post-header-body-div-3" class="body-div">
 
-<form style="font-family:Varela Round">
+<form style="font-family:Varela Round" method="post" action=`+path_of_form+`>
     
 
 <div class="parent-form"><h2 class="sub-parent-form"></h2><label class="sub-parent-form-label">First Name</label><input class="sub-parent-form-inputs" placeholder="Type an answer"></div>
@@ -403,92 +404,92 @@ width.style.width = '0px'}
 <div class="parent-form"><h2 class="sub-parent-form"></h2><label class="sub-parent-form-label">Last Name</label><input class="sub-parent-form-inputs" placeholder="Type an answer"></div><div class="parent-form"><h2 class="sub-parent-form"></h2><label class="sub-parent-form-label">Middle Initial</label><input class="sub-parent-form-inputs" placeholder="Type an answer"></div><div class="parent-form"><h2 class="sub-parent-form"></h2><label class="sub-parent-form-label">Email Address</label><input class="sub-parent-form-inputs" placeholder="Type an answer"></div><div class="parent-form"><h2 class="sub-parent-form">Medical History</h2><label class="sub-parent-form-label"></label></div><table>
 <tbody><tr>
     <td>Illness</td>
-    <td>Date of Diagnosis</td>
+    <td>Have the Disease<br>(Yes or No)</td><td>Date of Diagnosis</td>
     <td>Date of Recovery(if no, type N/A)</td>
     <td>Comments</td>
 
 </tr>
     <tr>
-    <td>Alcoholism/Drug Abuse</td>
+    <td>Alcoholism/Drug Abuse</td><td><input name="alc_drug_start_checkbox" type="checkbox"></td>
     <td><input name="alc_drug_start" class="" placeholder="Type date of diagnosis"></td>
     <td><input name="alc_drug_end" class="" placeholder="Type in date of recovery"></td>
-	<td><input name = "alc_drug_comments" class = ""></td>
+	<td><input name="alc_drug_comments" class=""></td>
 </tr>
 <tr>
     <td>Asthma</td>
-    <td><input name="asthma_start" class="" placeholder="Type date of diagnosis"></td>
+    <td><input name="asthma_checkbox" type="checkbox"></td><td><input name="asthma_start" class="" placeholder="Type date of diagnosis"></td>
     <td><input name="asthma_end" class="" placeholder="Type in date of recovery"></td>
-<td><input name = "asthma_comments" class = ""></td>
+<td><input name="asthma_comments" class=""></td>
 
 </tr>
 <tr>
-    <td>Cancer(type:)</td>
+    <td>Cancer(type:)</td><td><input name="cancer_checkbox" type="checkbox"></td>
     <td><input name="cancer_start" class="" placeholder="Type date of diagnosis"></td>
     <td><input name="cancer_end" class="" placeholder="Type in date of recovery"></td>
-<td><input name = "cancer_comments" class = ""></td>
+<td><input name="cancer_comments" class=""></td>
 
 </tr>
 <tr>
-    <td>Depression/Anxiety/Bipolar/Suicidal</td>
-    <td><input name="dep_anx_start" class="" placeholder="Type date of diagnosis"></td>
+    <td>Depression/Anxiety/Bipolar/Suicidal</td><td><input name="dep_anx_checkbox" type="checkbox"></td><td><input name="dep_anx_start" class="" placeholder="Type date of diagnosis"></td>
+    
     <td><input name="dep_anx_end" class="" placeholder="Type in date of recovery"></td>
-	<td><input name = "dep_anx_comments" class = ""></td>
+	<td><input name="dep_anx_comments" class=""></td>
 
 </tr>
     <tr>
-    <td>Diabetes</td>
+    <td>Diabetes</td><td><input name="diab_checkbox" type="checkbox"></td>
     <td><input name="diab_start" class="" placeholder="Type date of diagnosis"></td>
     <td><input name="diab_end" class="" placeholder="Type in date of recovery"></td>
-    <td><input name = "diab_comments" class = ""></td>
+    <td><input name="diab_comments" class=""></td>
 
 </tr>
     <tr>
-    <td>Emphysema(COPD)</td>
+    <td>Emphysema(COPD)</td><td><input name="copd_checkbox" type="checkbox"></td>
     <td><input name="copd_start" class="" placeholder="Type date of diagnosis"></td>
     <td><input name="copd_end" class="" placeholder="Type in date of recovery"></td>
-    <td><input name = "copd_comments" class = ""></td>
+    <td><input name="copd_comments" class=""></td>
 
 </tr>
     <tr>
-    <td>Heart Disease</td>
+    <td>Heart Disease</td><td><input name="heart_d_checkbox" type="checkbox"></td>
     <td><input name="heart_d_start" class="" placeholder="Type date of diagnosis"></td>
     <td><input name="heart_d_end" class="" placeholder="Type in date of recovery"></td>
-    <td><input name = "heart_d_comments" class = ""></td>
+    <td><input name="heart_d_comments" class=""></td>
 
 </tr>
     <tr>
-    <td>Hypertension(High Blood Pressure)</td>
+    <td>Hypertension(High Blood Pressure)</td><td><input name="HBP_checkbox" type="checkbox"></td>
     <td><input name="HBP_start" class="" placeholder="Type date of diagnosis"></td>
     <td><input name="HBP_end" class="" placeholder="Type in date of recovery"></td>
-	<td><input name = "HBP_comments" class = ""></td>
+	<td><input name="HBP_comments" class=""></td>
 
 </tr>
     <tr>
-    <td>High Cholesterol</td>
+    <td>High Cholesterol</td><td><input name="hcholesterol_checkbox" type="checkbox"></td>
     <td><input name="hcholesterol_start" class="" placeholder="Type date of diagnosis"></td>
     <td><input name="hcholesterol_end" class="" placeholder="Type in date of recovery"></td>
-    <td><input name = "hcholesterol_comments" class = ""></td>
+    <td><input name="hcholesterol_comments" class=""></td>
 
 </tr>
     <tr>
-    <td>Hypothyroidism/Thyroid Disease</td>
+    <td>Hypothyroidism/Thyroid Disease</td><td><input name="thy_d_checkbox" type="checkbox"></td>
     <td><input name="thy_d_start" class="" placeholder="Type date of diagnosis"></td>
     <td><input name="thy_d_end" class="" placeholder="Type in date of recovery"></td>
-<td><input name = "thy_d_comments" class = ""></td>
+<td><input name="thy_d_comments" class=""></td>
 
 </tr>
     <tr>
-    <td>Renal(kidney) Disease</td>
+    <td>Renal(kidney) Disease</td><td><input name="ren_d_checkbox" type="checkbox"></td>
     <td><input name="ren_d_start" class="" placeholder="Type date of diagnosis"></td>
     <td><input name="ren_d_end" class="" placeholder="Type in date of recovery"></td>
-     <td><input name = "ren_d_comments" class = ""></td>
+     <td><input name="ren_d_comments" class=""></td>
 
 </tr>
     <tr>
-    <td>Migraine Headaches</td>
+    <td>Migraine Headaches</td><td><input name="migraine_checkbox" type="checkbox"></td>
     <td><input name="migraine_start" class="" placeholder="Type date of diagnosis"></td>
     <td><input name="migraine_end" class="" placeholder="Type in date of recovery"></td>
-    <td><input name = "migraine_comments" class = ""></td>
+    <td><input name="migraine_comments" class=""></td>
 
 </tr>
    
@@ -498,15 +499,15 @@ width.style.width = '0px'}
   	var total_inp = document.getElementsByClassName(input_clas);
     ;inp.name = name_of_field +(total_inp.length+1);
     elem.appendChild(inp)
-    };addField('form','form_inputs','pasword')">Add another illness</button><div class="parent-form"><h2 class="sub-parent-form"></h2><label class="sub-parent-form-label">Symptoms</label><input class="sub-parent-form-inputs" placeholder="enter symptoms" name="symptoms"></div><div class="parent-form"><h2 class="sub-parent-form"></h2><label class="sub-parent-form-label">Current Medication:</label><input class="sub-parent-form-inputs" placeholder="Type an answer" style="display:block" name="drug_1"><input class="sub-parent-form-inputs" placeholder="Type an answer" style="display:block" name="drug_2"><input class="sub-parent-form-inputs" placeholder="Type an answer" style="display:block" name="drug_3"><input class="sub-parent-form-inputs" placeholder="Type an answer" style="display:block" name="drug_4"></div><button onclick="function addField(form_id,input_clas,name_of_field){
+    };addField('form','form_inputs','pasword')">Add another illness</button><div class="parent-form"><h2 class="sub-parent-form"></h2><label class="sub-parent-form-label">Symptoms</label><input class="sub-parent-form-inputs" placeholder="enter symptoms" name="symptoms"></div><div class="parent-form"><h2 class="sub-parent-form"></h2><label class="sub-parent-form-label">Current Medication:</label><input class="sub-parent-form-inputs" placeholder="Type an answer" style="display:block" name="drug_1"><input class="sub-parent-form-inputs" placeholder="Type an answer" style="display:block" name="drug_2"><input class="sub-parent-form-inputs" placeholder="Type an answer" style="display:block" name="drug_3"><input class="sub-parent-form-inputs" placeholder="Type an answer" style="display:block" name="drug_4"></div></form>
+    
+<button onclick="function addField(form_id,input_clas,name_of_field){
     var elem = document.getElementById(form_id)
     var inp = document.createElement('input');console.log(inp.class);inp.class = input_clas;
   	var total_inp = document.getElementsByClassName(input_clas);
     ;inp.name = name_of_field +(total_inp.length+1);
     elem.appendChild(inp)
-    };addField('form','form_inputs','pasword')">Add another drug</button></form>
-    
-<div onmouseover="this.style.backgroundColor = 'white';this.style.color = 'rgb(159, 0, 255)';this.style.borderStyle = 'solid';this.style.borderColor = 'rgb(159, 0, 255)'" onmouseleave="this.style.backgroundColor = 'rgb(159, 0, 255)'; this.style.color = 'white';this.style.borderStyle = 'none';this.style.borderColor = 'white'" id="home-info-1" class="home-info" style="background-color: rgb(159, 0, 255); color: white; border-style: none; border-color: white; font-family: &quot;Varela Round&quot;;">
+    };addField('form','form_inputs','pasword')">Add another drug</button><div onmouseover="this.style.backgroundColor = 'white';this.style.color = 'rgb(159, 0, 255)';this.style.borderStyle = 'solid';this.style.borderColor = 'rgb(159, 0, 255)'" onmouseleave="this.style.backgroundColor = 'rgb(159, 0, 255)'; this.style.color = 'white';this.style.borderStyle = 'none';this.style.borderColor = 'white'" id="home-info-1" class="home-info" style="background-color: rgb(159, 0, 255); color: white; border-style: none; border-color: white; font-family: &quot;Varela Round&quot;;">
 <h2 class="secondary-headings" id="home-info-1-secondary-headings">Getting Specifications</h2>
 <p>Fill out a form regarding your medical history, the drugs you take, and any new symptoms you have. 
 </p>
@@ -575,6 +576,7 @@ width.style.width = '0px'}
 
 
 </div>
+
 
 
 
