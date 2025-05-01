@@ -24,7 +24,7 @@ connect.query(`INSERT INTO Records VALUES(?,?,?,?)
 `,[username,date,medical_data, prescription_data],(err,results)=>{
 connect.query(`UPDATE Customers SET medical_conditions = ?, prescription_drugs = ?
 WHERE username =?`,[medical_conditions,prescription_drugs,username],(err,results)=>{
-res.send(`
+res.send(req.body.username+`
 <html><head>
 <link href="https://fonts.googleapis.com/css2?family=Varela+Round&amp;display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -247,8 +247,8 @@ width.style.width = '0px'}
 <span class="main-nav-bar-items-container" onmouseleave="revDropDown('dropdown-button-6')" style="background-color:transparent">
 
 <form action="" method="POST" class="main-nav-bar-form" style="background-color:transparent">
-<input name="username" value=`+username+` style="display:none">
-<input name="pasword" value=`+pasword+` style="display:none">
+<input name="username" value=`+req.body.username+` style="display:none">
+<input name="pasword" value=`+req.body.pasword+` style="display:none">
 <button onmouseover="" type="submit" id="home-button" class="main-nav-bar-form-button" style="background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke">Medical Forms</button>
 
 </form>
