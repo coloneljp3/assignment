@@ -5,8 +5,8 @@ const app = express()
 const router = express.Router()
 const serverless = require('serverless-http')
 const bodyParser = require('body-parser')
-router.use(bodyParser.urlencoded({extended:true}))
-router.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended:true}))
+app.use(bodyParser.json())
 router.get('/',(req,res)=>{res.send('This is the get request')})
 router.post('/',(req,res)=>{
 var body = req.body
