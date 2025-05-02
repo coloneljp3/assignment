@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 
 app.use('/',(req,res)=>{
-res.setHeader('content-type','application/json')
+res.set('content-type','application/json')
 var username = req.body.username
 var pasword = req.body.pasword
 res.send(`<html><head>
