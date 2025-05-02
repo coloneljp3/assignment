@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({extended:false}))
 router.get('/',(req,res)=>{res.send(`med`)})
 router.post('/',(req,res)=>{
 
-var body = req.body
+var body = Object.values(req.body)
 var path_of_form = req.body.path_of_form
 var username = body.username
 res.send(body)
