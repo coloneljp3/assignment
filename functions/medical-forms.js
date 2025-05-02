@@ -14,7 +14,7 @@ router.post('/',(req,res)=>{
 var body = req.body
 var path_of_form = req.body.path_of_form
 var username = body.username
-res.send(username)
+res.send(body)
 var pasword = req.body.pasword
 var date = new Date()
 var medical_data = {};
