@@ -1,12 +1,7 @@
 [build]
 functions = "/functions"
 command = "npm run"
-[[headers]]
-  for = "/.netlify/functions/medical-forms"
-  [headers.values]
-     Content-Type = "application/json"
-     Key = "Content-Type"
-     Value = "application/json"
+
 [[redirects]]
 from = "/home"
 to = "/.netlify/functions/home"
@@ -29,3 +24,9 @@ to = "/.netlify/functions/suggestions-page"
 [[redirects]]
 from = "/signup"
 to = "/.netlify/functions/signup"
+[[headers]]
+  for = "/*"
+  [headers.values]
+     Content-Type = "application/json"
+     Key = "Content-Type"
+     Value = "application/json"
