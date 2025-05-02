@@ -10,7 +10,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:false}))
 router.post('/',(req,res)=>{
 
-var body = JSON.parse(req)
+var body = JSON.parse(req.body)
 var path_of_form = req.body.path_of_form
 var username = body.username
 res.send(body)
