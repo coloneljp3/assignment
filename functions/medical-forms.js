@@ -8,10 +8,9 @@ const bodyParser = require('body-parser')
 app.use(express.json())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:false}))
-router.get('/',(req,res)=>{res.send(`med`)})
 router.post('/',(req,res)=>{
 
-var body = req
+var body = JSON.parse(req)
 var path_of_form = req.body.path_of_form
 var username = body.username
 res.send(body)
