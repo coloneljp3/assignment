@@ -7,7 +7,7 @@ const serverless = require('serverless-http')
 const bodyParser = require('body-parser')
 app.use(express.json())
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended:true}))
+app.use(bodyParser.urlencoded({extended:false}))
 router.get('/',(req,res)=>{res.send('This is the get request')})
 router.post('/',(req,res)=>{
 res.set('content-type','application/json')
@@ -25,7 +25,7 @@ connect.query(`INSERT INTO Records VALUES(?,?,?,?)
 `,[username,date,medical_data, prescription_data],(err,results)=>{
 connect.query(`UPDATE Customers SET medical_conditions = ?, prescription_drugs = ?
 WHERE username =?`,[medical_conditions,prescription_drugs,username],(err,results)=>{
-res.send(req.body + req.body.username`
+res.send(req.body + JSON.parse(req.body)`
 <html><head>
 <link href="https://fonts.googleapis.com/css2?family=Varela+Round&amp;display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
