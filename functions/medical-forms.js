@@ -7,8 +7,8 @@ const serverless = require('serverless-http')
 const bodyParser = require('body-parser')
 app.use(express.json())
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended:false}))
-router.post('/',(req,res)=>{
+app.use(bodyParser.urlencoded({extended:true}))
+app.post('/',(req,res)=>{
 
 var body = JSON.parse(req.body)
 var path_of_form = req.body.path_of_form
