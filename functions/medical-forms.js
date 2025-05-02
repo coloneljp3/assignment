@@ -8,6 +8,7 @@ const bodyParser = require('body-parser')
 app.use(express.json())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
+app.get('/',(req,res)=>{res.send('This is the get request')})
 app.post('/',(req,res)=>{
 
 var body = JSON.parse(req.body)
