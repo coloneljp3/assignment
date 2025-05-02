@@ -5,14 +5,13 @@ const app = express()
 const router = express.Router()
 const serverless = require('serverless-http')
 const bodyParser = require('body-parser')
-app.use(express.json())
+app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended:false}))
 router.get('/',(req,res)=>{res.send('This is the get request')})
 router.post('/',(req,res)=>{
 var body = req.body
 var path_of_form = req.body.path_of_form
-var username = req.body.username
+var username = req.body.
 var pasword = req.body.pasword
 var date = new Date()
 var medical_data = {};
