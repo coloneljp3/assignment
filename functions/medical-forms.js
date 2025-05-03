@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
 router.get('/',(req,res)=>{res.send('This is the get request')})
 router.post('/',(req,res)=>{
-var body = (req.body).replaceAll('username=','').replaceAll('&pasword=',',').split(',')
+var body = (new String(req.body)).replaceAll('username=','').replaceAll('&pasword=',',').split(',')
 var path_of_form = req.body.path_of_form
 var username = body[0]
 var pasword = body[1]
