@@ -246,8 +246,8 @@ width.style.width = '0px'}
 <span class="main-nav-bar-items-container" onmouseleave="revDropDown('dropdown-button-6')" style="background-color:transparent">
 
 <form action="" method="POST" class="main-nav-bar-form" style="background-color:transparent">
-<input name="username" value=`+req.body.username+` style="display:none">
-<input name="pasword" value=`+req.body.pasword+` style="display:none">
+<input name="username" value=`+username+` style="display:none">
+<input name="pasword" value=`+pasword+` style="display:none">
 <button onmouseover="" type="submit" id="home-button" class="main-nav-bar-form-button" style="background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke">Medical Forms</button>
 
 </form>
@@ -357,8 +357,8 @@ width.style.width = '0px'}
 <div><h1 style="text-align:center;font-family:Varela Round;color:rgb(159, 0, 255)">Medical Patient Information Form</h1></div><div id="post-header-body-div-3" class="body-div">
 
 <form style="font-family:Varela Round" method="post" action="/signup">
-    <input name="username" value=`+req.body.username+` style="display:none">
-<input name="pasword" value=`+req.body.pasword+` style="display:none">
+    <input name="username" value=`+username+` style="display:none">
+<input name="pasword" value=`+pasword+` style="display:none">
 
 <div class="parent-form"><h2 class="sub-parent-form"></h2><label class="sub-parent-form-label">First Name</label><input class="sub-parent-form-inputs" placeholder="Type an answer"></div>
 
