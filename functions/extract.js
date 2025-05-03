@@ -8,7 +8,7 @@ const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
 
-router.post('/',(req,res)=>{res.send(`
+router.get('/',(req,res)=>{res.send(`
 
 <form method = "POST" action = "/.netlify/functions/extractdb"><input name = "query" placeholder = "type query"/><button type = "submit"></button></form>
 
