@@ -8,107 +8,28 @@ const router = express.Router();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 
+router.get('/',(req,res)=>{
+	
+})
 
-
-app.post('/',(req,res)=>{
-var login = req.body.login
-
-var username = req.body.username
-var pasword = req.body.pasword
+router.post('/',(req,res)=>{
+var body = (new String(req.body)).replaceAll('username=','').replaceAll('&pasword=',',').split(',')
+var username = body[0]
+var pasword = body[1]
 var records = req.body
-var full_name = records.full_name
-var address = records.address
-var dob = records.DOB
-var email_address = records.email_address
-var marital_status = records.marital_status
-var city = records.city
-var ask_a_question = records.ask_a_question
-var state = records.state
-var zip_code = records.zip_code
-var phone_number = records.phone_number
-var emergency_contact = records.emergency_contact
-var emergency_contact_relationship = records.emergency_contact_relationship
 
-var dise = req.body
-var substance_abuse = {name:"Alcohol/Drug Abuse",check:dise.alc_drug_checkbox,start:dise.alc_drug_start,
-                    end:dise.alc_drug_end,
-                    comments:dise.alc_drug_comments  
-                      }
-var asthma = {name:"Asthma",check:dise.asthma_checkbox,start:dise.asthma_start,
-                    end:dise.asthma_end,
-                    comments:dise.asthma_comments  
-                      }
-var cancer = {name:"Cancer",check:dise.cancer_checkbox,start:dise.cancer_start,
-                    end:dise.cancer_end,
-                    comments:dise.cancer_comments  
-                      }
-var depressives = {name:"Depressives", check:dise.dep_anx_checkbox,start:dise.dep_anx_start,
-                    end:dise.dep_anx_end,
-                    comments:dise.dep_anx_comments  
-                      }
-var diabetes = {name:"Diabetes",check:dise.diab_checkbox,start:dise.diab_start,
-                    end:dise.diab_end,
-                    comments:dise.diab_comments  
-                      }
-var copd = {name:"COPD",check:dise.copd_checkbox,start:dise.copd_start,
-                    end:dise.copd_end,
-                    comments:dise.copd_comments  
-                      }
-var heart_disease = {name:"Heart Disease",check:dise.heart_d_checkbox,start:dise.heart_d_start,
-                    end:dise.heart_d_end,
-                    comments:dise.heart_d_comments  
-                      }
-var highbloodpressure = {name:"High Blood Pressure",check:dise.HBP_checkbox,start:dise.HBP_start,
-                    end:dise.HBP_end,
-                    comments:dise.HBP_comments  
-                      }
-var highcholesterol = {name:"High Cholesterol",check:dise.hcholesterol_checkbox,start:dise.hcholesterol_start,
-                    end:dise.hcholesterol_end,
-                    comments:dise.hcholesterol_comments  
-                      }
-var thyroiddisease = {name:"Thyroid Disease",check:dise.thy_d_checkbox,start:dise.thy_d_start,
-                    end:dise.thy_d_end,
-                    comments:dise.thy_d_comments  
-                      }
-var kidneydisease = {name:"Kidney Disease",check:dise.ren_d_checkbox,start:dise.ren_d_start,
-                    end:dise.ren_d_end,
-                    comments:dise.ren_d_comments  
-                      }
-var migraine = {name:"Migraine",check:dise.migraine_checkbox,start:dise.migraine_start,
-                    end:dise.migraine_end,
-                    comments:dise.migraine_comments  
-                      }
-var medical_conditions = []
-var prescriptions = []
-	for(let i of Object.keys(req.body)){
-	if(i.includes("drug_")){
-		prescriptions.push(req.body.i)
-		)
-	}	
-}
-	for(let i of Object.keys(req.body)){
-	if(i.includes("symptom_")){
-		medical_conditions.push(req.body.i)
-		)
-	}	
-}
-	for(let i of Object.values(req.body)){
-		if(i.check){
-			medical_conditions.push(i.name)
-		}
-	}
-	
-	
+
 
 
 var connect = mysql.createConnection('mysql://avnadmin:AVNS_om8uYVTBL50tPl05R_4@mysql-1e9f0822-jpbreaux225-37e4.h.aivencloud.com:25589/defaultdb?ssl-mode=REQUIRED')
 
-if(login){
-connect.query(`SELECT COUNT(*) FROM Customer where username = ? AND pasword = ?`,[username,pasword],(err,results)=>{
+connect.query(`SELECT COUNT(*) FROM Customers where username = ? AND pasword = ?`,[username,pasword],(err,results)=>{
 if(results.length == 0){res.send(`This account doesn't exist. You need to create an account first`)}
 
 else{
-res.send(`<html><head><link href="https://fonts.googleapis.com/css2?family=Varela+Round&amp;display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+	connect.query(`Select * from Customers where username = ? and pasword = ?`,[username,pasword],(err,results,fields)=>{
+
+		res.send(`<html><head><link href="https://fonts.googleapis.com/css2?family=Varela+Round&amp;display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&amp;display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -717,53 +638,16 @@ width.style.width = '0px'}
 <br>
 </body></html>`)
   
-}
+})
   
 })
   
-}
-else{
-
-  connect.query(`SELECT * FROM CUSTOMERS where username = ? OR pasword = ?`,[username,pasword],(err,results)=>{
-if(results.length ==0){
-connect.query(`INSERT INTO Customers VALUES(?,?)`,[username,pasword],(err,results)=>{
-res.send(`<style>
-.profile-data-unit{
-    display:block;border-radius:25px;height:200px;box-shadow: 1px 1px 1px 1px gray;width:49%;display:inline-block
-}
-
-    .past-product-item{display:block
-    }.h2_styles{background-color:#f6f6f6};.h4_styles{background-color:whitesmoke}
-</style>
-
-<div id="profile-container" style="height:700px;font-family:Raleway"><div id="image-container" style="display:inline-block;padding-right:40px"><img id="profile-picture" style="background-color:red;box-shadow: 0 200px #f55353 inset;border-radius:200px;width:200px;height:200px;opacity:40%;top:0px" src="/pic_1.jpg"><h4 style="text-align:center">John Doe</h4></div><div id="profile-info" style="float:right;display:inline-block">
-<div class="profile-data-unit" style="" id="profile-name" onmouseover="propChange(this,'boxShadow','2px 2px 14px black')" onmouseleave="propChange(this,'boxShadow','1px 1px 1px 1px gray')"><h2 class="h2_styles">Profile Name</h2><h4 class="h4_styles">John Smith</h4></div>
 
 
-
-
-
-<div class="profile-data-unit" style="" onmouseover="propChange(this,'boxShadow','2px 2px 14px black')" onmouseleave="propChange(this,'boxShadow','1px 1px 1px 1px gray')"><h2 class="h2_styles">Account Created</h2><h4 class="h4_styles">January 15, 2025</h4></div><div class="profile-data-unit" style="" onmouseover="propChange(this,'boxShadow','2px 2px 14px black')" onmouseleave="propChange(this,'boxShadow','1px 1px 1px 1px gray')"><h2 class="h2_styles">Email</h2><h4 class="h4_styles" style="">johnsmith@gmail.com</h4></div><div class="profile-data-unit" style="" onmouseover="propChange(this,'boxShadow','2px 2px 14px black')" onmouseleave="propChange(this,'boxShadow','1px 1px 1px 1px gray')"><h2 class="h2_styles">Product Purchase History</h2>
-</div></div></div><br>`)
-  
-})
-  
-}
     
   })
   
-}
 
-
-
-
-  
-
-  
-
-
-  
-})
 
 app.use('/.netlify/functions/account-page',router)
 module.exports.handler = serverless(app)
