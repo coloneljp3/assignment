@@ -10,13 +10,14 @@ app.use(bodyParser.urlencoded({ extended: true}));
 
 
 
+
 router.post('/',(req,res)=>{
-var customer = req.body
-var username = customer.username
-var pasword = customer.pasword
+var body = (new String(req.body)).replaceAll('username=','').replaceAll('&pasword=',',').replaceAll('&medical_conditions',',').split(',')
+var username = body[0]
+var pasword = body[1]
 var connect = mysql.createConnection('mysql://avnadmin:AVNS_om8uYVTBL50tPl05R_4@mysql-1e9f0822-jpbreaux225-37e4.h.aivencloud.com:25589/defaultdb?ssl-mode=REQUIRED')
 
-var records = req.body
+var records = body[2]
 var full_name = records.full_name
 var address = records.address
 var dob = records.DOB
@@ -31,53 +32,53 @@ var emergency_contact = records.emergency_contact
 var emergency_contact_relationship = records.emergency_contact_relationship
 var date = new Date()
 var dise = req.body
-var substance_abuse = {name:"Alcohol/Drug Abuse",check:dise.alc_drug_checkbox,start:dise.alc_drug_start,
-                    end:dise.alc_drug_end,
-                    comments:dise.alc_drug_comments  
+var substance_abuse = {name:"Alcohol/Drug Abuse",check:records.alc_drug_checkbox,start:records.alc_drug_start,
+                    end:records.alc_drug_end,
+                    comments:records.alc_drug_comments  
                       }
-var asthma = {name:"Asthma",check:dise.asthma_checkbox,start:dise.asthma_start,
-                    end:dise.asthma_end,
-                    comments:dise.asthma_comments  
+var asthma = {name:"Asthma",check:records.asthma_checkbox,start:records.asthma_start,
+                    end:records.asthma_end,
+                    comments:records.asthma_comments  
                       }
-var cancer = {name:"Cancer",check:dise.cancer_checkbox,start:dise.cancer_start,
-                    end:dise.cancer_end,
-                    comments:dise.cancer_comments  
+var cancer = {name:"Cancer",check:records.cancer_checkbox,start:records.cancer_start,
+                    end:records.cancer_end,
+                    comments:records.cancer_comments  
                       }
-var depressives = {name:"Depressives", check:dise.dep_anx_checkbox,start:dise.dep_anx_start,
-                    end:dise.dep_anx_end,
-                    comments:dise.dep_anx_comments  
+var depressives = {name:"Depressives", check:records.dep_anx_checkbox,start:records.dep_anx_start,
+                    end:records.dep_anx_end,
+                    comments:records.dep_anx_comments  
                       }
-var diabetes = {name:"Diabetes",check:dise.diab_checkbox,start:dise.diab_start,
-                    end:dise.diab_end,
-                    comments:dise.diab_comments  
+var diabetes = {name:"Diabetes",check:records.diab_checkbox,start:records.diab_start,
+                    end:records.diab_end,
+                    comments:records.diab_comments  
                       }
-var copd = {name:"COPD",check:dise.copd_checkbox,start:dise.copd_start,
-                    end:dise.copd_end,
-                    comments:dise.copd_comments  
+var copd = {name:"COPD",check:records.copd_checkbox,start:records.copd_start,
+                    end:records.copd_end,
+                    comments:records.copd_comments  
                       }
-var heart_disease = {name:"Heart Disease",check:dise.heart_d_checkbox,start:dise.heart_d_start,
-                    end:dise.heart_d_end,
-                    comments:dise.heart_d_comments  
+var heart_disease = {name:"Heart Disease",check:records.heart_d_checkbox,start:records.heart_d_start,
+                    end:records.heart_d_end,
+                    comments:records.heart_d_comments  
                       }
-var highbloodpressure = {name:"High Blood Pressure",check:dise.HBP_checkbox,start:dise.HBP_start,
-                    end:dise.HBP_end,
-                    comments:dise.HBP_comments  
+var highbloodpressure = {name:"High Blood Pressure",check:records.HBP_checkbox,start:records.HBP_start,
+                    end:records.HBP_end,
+                    comments:records.HBP_comments  
                       }
-var highcholesterol = {name:"High Cholesterol",check:dise.hcholesterol_checkbox,start:dise.hcholesterol_start,
-                    end:dise.hcholesterol_end,
-                    comments:dise.hcholesterol_comments  
+var highcholesterol = {name:"High Cholesterol",check:records.hcholesterol_checkbox,start:records.hcholesterol_start,
+                    end:records.hcholesterol_end,
+                    comments:records.hcholesterol_comments  
                       }
-var thyroiddisease = {name:"Thyroid Disease",check:dise.thy_d_checkbox,start:dise.thy_d_start,
-                    end:dise.thy_d_end,
-                    comments:dise.thy_d_comments  
+var thyroiddisease = {name:"Thyroid Disease",check:records.thy_d_checkbox,start:records.thy_d_start,
+                    end:records.thy_d_end,
+                    comments:records.thy_d_comments  
                       }
-var kidneydisease = {name:"Kidney Disease",check:dise.ren_d_checkbox,start:dise.ren_d_start,
-                    end:dise.ren_d_end,
-                    comments:dise.ren_d_comments  
+var kidneydisease = {name:"Kidney Disease",check:records.ren_d_checkbox,start:records.ren_d_start,
+                    end:records.ren_d_end,
+                    comments:records.ren_d_comments  
                       }
-var migraine = {name:"Migraine",check:dise.migraine_checkbox,start:dise.migraine_start,
-                    end:dise.migraine_end,
-                    comments:dise.migraine_comments  
+var migraine = {name:"Migraine",check:records.migraine_checkbox,start:records.migraine_start,
+                    end:records.migraine_end,
+                    comments:records .migraine_comments  
                       }
 var medical_conditions = []
 var prescriptions = []
@@ -109,22 +110,35 @@ if(results[0]["count(*)"] != 0){res.send(results[0]["count(*)"]+`This account al
 
 else{
 connect.query(`INSERT INTO Customer(username,pasword,date_of_creation,prescriptions) VALUES(?,?,?,?)`,[username,pasword,date,prescriptions],(err,results)=>{
-res.send(username+`<html><head><link href="https://fonts.googleapis.com/css2?family=Varela+Round&amp;display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+res.send(`<html><head><link href="https://fonts.googleapis.com/css2?family=Varela+Round&amp;display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&amp;display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<script>function returnData(cond,root){
-	var elem = document.getElementById(root)
-	var ol = document.createElement("ol")
-	for(let i of cond){
-		var li = document.createElement('li');
-		li.innerHTML = i
-		ol.appendChild(li)	
-	}
-elem.appendChild(ol)
-}
-returnData(`+medical_conditions+`,'medical_conditions')
-returnData(`+prescriptions+`,'current_prescriptions')
+<script>for(let drug of `+medication+`){
+var tr = document.createElement('tr')
+var tdName = document.createElement('td')
+var tdComp = document.createElement('td')
+var tdAdvEff = document.createElement('td')
+var tdDrInt = document.createElement('td')
+var tdIntUse = document.createElement('td')
+tr.className = "drug"
+tr.appendChild(tdName)
+tr.appendChild(tdComp)
+tr.appendChild(tdAdvEff)
+tr.appendChild(tdDrInt)
+tr.appendChild(tdIntUse)
+tdName.className = 'prescription_drugs'
+tdComp.className = 'drug_components'
+tdAdvEff.className = 'adverse_effects'
+tdDrInt.className = 'drug_interactions'
+tdIntUse.className = 'intended_use'
+tdName.innerHTML = drug
+
+getAdverseEffects(drug,tdAdvEff)
+getDrugComponents(drug,tdComp)
+getDrugInteractions(drug,tdDrInt)
+getIntendedUse(drug,tdIntUse)
+    prescription_drugs_table.appendChild(tr)}
 </script>
 <style>
 @media(max-width:600px){html{font-family:Raleway}#review-slider{display:none}
@@ -701,11 +715,340 @@ width.style.width = '0px'}
 
 
 </div>
-</div></div></div><div><h2>Drug Suggestions</h2>
+</div></div></div><body><script>
+
+function getDrugsFromAPI(id){
+var request = new XMLHttpRequest();
+request.onreadystatechange=()=>{
+var alldrugs = JSON.parse(request.responseText)["results"]
+var alldrugs2 = []
+for(let i of alldrugs){
+alldrugs2.push(i['term'])
     
-    <p>-Ex. Ibuprofen and Tylenol are redundant
-    - Too high of ibuprofen can cause stomach bleeding, which you may be more succeptible to because of stomach surgery
-    </p></div>
+}
+    document.getElementById(id).innerHTML = alldrugs2
+
+}
+
+request.open('GET','https://api.fda.gov/drug/label.json?count=openfda.brand_name.exact&limit=1000','true')
+
+//This will be used to query information about medical conditions
+request.send()
+ 
+}getDrugsFromAPI('alldrugs')
+function createDrugInfoRow(drug_name,root_element){
+var tr = document.createElement('tr')
+var tdName = document.createElement('input')
+var tdComp = document.createElement('input')
+var tdAdvEff = document.createElement('input')
+var tdDrInt = document.createElement('input')
+var tdIntUse = document.createElement('input')
+tr.className = "drug"
+tr.appendChild(tdName)
+tr.appendChild(tdComp)
+tr.appendChild(tdAdvEff)
+tr.appendChild(tdDrInt)
+tr.appendChild(tdIntUse)
+tdName.className = 'prescription_drugs'
+tdComp.className = 'drug_components'
+tdAdvEff.className = 'adverse_effects'
+tdDrInt.className = 'drug_interactions'
+tdIntUse.className = 'intended_use'
+tdName.value = drug_name
+
+getAdverseEffects(drug_name,tdAdvEff)
+getDrugComponents(drug_name,tdComp)
+getDrugInteractions(drug_name,tdDrInt)
+getIntendedUse(drug_name,tdIntUse)
+}
+
+function getMedicalInfo(medical_condition){
+var request = new XMLHttpRequest()
+var synonyms;
+request.onreadystatechange=()=>{
+synonyms = JSON.parse(request.responseText)
+}
+request.open('GET','https://clinicaltables.nlm.nih.gov/api/conditions/v3/search?terms='+keyword+'','true')
+
+//This will be used to query information about medical conditions
+
+request.send()
+
+
+}
+
+function getAdverseEffects(drug,element){
+var request = new XMLHttpRequest()
+request.onreadystatechange=()=>{
+var adverse_reactions = JSON.parse(request.responseText)['results'][0]['adverse_reactions']
+element.innerHTML = adverse_reactions
+
+
+}
+
+
+request.open('GET','https://api.fda.gov/drug/label.json?search='+drug+'ef=adverse_reactions','true')
+
+//This will be used to query the adverse effects of drugs
+
+request.send()
+
+}
+
+function getDrugComponents(drug,element){
+var request = new XMLHttpRequest()
+request.onreadystatechange=()=>{
+var active_ingredient = JSON.parse(request.responseText)['results'][0]['active_ingredient']
+element.innerHTML = active_ingredient
+    
+}
+request.open('GET','https://api.fda.gov/drug/label.json?search='+drug+'','true')
+request.send()
+}
+
+function getDrugInteractions(drug,element){
+var request = new XMLHttpRequest()
+request.onreadystatechange=()=>{
+var drug_interactions = JSON.parse(request.responseText)['results'][0]['drug_interactions']
+element.innerHTML = drug_interactions
+
+}
+
+
+request.open('GET','https://api.fda.gov/drug/label.json?search='+drug+'','true')
+
+//This will be used to find out the potentially harmful drug/drug and food/drug interactions
+request.send()
+
+}
+
+function getIntendedUse(drug,element){
+var request = new XMLHttpRequest()
+request.onreadystatechange=()=>{
+var resp = JSON.parse(request.responseText)["results"][0]["indications_and_usage"]
+element.innerHTML = resp
+}
+
+
+request.open('GET','https://api.fda.gov/drug/label.json?search='+drug+'','true')
+
+//This will be used to query information the intended use of drugs
+
+request.send()
+
+
+}
+
+var prescription_drugs_table = document.getElementById('prescription_drugs_table');
+for(let drug of ['naltrexone']){
+var tr = document.createElement('tr')
+var tdName = document.createElement('td')
+var tdComp = document.createElement('td')
+var tdAdvEff = document.createElement('td')
+var tdDrInt = document.createElement('td')
+var tdIntUse = document.createElement('td')
+tr.className = "drug"
+tr.appendChild(tdName)
+tr.appendChild(tdComp)
+tr.appendChild(tdAdvEff)
+tr.appendChild(tdDrInt)
+tr.appendChild(tdIntUse)
+tdName.className = 'prescription_drugs'
+tdComp.className = 'drug_components'
+tdAdvEff.className = 'adverse_effects'
+tdDrInt.className = 'drug_interactions'
+tdIntUse.className = 'intended_use'
+tdName.innerHTML = drug
+
+getAdverseEffects(drug,tdAdvEff)
+getDrugComponents(drug,tdComp)
+getDrugInteractions(drug,tdDrInt)
+getIntendedUse(drug,tdIntUse)
+    prescription_drugs_table.appendChild(tr)}
+
+function miniComp(arg1,arg2){
+var res=false;
+var keywords = ['this','these','the','an','a','am',
+'may','is','are','was','were','be','being','been','seem','appear','become','look','sound','feel','taste','remain','stay','grow','turn','prove','get','come','go','sound','look','prove']
+arg1 = arg1.split(' ')
+arg2=arg2.split(' ')
+console.log(arg1,arg2)
+    for(let i of arg1){
+        if(keywords.includes(i.toLowerCase())||keywords.includes(i.toUpperCase())){
+                        arg1.splice(arg1.indexOf(i))         
+        }
+        
+    }
+
+    for(let i of arg2){
+        if(keywords.includes(i)){
+            arg2.slice(arg2.indexOf(i))
+            
+        }
+        
+    }
+for(let i of arg1){
+if(arg2.includes(i)){
+    res = true
+    break
+}
+else{continue}
+    
+    
+}
+    return res
+};
+
+function recommendationDrug(id_of_element_for_total_drugs,negative_interactions,og_intended_use,negative_drug_components){
+var drugs = document.getElementById(id_of_element_for_total_drugs).innerHTML.split('  ')
+var new_drug;
+for(let i of drugs){
+let interactions = document.getElementById('total_drug_interactions')
+let intended_use = document.getElementById('total_intended_use')
+let drug_components = document.getElementById('total_drug_components')
+getDrugInteractions(i,interactions)
+getIntendedUse(i,intended_use)
+getDrugComponents(i,drug_components)
+//set all of the positional arguments to lists separated using periods and use keywords such as warning, hazard, etc. to associate values 
+
+if(!(miniComp(interactions.innerHTML,negative_interactions))&& miniComp(intended_use.innerHTML,og_intended_use.innerHTML) && !(miniComp(drug_components.innerHTML,negative_drug_components.innerHTML))){
+    new_drug = i
+    break
+}
+else{continue}
+
+    
+}
+return new_drug    
+}
+function compareDrugs(medical_conditions){
+var drugs = []
+for(let i of document.getElementsByClassName('prescription_drugs')){
+    drugs.push(i.innerHTML)
+}
+let issues = {}
+for(i=0;i<=drugs.length;i++){
+let interactions = document.getElementsByClassName('drug_interactions')[i]
+let intended_use = document.getElementsByClassName('intended_use')[i]
+let drug_components = document.getElementsByClassName('drug_components')[i]
+for(let drug of drugs.slice(i+1,drugs.length)){
+if((drug_components.innerHTML).includes(drug.toUpperCase())|| (drug_components.innerHTML).includes(drug.toLowerCase()) || (interactions.innerHTML).includes(drug.toUpperCase())||(interactions.innerHTML).includes(drug.toLowerCase())){
+
+issues[i] = "This prescription may cause harm if combined with " +drug+". Instead, you should use this drug, "+recommendationDrug('alldrugs',interactions,intended_use,drug_components)
+}
+
+for(let a of medical_conditions){
+var a_list = []
+var adverseEffects = document.getElementById('adverse_effects').innerHTML
+if(adverseEffects.includes(a)){
+a_list.push(a)
+}
+issues[i]+=",This  prescription may worsen the following medical conditions" + a
+
+}
+    
+}
+
+
+}
+
+if(a_list.length ==0){
+issues = "No issues with any of the drugs."
+    
+}
+document.getElementById('drug_issues').innerHTML = issues
+};
+compareDrugs(['cancer'])
+displayAllPersonalDrugInformation(['Ibuprofen','Naltrexone'],'prescription_drugs_table')
+
+</script>
+
+    <p id="alldrugs"></p>
+    <p id="adverse_effects"></p>
+    <table id="medical_conditions_table">
+      
+
+        
+    </table>
+    <table id="prescription_drugs_table"></table>
+    <p id="total_drug_interactions">undefined</p><p id="total_drug_components">ACTIVE INGREDIENT SILICEA HPUS 2X and higher</p><p id="total_intended_use">INDICATIONS Condition listed above or as directed by the physician</p><p id="issues"></p>
+    <input style="font-size:20px;border-style:none;border-bottom-style:solid;font-family:Helvetica
+    " placeholder="Enter your prescription" id="input_drug">
+<button style="width:200px;height:40px;font-size:20px;border-style:none;border-bottom-style:solid;font-family:Helvetica" onclick="createDrugInfoRow(document.getElementById('input_drug').value,'prescription_drugs_table');function miniComp(arg1,arg2){
+var res=false;
+var keywords = ['this','these','the','an','a','am',
+'may','is','are','was','were','be','being','been','seem','appear','become','look','sound','feel','taste','remain','stay','grow','turn','prove','get','come','go','sound','look','prove']
+arg1 = arg1.split(' ');
+arg2= new String(arg2).split(' ')
+    for(let i of arg1){
+        if(keywords.includes(i.toLowerCase())||keywords.includes(i.toUpperCase())){
+                        arg1.splice(arg1.indexOf(i))         
+        }
+        
+    }
+
+    for(let i of arg2){
+        if(keywords.includes(i)){
+            arg2.slice(arg2.indexOf(i))
+            
+        }
+        
+    }
+for(let i of arg1){
+if(arg2.includes(i)){
+    res = true
+    break
+}
+else{continue}
+    
+    
+};console.log(arg1,arg2)
+    return res
+};
+
+function recommendationDrug(id_of_element_for_total_drugs,negative_interactions,og_intended_use,negative_drug_components){
+var drugs = document.getElementById(id_of_element_for_total_drugs).innerHTML.split('  ')
+var new_drug;
+for(let i of drugs){
+let interactions = document.getElementById('total_drug_interactions')
+let intended_use = document.getElementById('total_intended_use')
+let drug_components = document.getElementById('total_drug_components')
+getDrugInteractions(i,interactions)
+getIntendedUse(i,intended_use)
+getDrugComponents(i,drug_components)
+//set all of the positional arguments to lists separated using periods and use keywords such as warning, hazard, etc. to associate values 
+
+if(!(miniComp(interactions.innerHTML,negative_interactions))&amp;&amp; miniComp(intended_use.innerHTML,og_intended_use.innerHTML) &amp;&amp; !(miniComp(drug_components.innerHTML,negative_drug_components.innerHTML))){
+    new_drug = i
+    break
+}
+else{continue}
+
+    
+}
+return new_drug    
+};
+function compareDrugs(medical_conditions){
+var drugs = []
+for(let i of document.getElementsByClassName('prescription_drugs')){
+    drugs.push(i.innerHTML)
+}
+let issues = {}
+for(i=0;i<=drugs.length;i++){
+let interactions = document.getElementsByClassName('drug_interactions')[i]
+let intended_use = document.getElementsByClassName('intended_use')[i]
+let drug_components = document.getElementsByClassName('drug_components')[i]
+for(let drug of drugs.slice(i+1,drugs.length)){
+if((drug_components.innerHTML).includes(drug.toUpperCase())|| (drug_components.innerHTML).includes(drug.toLowerCase()) || (interactions.innerHTML).includes(drug.toUpperCase())||(interactions.innerHTML).includes(drug.toLowerCase())){
+
+issues[i] = 'this prescription may cause  harm  if  combined with='+drug' ">Enter
+</button>
+<div>
+    <h1>Drug Issues</h1>
+    <p id="drug_issues">No issues with any of the drugs.</p>
+    <h1 style="font-family:Helvetica">Look at the recommendations below
+</h1><p id="drug_suggestions"></p></div>
+</body>
     <br><style>
 .profile-data-unit{
     display:block;border-radius:25px;height:200px;box-shadow: 1px 1px 1px 1px gray;width:49%;display:inline-block
