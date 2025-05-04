@@ -30,7 +30,36 @@ res.send(body+username+`
 <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&amp;display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<script>
+function requestDrugs(){
+returnString = ""
+var root = document.getElementById('prescription_data')
+var drugs = document.getElementByClassName('prescription_drugs')
+for(let i of drugs){
+returnString += (i+";")
+    
+}
+root.value = returnString
+}
+function requestList(){
+var inp = document.getElementById('medical_data')
+var end = document.getElementsByClassName('end')
+var start = document.getElementsByClassName('start')
+var comments = document.getElementsByClassName('comments')
+var conditions_present = document.getElementsByClassName('present_conditions')
+var conditions_for_request = document.getElementsByClassName('conditions_for_request')
+var returnString = ""
+var initialObject = {}
+for(i=0;i < conditions_present.length;i++)
+{
+if(conditions_present[i].checked){
+    returnString+=({disease:conditions_for_request[i].innerHTML;start:start[i].value;end:end[i]}+"|")
+}
 
+}
+
+inp.value = returnString
+};</script>
 <style>
 @media(max-width:600px){html{font-family:Raleway}#review-slider{display:none}
 #post-header-body-div-1{display:none}#messaging-feature{margin:25%}#review-slider{width:100%;height:100%;visibility:visible}#start-review{width:50%;height:inherit;font-size:1em}body{font-family:Raleway}#contact-footer-div{visibility:hidden;position:fixed}#image-slider{display:none;background-color:transparent}.circle-select-buttons{display:none}
@@ -356,50 +385,11 @@ width.style.width = '0px'}
 
 <div><h1 style="text-align:center;font-family:Varela Round;color:rgb(159, 0, 255)">Medical Patient Information Form</h1></div><div id="post-header-body-div-3" class="body-div">
 
-<form style="font-family:Varela Round" method="post" action="/signup">
+<form style="font-family:Varela Round" method="POST" action="/.netlify/functions/signup">
     <input name="username" value=`+username+` style="display:none">
 <input name="pasword" value=`+pasword+` style="display:none">
 
 <div class="parent-form"><h2 class="sub-parent-form"></h2><label class="sub-parent-form-label">First Name</label><input class="sub-parent-form-inputs" placeholder="Type an answer"></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <div class="parent-form"><h2 class="sub-parent-form"></h2><label class="sub-parent-form-label">Last Name</label><input class="sub-parent-form-inputs" placeholder="Type an answer"></div><div class="parent-form"><h2 class="sub-parent-form"></h2><label class="sub-parent-form-label">Middle Initial</label><input class="sub-parent-form-inputs" placeholder="Type an answer"></div><div class="parent-form"><h2 class="sub-parent-form"></h2><label class="sub-parent-form-label">Email Address</label><input class="sub-parent-form-inputs" placeholder="Type an answer"></div><div class="parent-form"><h2 class="sub-parent-form">Medical History</h2><label class="sub-parent-form-label"></label></div><table>
@@ -411,108 +401,106 @@ width.style.width = '0px'}
 
 </tr>
     <tr>
-    <td>Alcoholism/Drug Abuse</td><td><input name="alc_drug_start_checkbox" type="checkbox"></td>
-    <td><input name="alc_drug_start" class="" placeholder="Type date of diagnosis"></td>
-    <td><input name="alc_drug_end" class="" placeholder="Type in date of recovery"></td>
-	<td><input name="alc_drug_comments" class=""></td>
+    <td class = "conditions_for_request">Alcoholism/Drug Abuse</td><td><input class = "present_conditions" type="checkbox"></td>
+    <td><input class="start" placeholder="Type date of diagnosis"></td>
+    <td><input class="end" placeholder="Type in date of recovery"></td>
+	<td><input class="comments"></td>
 </tr>
 <tr>
-    <td>Asthma</td>
-    <td><input name="asthma_checkbox" type="checkbox"></td><td><input name="asthma_start" class="" placeholder="Type date of diagnosis"></td>
-    <td><input name="asthma_end" class="" placeholder="Type in date of recovery"></td>
-<td><input name="asthma_comments" class=""></td>
+    <td class = "conditions_for_request">Asthma</td>
+    <td><input class = "present_conditions"  type="checkbox"></td><td><input class="start" placeholder="Type date of diagnosis"></td>
+    <td><input class="end" placeholder="Type in date of recovery"></td>
+<td><input  class="comments"></td>
 
 </tr>
 <tr>
-    <td>Cancer(type:)</td><td><input name="cancer_checkbox" type="checkbox"></td>
-    <td><input name="cancer_start" class="" placeholder="Type date of diagnosis"></td>
-    <td><input name="cancer_end" class="" placeholder="Type in date of recovery"></td>
-<td><input name="cancer_comments" class=""></td>
+    <td class = "conditions_for_request">Cancer(type:)</td><td><input class = "present_conditions" type="checkbox"/></td>
+    <td><input class="start" placeholder="Type date of diagnosis"></td>
+    <td><input class="end" placeholder="Type in date of recovery"></td>
+<td><input  class="comments"></td>
 
 </tr>
 <tr>
-    <td>Depression/Anxiety/Bipolar/Suicidal</td><td><input name="dep_anx_checkbox" type="checkbox"></td><td><input name="dep_anx_start" class="" placeholder="Type date of diagnosis"></td>
+    <td>Depression/Anxiety/Bipolar/Suicidal</td><td><input class = "present_conditions"  type="checkbox"></td><td><input class="start" placeholder="Type date of diagnosis"></td>
     
-    <td><input name="dep_anx_end" class="" placeholder="Type in date of recovery"></td>
-	<td><input name="dep_anx_comments" class=""></td>
+    <td><input class="end" placeholder="Type in date of recovery"></td>
+	<td><input class="comments"></td>
 
 </tr>
     <tr>
-    <td>Diabetes</td><td><input name="diab_checkbox" type="checkbox"></td>
-    <td><input name="diab_start" class="" placeholder="Type date of diagnosis"></td>
-    <td><input name="diab_end" class="" placeholder="Type in date of recovery"></td>
-    <td><input name="diab_comments" class=""></td>
+    <td class = "conditions_for_request">Diabetes</td><td><input class = "present_conditions"  type="checkbox"></td>
+    <td><input class="start" placeholder="Type date of diagnosis"></td>
+    <td><input  class="end" placeholder="Type in date of recovery"></td>
+    <td><input class="comments"></td>
 
 </tr>
     <tr>
-    <td>Emphysema(COPD)</td><td><input name="copd_checkbox" type="checkbox"></td>
-    <td><input name="copd_start" class="" placeholder="Type date of diagnosis"></td>
-    <td><input name="copd_end" class="" placeholder="Type in date of recovery"></td>
-    <td><input name="copd_comments" class=""></td>
+    <td class = "conditions_for_request">Emphysema(COPD)</td><td><input class = "present_conditions"  type="checkbox"></td>
+    <td><input class="start" placeholder="Type date of diagnosis"></td>
+    <td><input  class="end" placeholder="Type in date of recovery"></td>
+    <td><input class="comments"></td>
 
 </tr>
     <tr>
-    <td>Heart Disease</td><td><input name="heart_d_checkbox" type="checkbox"></td>
-    <td><input name="heart_d_start" class="" placeholder="Type date of diagnosis"></td>
-    <td><input name="heart_d_end" class="" placeholder="Type in date of recovery"></td>
-    <td><input name="heart_d_comments" class=""></td>
+    <td class = "conditions_for_request">Heart Disease</td><td><input class = "present_conditions" type="checkbox"></td>
+    <td><input  class="start" placeholder="Type date of diagnosis"></td>
+    <td><input  class="end" placeholder="Type in date of recovery"></td>
+    <td><input class="comments"></td>
 
 </tr>
     <tr>
-    <td>Hypertension(High Blood Pressure)</td><td><input name="HBP_checkbox" type="checkbox"></td>
-    <td><input name="HBP_start" class="" placeholder="Type date of diagnosis"></td>
-    <td><input name="HBP_end" class="" placeholder="Type in date of recovery"></td>
-	<td><input name="HBP_comments" class=""></td>
+    <td class = "conditions_for_request">Hypertension(High Blood Pressure)</td><td><input class = "present_conditions"  type="checkbox"></td>
+    <td><input class="start" placeholder="Type date of diagnosis"></td>
+    <td><input class="end" placeholder="Type in date of recovery"></td>
+	<td><input class="comments"></td>
 
 </tr>
     <tr>
-    <td>High Cholesterol</td><td><input name="hcholesterol_checkbox" type="checkbox"></td>
-    <td><input name="hcholesterol_start" class="" placeholder="Type date of diagnosis"></td>
-    <td><input name="hcholesterol_end" class="" placeholder="Type in date of recovery"></td>
-    <td><input name="hcholesterol_comments" class=""></td>
+    <td class = "conditions_for_request">High Cholesterol</td><td><input class = "present_conditions" type="checkbox"></td>
+    <td><input class="start" placeholder="Type date of diagnosis"></td>
+    <td><input  class="end" placeholder="Type in date of recovery"></td>
+    <td><input class="comments"></td>
 
 </tr>
     <tr>
-    <td>Hypothyroidism/Thyroid Disease</td><td><input name="thy_d_checkbox" type="checkbox"></td>
-    <td><input name="thy_d_start" class="" placeholder="Type date of diagnosis"></td>
-    <td><input name="thy_d_end" class="" placeholder="Type in date of recovery"></td>
-<td><input name="thy_d_comments" class=""></td>
+    <td class = "conditions_for_request">Hypothyroidism/Thyroid Disease</td><td><input class = "present_conditions" type="checkbox"></td>
+    <td><input class="start" placeholder="Type date of diagnosis"></td>
+    <td><input class="end" placeholder="Type in date of recovery"></td>
+<td><input class="comments"></td>
 
 </tr>
     <tr>
-    <td>Renal(kidney) Disease</td><td><input name="ren_d_checkbox" type="checkbox"></td>
-    <td><input name="ren_d_start" class="" placeholder="Type date of diagnosis"></td>
-    <td><input name="ren_d_end" class="" placeholder="Type in date of recovery"></td>
-     <td><input name="ren_d_comments" class=""></td>
+    <td class = "conditions_for_request">Renal(kidney) Disease</td><td><input class = "present_conditions"  type="checkbox"></td>
+    <td><input class="start" placeholder="Type date of diagnosis"></td>
+    <td><input  class="end" placeholder="Type in date of recovery"></td>
+     <td><input class="comments"></td>
 
 </tr>
     <tr>
-    <td>Migraine Headaches</td><td><input name="migraine_checkbox" type="checkbox"></td>
-    <td><input name="migraine_start" class="" placeholder="Type date of diagnosis"></td>
-    <td><input name="migraine_end" class="" placeholder="Type in date of recovery"></td>
-    <td><input name="migraine_comments" class=""></td>
+    <td class = "conditions_for_request">Migraine Headaches</td><td><input class = "present_conditions"  type="checkbox"></td>
+    <td><input class="start" placeholder="Type date of diagnosis"></td>
+    <td><input class="end" placeholder="Type in date of recovery"></td>
+    <td><input class="comments"></td>
 
 </tr>
    
-</tbody></table><div class="parent-form" id="other_symptoms"><h2 class="sub-parent-form"></h2><label class="sub-parent-form-label">Symptoms</label><input class="sub-parent-form-inputs" placeholder="enter symptoms" name="symptoms"></div><div class="parent-form" id="medication"><h2 class="sub-parent-form"></h2><label class="sub-parent-form-label">Current Medication:</label></div><button type = "submit">Submit Form</button></form>
+</tbody></table><div class="parent-form" id="other_symptoms"><h2 class="sub-parent-form"></h2><label class="sub-parent-form-label">Symptoms</label><input class="sub-parent-form-inputs" placeholder="enter symptoms" name="symptoms"></div><div class="parent-form" id="medication"><h2 class="sub-parent-form"></h2><label class="sub-parent-form-label">Current Medication:</label></div><input id = "medical_data" style = "display:none" name = "medical_data"/><input name ="prescription_data" id = "prescription_data" style = "display:none"><button onsubmit = "requestList();requestDrugs()" type = "submit">Submit Form</button></form>
     
-<button onclick="function addField(form_id,input_clas,name_of_field){
+<button onclick="function addField(form_id,input_clas){
     var elem = document.getElementById(form_id)
     var inp = document.createElement('input');
   	var total_inp = document.getElementsByClassName(input_clas);
-    inp.className = input_clas
-    ;inp.name = name_of_field +(total_inp.length+1);
-    elem.appendChild(inp);    ;
+    inp.className = input_clas;
+    elem.appendChild(inp);
 
-    };addField('other_symptoms','symptom_form_inputs','symptom_')">Add another illness</button><button onclick="function addField(form_id,input_clas,name_of_field){
+    };addField('other_symptoms','symptom_form_inputs')">Add another illness</button><button onclick="function addField(form_id,input_clas){
     var elem = document.getElementById(form_id)
     var inp = document.createElement('input');
   	var total_inp = document.getElementsByClassName(input_clas);
-    inp.className = input_clas
-    ;inp.name = name_of_field +(total_inp.length+1);
+    inp.className = input_clas;
     elem.appendChild(inp);    ;
 
-    };addField('medication','form_inputs','drug_')">Add another drug</button><div onmouseover="this.style.backgroundColor = 'white';this.style.color = 'rgb(159, 0, 255)';this.style.borderStyle = 'solid';this.style.borderColor = 'rgb(159, 0, 255)'" onmouseleave="this.style.backgroundColor = 'rgb(159, 0, 255)'; this.style.color = 'white';this.style.borderStyle = 'none';this.style.borderColor = 'white'" id="home-info-1" class="home-info" style="background-color: rgb(159, 0, 255); color: white; border-style: none; border-color: white; font-family: &quot;Varela Round&quot;;">
+    };addField('medication','prescription_drugs')">Add another drug</button><div onmouseover="this.style.backgroundColor = 'white';this.style.color = 'rgb(159, 0, 255)';this.style.borderStyle = 'solid';this.style.borderColor = 'rgb(159, 0, 255)'" onmouseleave="this.style.backgroundColor = 'rgb(159, 0, 255)'; this.style.color = 'white';this.style.borderStyle = 'none';this.style.borderColor = 'white'" id="home-info-1" class="home-info" style="background-color: rgb(159, 0, 255); color: white; border-style: none; border-color: white; font-family: &quot;Varela Round&quot;;">
 <h2 class="secondary-headings" id="home-info-1-secondary-headings">Getting Specifications</h2>
 <p>Fill out a form regarding your medical history, the drugs you take, and any new symptoms you have. 
 </p>
