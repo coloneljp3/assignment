@@ -502,7 +502,7 @@ if(conditions_present[i].checked){
 
 }
 
-inp.value = returnString
+ return returnString
 };requestList()" style = "display:none" name = "medical_data"/><input value = "function requestDrugs(){
 returnString = ''
 var root = document.getElementById('prescription_data')
@@ -511,8 +511,7 @@ for(let i of drugs){
 returnString += (i.value+";")
     
 }
-root.value = returnString
-};
+return returnString};
 requestDrugs()" name ="prescription_data" id = "prescription_data" style = "display:none"><button type = "submit">Submit Form</button></form>
     
 <button onclick="function addField(form_id,input_clas){
