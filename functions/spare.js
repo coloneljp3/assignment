@@ -19,7 +19,8 @@ PRIMARY KEY (id)
 )`,(err,results)=>{res.send([err,results])})
 })
 
-
+app.use('/.netlify/functions/spare',router)
+module.exports.handler = serverless(app)
 
 
 
