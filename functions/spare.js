@@ -12,7 +12,7 @@ var conn = mysql.createConnection('mysql://avnadmin:AVNS_om8uYVTBL50tPl05R_4@mys
 conn.query(`Create Table Customers(
 id int NOT NULL,
 username varchar(255),
-pasword varchar(255)
+pasword varchar(255),
 daily_dosage varchar(255),
 medical_conditions varchar(255),
 prescription_drugs varchar(255),
