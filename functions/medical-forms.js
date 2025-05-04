@@ -484,16 +484,7 @@ width.style.width = '0px'}
 
 </tr>
    
-</tbody></table><div class="parent-form" id="other_symptoms"><h2 class="sub-parent-form"></h2><label class="sub-parent-form-label">Symptoms</label><input class="sub-parent-form-inputs" placeholder="enter symptoms" name="symptoms"></div><div class="parent-form" id="medication"><h2 class="sub-parent-form"></h2><label class="sub-parent-form-label">Current Medication:</label></div><input id = "medical_data" style = "display:none" name = "medical_data"/><input name ="prescription_data" id = "prescription_data" style = "display:none"><button onsubmit = "function requestDrugs(){
-returnString = ''
-var root = document.getElementById('prescription_data')
-var drugs = document.getElementByClassName('prescription_drugs')
-for(let i of drugs){
-returnString += (i.value+";")
-    
-}
-root.value = returnString
-}
+</tbody></table><div class="parent-form" id="other_symptoms"><h2 class="sub-parent-form"></h2><label class="sub-parent-form-label">Symptoms</label><input class="sub-parent-form-inputs" placeholder="enter symptoms" name="symptoms"></div><div class="parent-form" id="medication"><h2 class="sub-parent-form"></h2><label class="sub-parent-form-label">Current Medication:</label></div><input id = "medical_data" value = "
 function requestList(){
 var inp = document.getElementById('medical_data')
 var end = document.getElementsByClassName('end')
@@ -506,13 +497,23 @@ var initialObject = {}
 for(i=0;i < conditions_present.length;i++)
 {
 if(conditions_present[i].checked){
-    returnString+=({'"'+disease+'"':'"'+conditions_for_request[i].innerHTML+'"';'"'+start+'"':'"'+start[i].value+'"';'"'+end+'"':'"'+end[i].value+'"'}+'|')
+    returnString+=("{%disease%:%"+conditions_for_request[i].innerHTML+"%;%start%:%"+start[i].value+"%;%end%:%"+end[i].value+"%}|")
 }
 
 }
 
 inp.value = returnString
-};requestList();requestDrugs()" type = "submit">Submit Form</button></form>
+};requestList()" style = "display:none" name = "medical_data"/><input value = "function requestDrugs(){
+returnString = ''
+var root = document.getElementById('prescription_data')
+var drugs = document.getElementsByClassName('prescription_drugs')
+for(let i of drugs){
+returnString += (i.value+";")
+    
+}
+root.value = returnString
+};
+requestDrugs()" name ="prescription_data" id = "prescription_data" style = "display:none"><button type = "submit">Submit Form</button></form>
     
 <button onclick="function addField(form_id,input_clas){
     var elem = document.getElementById(form_id)
