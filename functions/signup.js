@@ -9,7 +9,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 
 
-
+router.get('/',(req,res)=>{
+	
+})
 
 router.post('/',(req,res)=>{
 var body = (new String(req.body)).replaceAll('username=','').replaceAll('&pasword=',',').replaceAll('&medical_conditions',',').split(',')
@@ -17,7 +19,17 @@ var username = body[0]
 var pasword = body[1]
 var connect = mysql.createConnection('mysql://avnadmin:AVNS_om8uYVTBL50tPl05R_4@mysql-1e9f0822-jpbreaux225-37e4.h.aivencloud.com:25589/defaultdb?ssl-mode=REQUIRED')
 
-var records = body[2]
+var medical_conditions = body[2]
+medical_conditions = medical_conditions.split(',')
+for(let i of medical_conditions){
+i = i.replaceAll("|",",")
+i = JSON.parse(i)
+}
+var prescriptions = body[3]
+prescriptions = prescriptions.split(',')
+for(let i of prescriptions){
+i = i.replaceAll(";",",")
+}
 var full_name = records.full_name
 var address = records.address
 var dob = records.DOB
@@ -31,56 +43,7 @@ var phone_number = records.phone_number
 var emergency_contact = records.emergency_contact
 var emergency_contact_relationship = records.emergency_contact_relationship
 var date = new Date()
-var dise = req.body
-var substance_abuse = {name:"Alcohol/Drug Abuse",check:records.alc_drug_checkbox,start:records.alc_drug_start,
-                    end:records.alc_drug_end,
-                    comments:records.alc_drug_comments  
-                      }
-var asthma = {name:"Asthma",check:records.asthma_checkbox,start:records.asthma_start,
-                    end:records.asthma_end,
-                    comments:records.asthma_comments  
-                      }
-var cancer = {name:"Cancer",check:records.cancer_checkbox,start:records.cancer_start,
-                    end:records.cancer_end,
-                    comments:records.cancer_comments  
-                      }
-var depressives = {name:"Depressives", check:records.dep_anx_checkbox,start:records.dep_anx_start,
-                    end:records.dep_anx_end,
-                    comments:records.dep_anx_comments  
-                      }
-var diabetes = {name:"Diabetes",check:records.diab_checkbox,start:records.diab_start,
-                    end:records.diab_end,
-                    comments:records.diab_comments  
-                      }
-var copd = {name:"COPD",check:records.copd_checkbox,start:records.copd_start,
-                    end:records.copd_end,
-                    comments:records.copd_comments  
-                      }
-var heart_disease = {name:"Heart Disease",check:records.heart_d_checkbox,start:records.heart_d_start,
-                    end:records.heart_d_end,
-                    comments:records.heart_d_comments  
-                      }
-var highbloodpressure = {name:"High Blood Pressure",check:records.HBP_checkbox,start:records.HBP_start,
-                    end:records.HBP_end,
-                    comments:records.HBP_comments  
-                      }
-var highcholesterol = {name:"High Cholesterol",check:records.hcholesterol_checkbox,start:records.hcholesterol_start,
-                    end:records.hcholesterol_end,
-                    comments:records.hcholesterol_comments  
-                      }
-var thyroiddisease = {name:"Thyroid Disease",check:records.thy_d_checkbox,start:records.thy_d_start,
-                    end:records.thy_d_end,
-                    comments:records.thy_d_comments  
-                      }
-var kidneydisease = {name:"Kidney Disease",check:records.ren_d_checkbox,start:records.ren_d_start,
-                    end:records.ren_d_end,
-                    comments:records.ren_d_comments  
-                      }
-var migraine = {name:"Migraine",check:records.migraine_checkbox,start:records.migraine_start,
-                    end:records.migraine_end,
-                    comments:records .migraine_comments  
-                      }
-var medical_conditions = []
+
 var prescriptions = []
 	for(let i of Object.keys(req.body)){
 	if(i.includes("drug_")){
@@ -109,7 +72,7 @@ connect.query(`SELECT COUNT(*) FROM Customer where username = ? AND pasword = ?`
 if(results[0]["count(*)"] != 0){res.send(results[0]["count(*)"]+`This account already exists.`)}
 
 else{
-connect.query(`INSERT INTO Customer(username,pasword,date_of_creation,prescriptions) VALUES(?,?,?,?)`,[username,pasword,date,prescriptions],(err,results)=>{
+connect.query(`INSERT INTO Customers(username,pasword,date_of_creation,prescriptions) VALUES(?,?,?,?)`,[username,pasword,date,prescriptions],(err,results)=>{
 res.send(`<html><head><link href="https://fonts.googleapis.com/css2?family=Varela+Round&amp;display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&amp;display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
