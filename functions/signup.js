@@ -14,20 +14,23 @@ router.get('/',(req,res)=>{
 })
 
 router.post('/',(req,res)=>{
-var body = (new String(req.body)).replaceAll('username=','').replaceAll('&pasword=',',').replaceAll('&medical_conditions',',').split(',')
+var body = (new String(req.body)).replaceAll('username=','').replaceAll('&pasword=',',').replaceAll('&medical_conditions=',',').replaceAll('&prescription_data',',').split(',')
 var username = body[0]
 var pasword = body[1]
 var connect = mysql.createConnection('mysql://avnadmin:AVNS_om8uYVTBL50tPl05R_4@mysql-1e9f0822-jpbreaux225-37e4.h.aivencloud.com:25589/defaultdb?ssl-mode=REQUIRED')
 
 var medical_conditions = body[2]
+res.send(medical_conditions)
 medical_conditions = medical_conditions.split(',')
-for(let i of medical_conditions){
-i = i.replaceAll("|",",")
-i = JSON.parse(i)
-}
+for(let i of a){i = i.replaceAll(';',',');console.log( JSON.parse(i))}
+
 var prescriptions = body[3]
 prescriptions = prescriptions.split(',')
-for(let i of prescriptions){
+
+var medical_conditions = 
+var z = medical_conditions.replaceAll('|',',');
+var a = z.split(',')
+for(let i of medical_conditions){
 i = i.replaceAll(";",",")
 }
 var full_name = records.full_name
