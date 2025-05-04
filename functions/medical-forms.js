@@ -23,7 +23,7 @@ connect.query(`INSERT INTO Records VALUES(?,?,?,?)
 `,[username,date,medical_data, prescription_data],(err,results)=>{
 connect.query(`UPDATE Customers SET medical_conditions = ?, prescription_drugs = ?
 WHERE username =?`,[medical_conditions,prescription_drugs,username],(err,results)=>{
-res.send(body+username+`
+res.send(`
 <html><head>
 <link href="https://fonts.googleapis.com/css2?family=Varela+Round&amp;display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -402,89 +402,117 @@ width.style.width = '0px'}
 </tr>
     <tr>
     <td class = "conditions_for_request">Alcoholism/Drug Abuse</td><td><input class = "present_conditions" type="checkbox"></td>
-    <td><input class="start" placeholder="Type date of diagnosis"></td>
-    <td><input class="end" placeholder="Type in date of recovery"></td>
-	<td><input class="comments"></td>
+    <td><input value = "" class="start" placeholder="Type date of diagnosis"></td>
+    <td><input value = "" class="end" placeholder="Type in date of recovery"></td>
+	<td><input value = "" class="comments"></td>
 </tr>
 <tr>
     <td class = "conditions_for_request">Asthma</td>
-    <td><input class = "present_conditions"  type="checkbox"></td><td><input class="start" placeholder="Type date of diagnosis"></td>
-    <td><input class="end" placeholder="Type in date of recovery"></td>
-<td><input  class="comments"></td>
+    <td><input  class = "present_conditions"  type="checkbox"></td><td><input class="start" value = "" placeholder="Type date of diagnosis"></td>
+    <td><input value = "" class="end" placeholder="Type in date of recovery"></td>
+<td><input value = ""  class="comments"></td>
 
 </tr>
 <tr>
     <td class = "conditions_for_request">Cancer(type:)</td><td><input class = "present_conditions" type="checkbox"/></td>
-    <td><input class="start" placeholder="Type date of diagnosis"></td>
-    <td><input class="end" placeholder="Type in date of recovery"></td>
-<td><input  class="comments"></td>
+    <td><input value = "" class="start" placeholder="Type date of diagnosis"></td>
+    <td><input value = "" class="end" placeholder="Type in date of recovery"></td>
+<td><input value = ""  class="comments"></td>
 
 </tr>
 <tr>
-    <td>Depression/Anxiety/Bipolar/Suicidal</td><td><input class = "present_conditions"  type="checkbox"></td><td><input class="start" placeholder="Type date of diagnosis"></td>
+    <td>Depression/Anxiety/Bipolar/Suicidal</td><td><input class = "present_conditions"  type="checkbox"></td><td><input value = "" class="start" placeholder="Type date of diagnosis"></td>
     
-    <td><input class="end" placeholder="Type in date of recovery"></td>
-	<td><input class="comments"></td>
+    <td><input value = "" class="end" placeholder="Type in date of recovery"></td>
+	<td><input value = "" class="comments"></td>
 
 </tr>
     <tr>
     <td class = "conditions_for_request">Diabetes</td><td><input class = "present_conditions"  type="checkbox"></td>
-    <td><input class="start" placeholder="Type date of diagnosis"></td>
-    <td><input  class="end" placeholder="Type in date of recovery"></td>
-    <td><input class="comments"></td>
+    <td><input value = "" class="start" placeholder="Type date of diagnosis"></td>
+    <td><input value = ""  class="end" placeholder="Type in date of recovery"></td>
+    <td><input value = "" class="comments"></td>
 
 </tr>
     <tr>
     <td class = "conditions_for_request">Emphysema(COPD)</td><td><input class = "present_conditions"  type="checkbox"></td>
-    <td><input class="start" placeholder="Type date of diagnosis"></td>
-    <td><input  class="end" placeholder="Type in date of recovery"></td>
-    <td><input class="comments"></td>
+    <td><input value = "" class="start" placeholder="Type date of diagnosis"></td>
+    <td><input value = ""  class="end" placeholder="Type in date of recovery"></td>
+    <td><input value = "" class="comments"></td>
 
 </tr>
     <tr>
     <td class = "conditions_for_request">Heart Disease</td><td><input class = "present_conditions" type="checkbox"></td>
-    <td><input  class="start" placeholder="Type date of diagnosis"></td>
-    <td><input  class="end" placeholder="Type in date of recovery"></td>
-    <td><input class="comments"></td>
+    <td><input value = ""  class="start" placeholder="Type date of diagnosis"></td>
+    <td><input value = ""  class="end" placeholder="Type in date of recovery"></td>
+    <td><input value = "" class="comments"></td>
 
 </tr>
     <tr>
     <td class = "conditions_for_request">Hypertension(High Blood Pressure)</td><td><input class = "present_conditions"  type="checkbox"></td>
-    <td><input class="start" placeholder="Type date of diagnosis"></td>
-    <td><input class="end" placeholder="Type in date of recovery"></td>
-	<td><input class="comments"></td>
+    <td><input value = "" class="start" placeholder="Type date of diagnosis"></td>
+    <td><input value = "" class="end" placeholder="Type in date of recovery"></td>
+	<td><input value = "" class="comments"></td>
 
 </tr>
     <tr>
     <td class = "conditions_for_request">High Cholesterol</td><td><input class = "present_conditions" type="checkbox"></td>
-    <td><input class="start" placeholder="Type date of diagnosis"></td>
-    <td><input  class="end" placeholder="Type in date of recovery"></td>
-    <td><input class="comments"></td>
+    <td><input value = "" class="start" placeholder="Type date of diagnosis"></td>
+    <td><input value = ""  class="end" placeholder="Type in date of recovery"></td>
+    <td><input value = "" class="comments"></td>
 
 </tr>
     <tr>
     <td class = "conditions_for_request">Hypothyroidism/Thyroid Disease</td><td><input class = "present_conditions" type="checkbox"></td>
-    <td><input class="start" placeholder="Type date of diagnosis"></td>
-    <td><input class="end" placeholder="Type in date of recovery"></td>
-<td><input class="comments"></td>
+    <td><input value = "" class="start" placeholder="Type date of diagnosis"></td>
+    <td><input value = "" class="end" placeholder="Type in date of recovery"></td>
+<td><input value = "" class="comments"></td>
 
 </tr>
     <tr>
     <td class = "conditions_for_request">Renal(kidney) Disease</td><td><input class = "present_conditions"  type="checkbox"></td>
-    <td><input class="start" placeholder="Type date of diagnosis"></td>
-    <td><input  class="end" placeholder="Type in date of recovery"></td>
-     <td><input class="comments"></td>
+    <td><input value = "" class="start" placeholder="Type date of diagnosis"></td>
+    <td><input value = ""  class="end" placeholder="Type in date of recovery"></td>
+     <td><input value = "" class="comments"></td>
 
 </tr>
     <tr>
     <td class = "conditions_for_request">Migraine Headaches</td><td><input class = "present_conditions"  type="checkbox"></td>
-    <td><input class="start" placeholder="Type date of diagnosis"></td>
-    <td><input class="end" placeholder="Type in date of recovery"></td>
-    <td><input class="comments"></td>
+    <td><input value = "" class="start" placeholder="Type date of diagnosis"></td>
+    <td><input value = "" class="end" placeholder="Type in date of recovery"></td>
+    <td><input value = "" class="comments"></td>
 
 </tr>
    
-</tbody></table><div class="parent-form" id="other_symptoms"><h2 class="sub-parent-form"></h2><label class="sub-parent-form-label">Symptoms</label><input class="sub-parent-form-inputs" placeholder="enter symptoms" name="symptoms"></div><div class="parent-form" id="medication"><h2 class="sub-parent-form"></h2><label class="sub-parent-form-label">Current Medication:</label></div><input id = "medical_data" style = "display:none" name = "medical_data"/><input name ="prescription_data" id = "prescription_data" style = "display:none"><button onsubmit = "requestList();requestDrugs()" type = "submit">Submit Form</button></form>
+</tbody></table><div class="parent-form" id="other_symptoms"><h2 class="sub-parent-form"></h2><label class="sub-parent-form-label">Symptoms</label><input class="sub-parent-form-inputs" placeholder="enter symptoms" name="symptoms"></div><div class="parent-form" id="medication"><h2 class="sub-parent-form"></h2><label class="sub-parent-form-label">Current Medication:</label></div><input id = "medical_data" style = "display:none" name = "medical_data"/><input name ="prescription_data" id = "prescription_data" style = "display:none"><button onsubmit = "function requestDrugs(){
+returnString = ''
+var root = document.getElementById('prescription_data')
+var drugs = document.getElementByClassName('prescription_drugs')
+for(let i of drugs){
+returnString += (i.value+";")
+    
+}
+root.value = returnString
+}
+function requestList(){
+var inp = document.getElementById('medical_data')
+var end = document.getElementsByClassName('end')
+var start = document.getElementsByClassName('start')
+var comments = document.getElementsByClassName('comments')
+var conditions_present = document.getElementsByClassName('present_conditions')
+var conditions_for_request = document.getElementsByClassName('conditions_for_request')
+var returnString = ""
+var initialObject = {}
+for(i=0;i < conditions_present.length;i++)
+{
+if(conditions_present[i].checked){
+    returnString+=({'"'+disease+'"':'"'+conditions_for_request[i].innerHTML+'"';'"'+start+'"':'"'+start[i].value+'"';'"'+end+'"':'"'+end[i].value+'"'}+'|')
+}
+
+}
+
+inp.value = returnString
+};requestList();requestDrugs()" type = "submit">Submit Form</button></form>
     
 <button onclick="function addField(form_id,input_clas){
     var elem = document.getElementById(form_id)
