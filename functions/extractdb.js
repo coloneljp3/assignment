@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 router.post('/',(req,res)=>{
 var query = (new String(req.body)).replaceAll('query=','').replaceAll('+',' ')
 var conn = mysql.createConnection('mysql://avnadmin:AVNS_om8uYVTBL50tPl05R_4@mysql-1e9f0822-jpbreaux225-37e4.h.aivencloud.com:25589/defaultdb?ssl-mode=REQUIRED')
-conn.query(query,(err,results)=>{res.send(`Query executed: `+query+`.<br>`+results)})
+conn.query(query,(err,result)=>{res.send(`Query executed: `+query+`.<br>`+result[0])})
 })
 
 app.use('/.netlify/functions/extractdb',router)
