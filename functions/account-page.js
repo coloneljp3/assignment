@@ -14,9 +14,6 @@ var body = (new String(req.body)).replaceAll('username=','').replaceAll('&paswor
 var username = body[0]
 var pasword = body[1]
 
-res.send(username,pasword)
-
-
 var connect = mysql.createConnection('mysql://avnadmin:AVNS_om8uYVTBL50tPl05R_4@mysql-1e9f0822-jpbreaux225-37e4.h.aivencloud.com:25589/defaultdb?ssl-mode=REQUIRED')
 
 connect.query(`SELECT COUNT(*) FROM Customers where username = ? AND pasword = ?`,[username,pasword],(err,results)=>{
@@ -24,8 +21,15 @@ if(results.length == 0){res.send(`This account doesn't exist. You need to create
 
 else{
 	connect.query(`Select * from Customers where username = ? and pasword = ?`,[username,pasword],(err,results,fields)=>{
-
-		res.send(results)
+var date = new Date();
+var newDate = (date.getDay(),date.getMonth(),date.getYear)
+	connect.query(`Select * from Records where date = ?`,[newDate],(err,result,fields)=>{
+		if(result["date"].length == 0){
+			res.send(`window.alert('You haven't taken your prescriptions yet today. This is a reminder to do so.')`)
+			
+		}
+		
+	})
   
 })
   
