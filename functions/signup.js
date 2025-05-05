@@ -2,7 +2,7 @@
 const mysql = require('mysql2');
 const express = require('express');
 const app = express();
-var bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 const serverless = require('serverless-http');
 const router = express.Router();
 app.use(bodyParser.json());
@@ -26,7 +26,6 @@ for(let i of a){i = i.replaceAll(';',',');console.log( JSON.parse(i))}
 var prescriptions = body[3]
 prescriptions = prescriptions.split(',')
 
-var medical_conditions = 
 var z = medical_conditions.replaceAll('|',',');
 var a = z.split(',')
 for(let i of medical_conditions){
