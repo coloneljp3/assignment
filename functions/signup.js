@@ -20,7 +20,7 @@ var pasword = body[1]
 
 var medical_conditions = body[2]
 
-var conditions = [];var z = medical_conditions.replaceAll('%7B','{').replaceAll('%2F','/').replaceAll('%25','"').replaceAll('+','%').replaceAll('%3A',';').replaceAll('%3B',';').replaceAll('%7D','}').replaceAll('%7C',',').replaceAll('%',' ')
+var conditions = [];var z = medical_conditions.replaceAll('%7B','{').replaceAll('%2F','/').replaceAll('%25','"').replaceAll('+','%').replaceAll('%3A',';').replaceAll('%3B',';').replaceAll('%7D','}').replaceAll('%7C',',').replaceAll('%',' ').replaceAll('28','(').replaceAll('29',')')
 
 
 
