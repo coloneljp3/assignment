@@ -13,7 +13,7 @@ conn.query(`Create Table Customers(
 id int NOT NULL,
 username VARCHAR(255),
 pasword VARCHAR(255),
-medical_conditions NVARCHAR(MAX),
+medical_conditions NVARCHAR(255),
 prescription_drugs VARCHAR(255),
 PRIMARY KEY (id)
 )`,(err,results)=>{res.send([err,results])})
