@@ -11,12 +11,12 @@ router.get("/",(req,res)=>{
 var conn = mysql.createConnection('mysql://avnadmin:AVNS_om8uYVTBL50tPl05R_4@mysql-1e9f0822-jpbreaux225-37e4.h.aivencloud.com:25589/defaultdb?ssl-mode=REQUIRED')
 conn.query(`Create Table Customers(
 id int NOT NULL,
-username varchar(65535),
-pasword varchar(65535),
-medical_conditions VARCHAR(65535),
-prescription_drugs varchar(65535),
+username varchar(6500),
+pasword varchar(6500),
+medical_conditions VARCHAR(6500),
+prescription_drugs varchar(6500),
 PRIMARY KEY (id)
-)`,(err,results)=>{conn.query(`ALTER TABLE Customers AUTO_INCREMENT=0`,(err,results)=>{res.send([err,results])})})
+)`,(err,result)=>{res.send(err,result)})})
   
 })
 
