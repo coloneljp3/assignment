@@ -23,7 +23,8 @@ var medical_conditions = body[2]
 
 var z = medical_conditions.replaceAll('|',',');
 var a = z.split(',')
-for(let i of a){i = JSON.parse(i.replaceAll(';',',').replaceAll('%','"'));}
+for(let i of a){i = i.replaceAll(';',',').replaceAll('%','"');}
+res.send(a)
 medical_conditions = a 
 var full_name = records.full_name
 var address = records.address
