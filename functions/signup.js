@@ -26,9 +26,9 @@ var conditions = [];var z = medical_conditions.replaceAll('%7B','{').replaceAll(
 
 	
 var a = z.split(',');for(let i of a){i=i.replaceAll(';',',');
-conditions.push(i)};conditions.pop(conditions[conditions.length-1]);
+conditions.push(i)};conditions.pop(conditions[conditions.length-1]);for(let i=0;i<conditions.length;i++){conditions[i] = JSON.parse(conditions[i])};
 
-
+conditions = JSON.stringify(conditions)
 var date = new Date()
 
 var medication = body[3]
