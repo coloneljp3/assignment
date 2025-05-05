@@ -522,15 +522,14 @@ inp.value = returnString
     inp.className = input_clas;
     elem.appendChild(inp);
 
-    };addField('other_symptoms','symptom_form_inputs')">Add another illness</button><button onclick="function addField(form_id,input_clas,name_of_field){
+    };addField('other_symptoms','symptom_form_inputs')">Add another illness</button><button onclick="function addField(form_id,input_clas){
      var elem = document.getElementById(form_id)
      var inp = document.createElement('input');
    	var total_inp = document.getElementsByClassName(input_clas);
-     inp.className = input_clas
-     ;inp.name = name_of_field +(total_inp.length+1);
-     elem.appendChild(inp);    ;
+     inp.className = input_clas;
+     elem.appendChild(inp);  
  
-     };addField('medication','prescription_drugs','drug_')">Add another drug</button><div onmouseover="this.style.backgroundColor = 'white';this.style.color = 'rgb(159, 0, 255)';this.style.borderStyle = 'solid';this.style.borderColor = 'rgb(159, 0, 255)'" onmouseleave="this.style.backgroundColor = 'rgb(159, 0, 255)'; this.style.color = 'white';this.style.borderStyle = 'none';this.style.borderColor = 'white'" id="home-info-1" class="home-info" style="background-color: rgb(159, 0, 255); color: white; border-style: none; border-color: white; font-family: &quot;Varela Round&quot;;">
+     };addField('medication','prescription_drugs',)">Add another drug</button><div onmouseover="this.style.backgroundColor = 'white';this.style.color = 'rgb(159, 0, 255)';this.style.borderStyle = 'solid';this.style.borderColor = 'rgb(159, 0, 255)'" onmouseleave="this.style.backgroundColor = 'rgb(159, 0, 255)'; this.style.color = 'white';this.style.borderStyle = 'none';this.style.borderColor = 'white'" id="home-info-1" class="home-info" style="background-color: rgb(159, 0, 255); color: white; border-style: none; border-color: white; font-family: &quot;Varela Round&quot;;">
 <h2 class="secondary-headings" id="home-info-1-secondary-headings">Getting Specifications</h2>
 <p>Fill out a form regarding your medical history, the drugs you take, and any new symptoms you have. 
 </p>
