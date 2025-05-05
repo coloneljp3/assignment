@@ -38,8 +38,8 @@ var medication = body[3]
 
 var connect = mysql.createConnection('mysql://avnadmin:AVNS_om8uYVTBL50tPl05R_4@mysql-1e9f0822-jpbreaux225-37e4.h.aivencloud.com:25589/defaultdb?ssl-mode=REQUIRED')
 
-connect.query(`SELECT COUNT(*) FROM Customer where username = ? AND pasword = ?`,[username,pasword],(err,results)=>{
-if(results[0]["COUNT(*)"] != 0){res.send(`This account already exists.`)}
+connect.query(`SELECT COUNT(*) FROM Customer where username = ? AND pasword = ?`,[username,pasword],(err,result)=>{
+if(result[0]["COUNT(*)"] != 0){res.send(`This account already exists.`)}
 
 else{
 connect.query(`INSERT INTO Customers(username,pasword,medical_conditions,prescriptions) VALUES(?,?,?,?)`,[username,pasword,medical_conditions,medication],(err,results)=>{
