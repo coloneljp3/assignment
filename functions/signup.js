@@ -20,10 +20,11 @@ var pasword = body[1]
 var connect = mysql.createConnection('mysql://avnadmin:AVNS_om8uYVTBL50tPl05R_4@mysql-1e9f0822-jpbreaux225-37e4.h.aivencloud.com:25589/defaultdb?ssl-mode=REQUIRED')
 
 var medical_conditions = body[2]
+'{%disease%:%Hypothyroidism/Thyroid Disease%;%start%:%%;%end%:%%},{%disease%:%Renal(kidney) Disease%;%start%:%%;%end%:%%},{%disease%:%Migraine Headaches%;%start%:%%;%end%:%%},'
 
 var z = medical_conditions.replaceAll('|',',');
 var a = z.split(',')
-for(let i of a){i = i.replaceAll(';',',');i= JSON.parse(i)}
+for(let i of a){i = JSON.parse(i.replaceAll(';',',').replaceAll('%','"'));}
 medical_conditions = a 
 var full_name = records.full_name
 var address = records.address
