@@ -38,8 +38,8 @@ if(result[0]["COUNT(*)"] != 0){res.send(`This account already exists.`)}
 
 else{
 
-connect.query(`INSERT INTO Customers(username,pasword,medical_conditions,prescription_drugs) VALUES(?,?,?,?)`,[username,pasword,medical_conditions,medication],(err,result)=>{
-res.send(`<html><head><link href="https://fonts.googleapis.com/css2?family=Varela+Round&amp;display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+connect.query(`INSERT INTO Customers(username,pasword,medical_conditions,prescription_drugs) VALUES(?,?,?,?)`,[username,pasword,medical_conditions,medication],(err,result)=>{res.send(conditions,new_medication)
+var x=(`<html><head><link href="https://fonts.googleapis.com/css2?family=Varela+Round&amp;display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&amp;display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>.drug_components,.adverse_effects,.drug_interactions,.intended_use{font-size:0px};.prescription_drugs{font-family:Helvetica;font-size:20px;}</style>
