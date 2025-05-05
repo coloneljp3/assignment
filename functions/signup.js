@@ -27,9 +27,8 @@ conditions.push(i)};conditions.pop(conditions[conditions.length-1]);for(let i=0;
 
 var date = new Date()
 
-var medication = body[3]
-
-
+var medication = body[3].replaceAll(';',',').split(',')
+res.send(medication);
 	
 	
 
