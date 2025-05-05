@@ -38,10 +38,12 @@ var medication = body[3]
 var connect = mysql.createConnection('mysql://avnadmin:AVNS_om8uYVTBL50tPl05R_4@mysql-1e9f0822-jpbreaux225-37e4.h.aivencloud.com:25589/defaultdb?ssl-mode=REQUIRED')
 
 connect.query(`SELECT COUNT(*) FROM Customer where username = ? AND pasword = ?`,[username,pasword],(err,result)=>{
+
 if(result[0]["COUNT(*)"] != 0){res.send(`This account already exists.`)}
 
 else{
-connect.query(`INSERT INTO Customers(username,pasword,medical_conditions,prescription_drugs) VALUES(?,?,?,?)`,[username,pasword,medical_conditions,medication],(err,results)=>{
+
+connect.query(`INSERT INTO Customers(username,pasword,medical_conditions,prescription_drugs) VALUES(?,?,?,?)`,[username,pasword,medical_conditions,medication],(err,result)=>{res.send(err,result)
 res.send(`<html><head><link href="https://fonts.googleapis.com/css2?family=Varela+Round&amp;display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&amp;display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
