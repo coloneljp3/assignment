@@ -64,30 +64,108 @@ res.send(`<html><head><link href="https://fonts.googleapis.com/css2?family=Varel
 <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&amp;display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<script>for(let drug of `+medication+`){
+<script>
+function getAdverseEffects(drug,element){
+var request = new XMLHttpRequest()
+request.onreadystatechange=()=>{
+var adverse_reactions = JSON.parse(request.responseText)['results'][0]['adverse_reactions']
+element.innerHTML = adverse_reactions
+
+
+}
+
+
+request.open('GET','https://api.fda.gov/drug/label.json?search='+keyword+'ef=adverse_reactions','true')
+
+//This will be used to query the adverse effects of drugs
+
+request.send()
+
+}
+
+function getDrugComponents(drug,element){
+var request = new XMLHttpRequest()
+request.onreadystatechange=()=>{
+var active_ingredient = JSON.parse(request.responseText)['results'][0]['active_ingredient']
+element.innerHTML = active_ingredient
+    
+}
+request.open('GET','https://api.fda.gov/drug/label.json?search='+drug+'','true')
+request.send()
+}
+
+function getDrugInteractions(drug,element){
+var request = new XMLHttpRequest()
+request.onreadystatechange=()=>{
+var drug_interactions = JSON.parse(request.responseText)['results'][0]['drug_interactions']
+element.innerHTML = drug_interactions
+
+}
+
+
+request.open('GET','https://api.fda.gov/drug/label.json?search='+drug+'','true')
+
+//This will be used to find out the potentially harmful drug/drug and food/drug interactions
+request.send()
+
+}
+
+function getIntendedUse(drug,element){
+var request = new XMLHttpRequest()
+request.onreadystatechange=()=>{
+var resp = JSON.parse(request.responseText)["results"][0]["indications_and_usage"]
+element.innerHTML = resp
+}
+
+
+request.open('GET','https://api.fda.gov/drug/label.json?search='+drug+'','true')
+
+//This will be used to query information the intended use of drugs
+
+request.send()
+
+
+}
+
+
+function getDailyDosage(drug,element){
+var request = new XMLHttpRequest()
+request.onreadystatechange=()=>{
+var daily_dosage = JSON.parse(request.responseText)['results'][0]['daily_dosage']
+element.innerHTML = daily_dosage
+    
+}
+request.open('GET','https://api.fda.gov/drug/label.json?search='+drug+'','true')
+request.send()
+    
+}for(let drug of `+medication+`){
 var tr = document.createElement('tr')
 var tdName = document.createElement('td')
 var tdComp = document.createElement('td')
 var tdAdvEff = document.createElement('td')
 var tdDrInt = document.createElement('td')
 var tdIntUse = document.createElement('td')
+var DD = document.createElement('td')
 tr.className = "drug"
 tr.appendChild(tdName)
 tr.appendChild(tdComp)
 tr.appendChild(tdAdvEff)
 tr.appendChild(tdDrInt)
 tr.appendChild(tdIntUse)
+tr.appendCHuld(DD)
 tdName.className = 'prescription_drugs'
 tdComp.className = 'drug_components'
 tdAdvEff.className = 'adverse_effects'
 tdDrInt.className = 'drug_interactions'
 tdIntUse.className = 'intended_use'
+DD.className = 'daily_dosage'
 tdName.innerHTML = drug
 
 getAdverseEffects(drug,tdAdvEff)
 getDrugComponents(drug,tdComp)
 getDrugInteractions(drug,tdDrInt)
 getIntendedUse(drug,tdIntUse)
+getDailyDosage(drug,DD)
     prescription_drugs_table.appendChild(tr)}
 </script>
 <style>
