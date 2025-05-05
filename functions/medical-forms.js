@@ -530,7 +530,7 @@ inp.value = returnString
      ;inp.name = name_of_field +(total_inp.length+1);
      elem.appendChild(inp);    ;
  
-     };addField('medication','','drug_')">Add another drug</button><div onmouseover="this.style.backgroundColor = 'white';this.style.color = 'rgb(159, 0, 255)';this.style.borderStyle = 'solid';this.style.borderColor = 'rgb(159, 0, 255)'" onmouseleave="this.style.backgroundColor = 'rgb(159, 0, 255)'; this.style.color = 'white';this.style.borderStyle = 'none';this.style.borderColor = 'white'" id="home-info-1" class="home-info" style="background-color: rgb(159, 0, 255); color: white; border-style: none; border-color: white; font-family: &quot;Varela Round&quot;;">
+     };addField('medication','prescription_drugs','drug_')">Add another drug</button><div onmouseover="this.style.backgroundColor = 'white';this.style.color = 'rgb(159, 0, 255)';this.style.borderStyle = 'solid';this.style.borderColor = 'rgb(159, 0, 255)'" onmouseleave="this.style.backgroundColor = 'rgb(159, 0, 255)'; this.style.color = 'white';this.style.borderStyle = 'none';this.style.borderColor = 'white'" id="home-info-1" class="home-info" style="background-color: rgb(159, 0, 255); color: white; border-style: none; border-color: white; font-family: &quot;Varela Round&quot;;">
 <h2 class="secondary-headings" id="home-info-1-secondary-headings">Getting Specifications</h2>
 <p>Fill out a form regarding your medical history, the drugs you take, and any new symptoms you have. 
 </p>
