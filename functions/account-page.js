@@ -8,7 +8,7 @@ const router = express.Router();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 
-
+router.get('/',(req,res)=>{res.send('this is a get request')})
 
 router.post('/',(req,res)=>{
 var body = (new String(req.body)).replaceAll('username=','').replaceAll('&pasword=',',').split(',')
