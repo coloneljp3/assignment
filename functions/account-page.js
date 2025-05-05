@@ -24,7 +24,7 @@ else{
 var date = new Date();
 var newDate = (date.getDay(),date.getMonth(),date.getYear)
 	connect.query(`Select * from Records where date = ?`,[newDate],(err,result,fields)=>{
-		if(result["date"].length == 0){
+		if(result.length == 0){
 			res.send(`window.alert('You haven't taken your prescriptions yet today. This is a reminder to do so.')`)
 			
 		}
