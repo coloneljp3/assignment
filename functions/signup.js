@@ -38,8 +38,8 @@ if(result[0]["COUNT(*)"] != 0){res.send(`This account already exists.`)}
 
 else{
 
-connect.query(`INSERT INTO Customers(username,pasword,medical_conditions,prescription_drugs) VALUES(?,?,?,?)`,[username,pasword,medical_conditions,medication],(err,result)=>{res.send(new_medication)
-var x=(`<html><head><link href="https://fonts.googleapis.com/css2?family=Varela+Round&amp;display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+connect.query(`INSERT INTO Customers(username,pasword,medical_conditions,prescription_drugs) VALUES(?,?,?,?)`,[username,pasword,medical_conditions,medication],(err,result)=>{
+res.send(`<html><head><link href="https://fonts.googleapis.com/css2?family=Varela+Round&amp;display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&amp;display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>.drug_components,.adverse_effects,.drug_interactions,.intended_use{font-size:0px};.prescription_drugs{font-family:Helvetica;font-size:20px;}</style>
@@ -986,8 +986,35 @@ issues = "No issues with any of the drugs."
 }
 document.getElementById('drug_issues').innerHTML = issues
 };
-compareDrugs(['cancer'])
-//displayAllPersonalDrugInformation(`+ new_medication +`,'prescription_drugs_table')
+function displayAllPersonalDrugInformation(prescriptions,prescription_drugs_table){
+var prescription_drugs_table = document.getElementById('prescription_drugs_table')
+for(let drug of prescriptions){
+var tr = document.createElement('tr')
+var tdName = document.createElement('td')
+var tdComp = document.createElement('td')
+var tdAdvEff = document.createElement('td')
+var tdDrInt = document.createElement('td')
+var tdIntUse = document.createElement('td')
+tr.className = "drug"
+tr.appendChild(tdName)
+tr.appendChild(tdComp)
+tr.appendChild(tdAdvEff)
+tr.appendChild(tdDrInt)
+tr.appendChild(tdIntUse)
+tdName.className = 'prescription_drugs'
+tdComp.className = 'drug_components'
+tdAdvEff.className = 'adverse_effects'
+tdDrInt.className = 'drug_interactions'
+tdIntUse.className = 'intended_use'
+tdName.innerHTML = drug_name
+
+getAdverseEffects(drug_name,tdAdvEff)
+getDrugComponents(drug_name,tdComp)
+getDrugInteractions(drug_name,tdDrInt)
+getIntendedUse(drug_name,tdIntUse)
+    prescription_drugs_table.appendChild(tr)
+}}
+displayAllPersonalDrugInformation(`+ new_medication.pop(new_medication.length-1) +`,'prescription_drugs_table')
 
 </script>
 
