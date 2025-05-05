@@ -1,17 +1,23 @@
 'use strict'
-const express = require('express')
-const mysql = require('mysql2')
-const app = express()
-const router = express.Router()
-const serverless = require('serverless-http')
-const bodyParser = require('body-parser')
-app.use(bodyParser.urlencoded({extended:true}))
+var mysql = require('mysql2');
+var express = require('express');
+var app = express();
+var router = express.Router()
+var bodyParser = require('body-parser')
+var serverless = require('serverless-http')
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended:true}))
+router.get("/",(req,res)=>{
+var conn = mysql.createConnection('mysql://avnadmin:AVNS_om8uYVTBL50tPl05R_4@mysql-1e9f0822-jpbreaux225-37e4.h.aivencloud.com:25589/defaultdb?ssl-mode=REQUIRED')
+conn.query(`Create Table Customers(
+id int NOT NULL,
+username varchar(255),
+pasword varchar(255)
+medical_conditions NVARCHAR(255),
+prescription_drugs varchar(255),
+PRIMARY KEY (id)
+)`,(err,results)=>{res.send([err,results])})
+})
 
-router.get('/',(req,res)=>{res.send(`
-
-<form method = "POST" action = "/.netlify/functions/extractdb"><input name = "query" placeholder = "type query"/><button type = "submit"></button></form>
-
-`)})
 app.use('/.netlify/functions/extract',router)
 module.exports.handler = serverless(app)
