@@ -21,7 +21,7 @@ PRIMARY KEY (id)
 
 
 
-connect.query(`ALTER TABLE Customers AUTO_INCREMENT = 1`,(err,result)=>{res.send(err,result)})
+conn.query(`ALTER TABLE Customers AUTO_INCREMENT = 1`,(err,result)=>{res.send(err,result)})
 
   
 })})
