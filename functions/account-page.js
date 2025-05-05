@@ -17,7 +17,7 @@ var pasword = body[1]
 var connect = mysql.createConnection('mysql://avnadmin:AVNS_om8uYVTBL50tPl05R_4@mysql-1e9f0822-jpbreaux225-37e4.h.aivencloud.com:25589/defaultdb?ssl-mode=REQUIRED')
 
 connect.query(`SELECT COUNT(*) FROM Customers where username = ? AND pasword = ?`,[username,pasword],(err,results)=>{
-if(results.length == 0){res.send(`This account doesn't exist. You need to create an account first`)}
+if(results[0]["count(*)"] == 0){res.send(`This account doesn't exist. You need to create an account first`)}
 
 else{
 	connect.query(`Select * from Customers where username = ? and pasword = ?`,[username,pasword],(err,results,fields)=>{
