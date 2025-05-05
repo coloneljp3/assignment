@@ -23,7 +23,7 @@ var medical_conditions = body[2]
 
 var conditions = [];var z = medical_conditions.replaceAll('|',',').replaceAll('%','"');
 var a = z.split(',');for(let i of a){i=i.replaceAll(';',',');
-conditions.push(i)};console.log(conditions.pop(conditions[conditions.length-1]));for(i=0;i<conditions.length;i++){conditions[i] = JSON.parse(conditions[i])};console.log(conditions)
+conditions.push(i)};conditions.pop(conditions[conditions.length-1]);for(i=0;i<conditions.length;i++){conditions[i] = JSON.parse(conditions[i])};
 
 medical_conditions = conditions
 var full_name = records.full_name
