@@ -21,11 +21,11 @@ var connect = mysql.createConnection('mysql://avnadmin:AVNS_om8uYVTBL50tPl05R_4@
 
 var medical_conditions = body[2]
 
-var z = medical_conditions.replaceAll('|',',');
-var a = z.split(',')
-for(let i of a){i = i.replaceAll(';',',').replaceAll('%','"');}
-res.send(a)
-medical_conditions = a 
+var conditions = [];var z = medical_conditions.replaceAll('|',',').replaceAll('%','"');
+var a = z.split(',');for(let i of a){i=i.replaceAll(';',',');
+conditions.push(i)};console.log(conditions.pop(conditions[conditions.length-1]));for(i=0;i<conditions.length;i++){conditions[i] = JSON.parse(conditions[i])};console.log(conditions)
+
+medical_conditions = conditions
 var full_name = records.full_name
 var address = records.address
 var dob = records.DOB
