@@ -38,12 +38,32 @@ if(result[0]["COUNT(*)"] != 0){res.send(`This account already exists.`)}
 
 else{
 
-connect.query(`INSERT INTO Customers(username,pasword,medical_conditions,prescription_drugs) VALUES(?,?,?,?)`,[username,pasword,medical_conditions,medication],(err,result)=>{res.send(conditions,new_medication)
+connect.query(`INSERT INTO Customers(username,pasword,medical_conditions,prescription_drugs) VALUES(?,?,?,?)`,[username,pasword,medical_conditions,medication],(err,result)=>{res.send(medication)
 var x=(`<html><head><link href="https://fonts.googleapis.com/css2?family=Varela+Round&amp;display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&amp;display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>.drug_components,.adverse_effects,.drug_interactions,.intended_use{font-size:0px};.prescription_drugs{font-family:Helvetica;font-size:20px;}</style>
 <script>
+handleConditions(conditions,root_id){
+var root = document.getElementById(root_id)
+for(let i of conditions){
+var disease = document.createElement('p')
+var start = document.createElement('p')
+var end = document.createElement('p')
+disease.innerHTML = i["disease"]
+start.innerHTML = i["start"]
+end.innerHTML = i["end"]
+disease.style = "display:inline-block;font-family:Varela Round"
+start.style = "display:inline-block;font-family:Varela Round"
+end.style = "display:inline-block;font-family:Varela Round"
+var div = document.createElement('div')
+div.appendChild(disease)
+div.appendChild(start)
+div.appendChild(end)
+root.appendChild(div)
+}
+}
+handleConditions(`+conditions+`,'conditions')
 function getAdverseEffects(drug,element){
 var request = new XMLHttpRequest()
 request.onreadystatechange=()=>{
@@ -718,7 +738,7 @@ width.style.width = '0px'}
 
 
 <div class="profile-data-unit" style="" onmouseover="propChange(this,'boxShadow','2px 2px 14px black')" onmouseleave="propChange(this,'boxShadow','1px 1px 1px 1px gray')"><h2 class="h2_styles">Account Created</h2><h4 class="h4_styles">January 15, 2025</h4></div><div class="profile-data-unit" style="" onmouseover="propChange(this,'boxShadow','2px 2px 14px black')" onmouseleave="propChange(this,'boxShadow','1px 1px 1px 1px gray')"><h2 class="h2_styles">Current Prescriptions</h2><div id = "current_prescriptions"></div></div><div class="profile-data-unit" style="" onmouseover="propChange(this,'boxShadow','2px 2px 14px black')" onmouseleave="propChange(this,'boxShadow','1px 1px 1px 1px gray')">
-<h2 class="h2_styles">Medical Conditions</h2><div><div id = "medical_conditions"></div>
+<h2 class="h2_styles">Medical Conditions</h2><div><div id = "conditions"></div>
 
 
 
