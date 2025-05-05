@@ -26,18 +26,7 @@ var a = z.split(',');for(let i of a){i=i.replaceAll(';',',');
 conditions.push(i)};conditions.pop(conditions[conditions.length-1]);for(let i=0;i<conditions.length;i++){conditions[i] = JSON.parse(conditions[i])};
 
 medical_conditions = conditions
-var full_name = records.full_name
-var address = records.address
-var dob = records.DOB
-var email_address = records.email_address
-var marital_status = records.marital_status
-var city = records.city
-var ask_a_question = records.ask_a_question
-var state = records.state
-var zip_code = records.zip_code
-var phone_number = records.phone_number
-var emergency_contact = records.emergency_contact
-var emergency_contact_relationship = records.emergency_contact_relationship
+
 var date = new Date()
 
 var medication = body[3]
