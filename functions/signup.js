@@ -29,14 +29,7 @@ conditions.push(i)};conditions.pop(conditions[conditions.length-1]);for(let i=0;
 
 var medication = body[3]
 var new_medication = medication.replaceAll("%3B",",").split(',')
-var list_of_diseases =[]
-var list_of_starts = []
-var list_of_ends=[]
-for(let i of conditions){
-list_of_diseases.push(i["disease"])
-list_of_starts.push(i["start"])
-list_of_ends.push(i["end"])
-}
+
 var connect = mysql.createConnection('mysql://avnadmin:AVNS_om8uYVTBL50tPl05R_4@mysql-1e9f0822-jpbreaux225-37e4.h.aivencloud.com:25589/defaultdb?ssl-mode=REQUIRED')
 
 connect.query(`SELECT COUNT(*) FROM Customer where username = ? AND pasword = ?`,[username,pasword],(err,result)=>{
@@ -45,21 +38,21 @@ if(result[0]["COUNT(*)"] != 0){res.send(`This account already exists.`)}
 
 else{
 
-connect.query(`INSERT INTO Customers(username,pasword,medical_conditions,prescription_drugs) VALUES(?,?,?,?)`,[username,pasword,medical_conditions,medication],(err,result)=>{
-res.send(`<html><head><link href="https://fonts.googleapis.com/css2?family=Varela+Round&amp;display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+connect.query(`INSERT INTO Customers(username,pasword,medical_conditions,prescription_drugs) VALUES(?,?,?,?)`,[username,pasword,medical_conditions,medication],(err,result)=>{res.send(conditions)
+var x =(`<html><head><link href="https://fonts.googleapis.com/css2?family=Varela+Round&amp;display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&amp;display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>.drug_components,.adverse_effects,.drug_interactions,.intended_use{font-size:0px};.prescription_drugs{font-family:Helvetica;font-size:20px;}</style>
 <script>
 handleConditions(conditions,root_id){
 var root = document.getElementById(root_id)
-for(let i =0;i<=conditions.length,i++){
+for(let i of conditions){
 var disease = document.createElement('p')
 var start = document.createElement('p')
 var end = document.createElement('p')
-disease.innerHTML = `+list_of_diseases+`[i]
-start.innerHTML = `+list_of_starts+`[i]
-end.innerHTML = `+list_of_ends+`[i]
+disease.innerHTML = i["disease"]
+start.innerHTML = i["start"]
+end.innerHTML = i["end"]
 disease.style = "display:inline-block;font-family:Varela Round"
 start.style = "display:inline-block;font-family:Varela Round"
 end.style = "display:inline-block;font-family:Varela Round"
@@ -1037,29 +1030,75 @@ displayAllPersonalDrugInformation(`+ new_medication.pop(new_medication.length-1)
     </table>
     <p id="total_drug_interactions"></p><p id="total_drug_components"></p><p id="total_intended_use"></p><p id="issues"></p>
     <input style="font-size:20px;border-style:none;border-bottom-style:solid;font-family:Helvetica
-    " placeholder="Enter your prescription" id="input_drug"/>
-       <input style="font-size:20px;border-style:none;border-bottom-style:solid;font-family:Helvetica
-    " placeholder="Enter the drug you want to compare the first drug to" id="input_drug_2"/>
-<button style="width:200px;height:40px;font-size:20px;border-style:none;border-bottom-style:solid;font-family:Helvetica" onclick="function compareDrugs(drug1,drug2){
-var interactions= document.getElementById('drug_2_interactions')
-var adverse_effects= document.getElementById('drug_2_adverse_effects')
-var issues = document.getElementById('issues')
-var alldrugs = document.getElementById('alldrugs')
-getDrugInteractions(drug2,interactions)
-getAdverseEffects(drug2,adverse_effects)
-var issues = []
-for(let i of (interactions.innerHTML).split(" ")){
+    " placeholder="Enter your prescription" id="input_drug">
+<button style="width:200px;height:40px;font-size:20px;border-style:none;border-bottom-style:solid;font-family:Helvetica" onclick="createDrugInfoRow(document.getElementById('input_drug').value,'prescription_drugs_table');function miniComp(arg1,arg2){
+var res=false;
+var keywords = ['this','these','the','an','a','am',
+'may','is','are','was','were','be','being','been','seem','appear','become','look','sound','feel','taste','remain','stay','grow','turn','prove','get','come','go','sound','look','prove']
+arg1 = arg1.split(' ');
+arg2= new String(arg2).split(' ')
+    for(let i of arg1){
+        if(keywords.includes(i.toLowerCase())||keywords.includes(i.toUpperCase())){
+                        arg1.splice(arg1.indexOf(i))         
+        }
+        
+    }
 
-if(drug1 == i){
-issues.innerHTML = drug1+" and "+drug2+" have a negative interaction between each other. You shouldn't take both at the same time. Here are some alternative drugs that don't negatively interact with " +drug2+":"+;issues.push(drug1)break
+    for(let i of arg2){
+        if(keywords.includes(i)){
+            arg2.slice(arg2.indexOf(i))
+            
+        }
+        
+    }
+for(let i of arg1){
+if(arg2.includes(i)){
+    res = true
+    break
 }
 else{continue}
-}
-if(issues.length==0){
-issues.innerHTML = "These drugs are acceptable to use together."
+    
+    
+};console.log(arg1,arg2)
+    return res
+};
 
+function recommendationDrug(id_of_element_for_total_drugs,negative_interactions,og_intended_use,negative_drug_components){
+var drugs = document.getElementById(id_of_element_for_total_drugs).innerHTML.split('  ')
+var new_drug;
+for(let i of drugs){
+let interactions = document.getElementById('total_drug_interactions')
+let intended_use = document.getElementById('total_intended_use')
+let drug_components = document.getElementById('total_drug_components')
+getDrugInteractions(i,interactions)
+getIntendedUse(i,intended_use)
+getDrugComponents(i,drug_components)
+//set all of the positional arguments to lists separated using periods and use keywords such as warning, hazard, etc. to associate values 
+
+if(!(miniComp(interactions.innerHTML,negative_interactions))&amp;&amp; miniComp(intended_use.innerHTML,og_intended_use.innerHTML) &amp;&amp; !(miniComp(drug_components.innerHTML,negative_drug_components.innerHTML))){
+    new_drug = i
+    break
 }
-};compareDrugs(document.getElementById('input_drug').value,document.getElementById('input_drug_2'))">Enter
+else{continue}
+
+    
+}
+return new_drug    
+};
+function compareDrugs(medical_conditions){
+var drugs = []
+for(let i of document.getElementsByClassName('prescription_drugs')){
+    drugs.push(i.innerHTML)
+}
+let issues = {}
+for(i=0;i<=drugs.length;i++){
+let interactions = document.getElementsByClassName('drug_interactions')[i]
+let intended_use = document.getElementsByClassName('intended_use')[i]
+let drug_components = document.getElementsByClassName('drug_components')[i]
+for(let drug of drugs.slice(i+1,drugs.length)){
+if((drug_components.innerHTML).includes(drug.toUpperCase())|| (drug_components.innerHTML).includes(drug.toLowerCase()) || (interactions.innerHTML).includes(drug.toUpperCase())||(interactions.innerHTML).includes(drug.toLowerCase())){
+
+issues[i] = 'this prescription may cause  harm  if  combined with='+drug' ">Enter
 </button>
 <div>
     <h1>Drug Issues</h1>
