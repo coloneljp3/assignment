@@ -28,7 +28,7 @@ conditions.push(i)};conditions.pop(conditions[conditions.length-1]);for(let i=0;
 
 
 var medication = body[3]
-	
+var new_medication = medication.replaceAll("%3B",",").split(',')
 
 var connect = mysql.createConnection('mysql://avnadmin:AVNS_om8uYVTBL50tPl05R_4@mysql-1e9f0822-jpbreaux225-37e4.h.aivencloud.com:25589/defaultdb?ssl-mode=REQUIRED')
 
@@ -42,7 +42,7 @@ connect.query(`INSERT INTO Customers(username,pasword,disease,start,end,prescrip
 var x = (`<html><head><link href="https://fonts.googleapis.com/css2?family=Varela+Round&amp;display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&amp;display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<style>.drug_components,.adverse_effects,.drug_interactions,.intended_use{font-size:0px};.prescription_drugs{font-family:Helvetica;font-size:20px;}</style>
 <script>
 function getAdverseEffects(drug,element){
 var request = new XMLHttpRequest()
@@ -117,7 +117,7 @@ element.innerHTML = daily_dosage
 request.open('GET','https://api.fda.gov/drug/label.json?search='+drug+'','true')
 request.send()
     
-}for(let drug of `+medication+`){
+}for(let drug of `+new_medication+`){
 var tr = document.createElement('tr')
 var tdName = document.createElement('td')
 var tdComp = document.createElement('td')
@@ -966,7 +966,7 @@ issues = "No issues with any of the drugs."
 document.getElementById('drug_issues').innerHTML = issues
 };
 compareDrugs(['cancer'])
-displayAllPersonalDrugInformation(['Ibuprofen','Naltrexone'],'prescription_drugs_table')
+//displayAllPersonalDrugInformation(`+ new_medication +`,'prescription_drugs_table')
 
 </script>
 
@@ -977,8 +977,10 @@ displayAllPersonalDrugInformation(['Ibuprofen','Naltrexone'],'prescription_drugs
 
         
     </table>
-    <table id="prescription_drugs_table"></table>
-    <p id="total_drug_interactions">undefined</p><p id="total_drug_components">ACTIVE INGREDIENT SILICEA HPUS 2X and higher</p><p id="total_intended_use">INDICATIONS Condition listed above or as directed by the physician</p><p id="issues"></p>
+    <table id="prescription_drugs_table">
+    
+    </table>
+    <p id="total_drug_interactions"></p><p id="total_drug_components"></p><p id="total_intended_use"></p><p id="issues"></p>
     <input style="font-size:20px;border-style:none;border-bottom-style:solid;font-family:Helvetica
     " placeholder="Enter your prescription" id="input_drug">
 <button style="width:200px;height:40px;font-size:20px;border-style:none;border-bottom-style:solid;font-family:Helvetica" onclick="createDrugInfoRow(document.getElementById('input_drug').value,'prescription_drugs_table');function miniComp(arg1,arg2){
