@@ -17,8 +17,6 @@ medical_conditions VARCHAR(6500),
 prescription_drugs varchar(6500),
 PRIMARY KEY (id)
 )`,(err,result)=>{res.send(err,result)})})
-  
-})
 
 app.use('/.netlify/functions/spare',router)
 module.exports.handler = serverless(app)
