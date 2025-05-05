@@ -485,17 +485,8 @@ width.style.width = '0px'}
 </tr>
    
 </tbody></table><div class="parent-form" id="other_symptoms"><h2 class="sub-parent-form"></h2><label class="sub-parent-form-label">Symptoms</label><input class="sub-parent-form-inputs" placeholder="enter symptoms" name="symptoms"></div><div class="parent-form" id="medication"><h2 class="sub-parent-form"></h2><label class="sub-parent-form-label">Current Medication:</label></div><input id = "medical_data" value = "
-" style = "display:none" name = "medical_data"/><input value = "" name ="prescription_data" id = "prescription_data" style = "display:none"><button type = "submit">Submit Form</button></form>
-    
-<button onclick="function addField(form_id,input_clas){
-    var elem = document.getElementById(form_id)
-    var inp = document.createElement('input');
-  	var total_inp = document.getElementsByClassName(input_clas);
-    inp.className = input_clas;
-    elem.appendChild(inp);
-
-    };addField('other_symptoms','symptom_form_inputs')">Add another illness</button><button onsubmit="function requestDrugs(){
-returnString = ''
+" style = "display:none" name = "medical_data"/><input value = "" name ="prescription_data" id = "prescription_data" style = "display:none"><button onclick = "function requestDrugs(){
+var returnString = ''
 var root = document.getElementById('prescription_data')
 var drugs = document.getElementsByClassName('prescription_drugs')
 for(let i of drugs){
@@ -522,7 +513,16 @@ if(conditions_present[i].checked){
 }
 
 inp.value = returnString
-};requestList();requestDrugs()">Add another drug</button><div onmouseover="this.style.backgroundColor = 'white';this.style.color = 'rgb(159, 0, 255)';this.style.borderStyle = 'solid';this.style.borderColor = 'rgb(159, 0, 255)'" onmouseleave="this.style.backgroundColor = 'rgb(159, 0, 255)'; this.style.color = 'white';this.style.borderStyle = 'none';this.style.borderColor = 'white'" id="home-info-1" class="home-info" style="background-color: rgb(159, 0, 255); color: white; border-style: none; border-color: white; font-family: &quot;Varela Round&quot;;">
+};requestList();requestDrugs()" type = "submit">Submit Form</button></form>
+    
+<button onclick="function addField(form_id,input_clas){
+    var elem = document.getElementById(form_id)
+    var inp = document.createElement('input');
+  	var total_inp = document.getElementsByClassName(input_clas);
+    inp.className = input_clas;
+    elem.appendChild(inp);
+
+    };addField('other_symptoms','symptom_form_inputs')">Add another illness</button><button onclick="">Add another drug</button><div onmouseover="this.style.backgroundColor = 'white';this.style.color = 'rgb(159, 0, 255)';this.style.borderStyle = 'solid';this.style.borderColor = 'rgb(159, 0, 255)'" onmouseleave="this.style.backgroundColor = 'rgb(159, 0, 255)'; this.style.color = 'white';this.style.borderStyle = 'none';this.style.borderColor = 'white'" id="home-info-1" class="home-info" style="background-color: rgb(159, 0, 255); color: white; border-style: none; border-color: white; font-family: &quot;Varela Round&quot;;">
 <h2 class="secondary-headings" id="home-info-1-secondary-headings">Getting Specifications</h2>
 <p>Fill out a form regarding your medical history, the drugs you take, and any new symptoms you have. 
 </p>
