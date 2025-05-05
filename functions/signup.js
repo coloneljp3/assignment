@@ -20,7 +20,6 @@ var pasword = body[1]
 var connect = mysql.createConnection('mysql://avnadmin:AVNS_om8uYVTBL50tPl05R_4@mysql-1e9f0822-jpbreaux225-37e4.h.aivencloud.com:25589/defaultdb?ssl-mode=REQUIRED')
 
 var medical_conditions = body[2]
-res.send(medical_conditions)
 medical_conditions = medical_conditions.split(',')
 for(let i of a){i = i.replaceAll(';',',');console.log( JSON.parse(i))}
 
@@ -48,23 +47,8 @@ var emergency_contact_relationship = records.emergency_contact_relationship
 var date = new Date()
 
 var prescriptions = []
-	for(let i of Object.keys(req.body)){
-	if(i.includes("drug_")){
-		prescriptions.push(req.body.i)
-		
-	}	
-}
-	for(let i of Object.keys(req.body)){
-	if(i.includes("symptom_")){
-		medical_conditions.push(req.body.i)
-		
-	}	
-}
-	for(let i of Object.values(req.body)){
-		if(i.check){
-			medical_conditions.push(i.name)
-		}
-	}
+
+
 	
 	
 
