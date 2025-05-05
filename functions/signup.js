@@ -14,7 +14,7 @@ router.get('/',(req,res)=>{
 })
 
 router.post('/',(req,res)=>{
-var body = (new String(req.body)).replaceAll('username=','').replaceAll('&pasword=',',').replaceAll('&medical_conditions=',',').replaceAll('&prescription_data',',').split(',')
+var body = (new String(req.body)).replaceAll('username=','').replaceAll('&pasword=',',').replaceAll('&medical_conditions=',',').replaceAll('&prescription_data=',',').split(',')
 var username = body[0]
 var pasword = body[1]
 
@@ -24,7 +24,6 @@ var conditions = [];var z = medical_conditions.replaceAll('|',',').replaceAll('%
 var a = z.split(',');for(let i of a){i=i.replaceAll(';',',');
 conditions.push(i)};conditions.pop(conditions[conditions.length-1]);for(let i=0;i<conditions.length;i++){conditions[i] = JSON.parse(conditions[i])};
 
-medical_conditions = conditions
 
 var date = new Date()
 
@@ -43,7 +42,7 @@ if(result[0]["COUNT(*)"] != 0){res.send(`This account already exists.`)}
 
 else{
 
-connect.query(`INSERT INTO Customers(username,pasword,medical_conditions,prescription_drugs) VALUES(?,?,?,?)`,[username,pasword,medical_conditions,medication],(err,result)=>{res.send(err,result);
+connect.query(`INSERT INTO Customers(username,pasword,medical_conditions,prescription_drugs) VALUES(?,?,?,?)`,[username,pasword,conditions,medication],(err,result)=>{res.send(err,result);
 var x = (`<html><head><link href="https://fonts.googleapis.com/css2?family=Varela+Round&amp;display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&amp;display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
