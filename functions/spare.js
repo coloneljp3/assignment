@@ -9,14 +9,8 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
 router.get("/",(req,res)=>{
 var conn = mysql.createConnection('mysql://avnadmin:AVNS_om8uYVTBL50tPl05R_4@mysql-1e9f0822-jpbreaux225-37e4.h.aivencloud.com:25589/defaultdb?ssl-mode=REQUIRED')
-conn.query(`Create Table Customers(
-id int NOT NULL,
-username varchar(255),
-pasword varchar(255),
-medical_conditions TEXT NOT NULL,
-prescription_drugs TEXT NOT NULL,
-PRIMARY KEY (id)
-)`,(err,result)=>{res.send(err,result)})})
+conn.query(`ALTER TABLE Customers AUTO_INCREMENT=0;
+`,(err,result)=>{res.send(err,result)})})
 
 app.use('/.netlify/functions/spare',router)
 module.exports.handler = serverless(app)
