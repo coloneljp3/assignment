@@ -513,7 +513,7 @@ if(conditions_present[i].checked){
 }
 
 inp.value = returnString
-};requestList();requestDrugs()" type = "submit">Submit Form</button></form>
+};" type = "submit">Submit Form</button></form>
     
 <button onclick="function addField(form_id,input_clas){
     var elem = document.getElementById(form_id)
