@@ -484,7 +484,7 @@ width.style.width = '0px'}
 
 </tr>
    
-</tbody></table><div class="parent-form" id="other_symptoms"><h2 class="sub-parent-form"></h2><label class="sub-parent-form-label">Symptoms</label><input class="sub-parent-form-inputs" placeholder="enter symptoms" name="symptoms"></div><div class="parent-form" id="medication"><h2 class="sub-parent-form"></h2><label class="sub-parent-form-label">Current Medication:</label></div><input id = "medical_data" value = "
+</tbody></table><div class="parent-form" id="other_symptoms"><h2 class="sub-parent-form"></h2><label class="sub-parent-form-label">Symptoms</label><input class="sub-parent-form-inputs" placeholder="enter symptoms" ></div><div class="parent-form" id="medication"><h2 class="sub-parent-form"></h2><label class="sub-parent-form-label">Current Medication:</label></div><input id = "medical_data" value = "
 " style = "display:none" name = "medical_data"/><input value = "" name ="prescription_data" id = "prescription_data" style = "display:none"><button onclick = "function requestDrugs(){
 var returnString = ''
 var root = document.getElementById('prescription_data')
