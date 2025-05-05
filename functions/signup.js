@@ -17,7 +17,7 @@ router.post('/',(req,res)=>{
 var body = (new String(req.body)).replaceAll('username=','').replaceAll('&pasword=',',').replaceAll('&medical_data=',',').replaceAll('&prescription_data=',',').split(',')
 var username = body[0]
 var pasword = body[1]
-
+ 
 var medical_conditions = body[2]
 
 var conditions = [];var z = medical_conditions.replaceAll('%7B','{').replaceAll('%2F','/').replaceAll('%25','"').replaceAll('+','%').replaceAll('%3A',':').replaceAll('%3B',';').replaceAll('%7D','}').replaceAll('%7C',',').replaceAll('%',' ').replaceAll('28','(').replaceAll('29',')')
