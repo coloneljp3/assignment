@@ -27,8 +27,8 @@ conditions.push(i)};conditions.pop(conditions[conditions.length-1]);for(let i=0;
 
 var date = new Date()
 
-var medication = 3
-res.send(body);
+var medication = body[3]
+
 	
 	
 
