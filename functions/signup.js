@@ -14,7 +14,7 @@ router.get('/',(req,res)=>{
 })
 
 router.post('/',(req,res)=>{
-var body = (new String(req.body)).replaceAll('username=','').replaceAll('&pasword=',',').replaceAll('&medical_conditions=',',').replaceAll('&prescription_data=',',').split(',')
+var body = (new String(req.body)).replaceAll('username=','').replaceAll('&pasword=',',').replaceAll('&medical_data=',',').replaceAll('&prescription_data=',',').split(',')
 var username = body[0]
 var pasword = body[1]
 
