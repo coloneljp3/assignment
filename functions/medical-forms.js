@@ -14,16 +14,14 @@ var path_of_form = req.body.path_of_form
 var username = body[0]
 var pasword = body[1]
 var date = new Date()
-var medical_data = {};
-var prescription_data = {}
-var prescription_drugs =[]
-var medical_conditions = []
+
 var connect = mysql.createConnection('mysql://avnadmin:AVNS_om8uYVTBL50tPl05R_4@mysql-1e9f0822-jpbreaux225-37e4.h.aivencloud.com:25589/defaultdb?ssl-mode=REQUIRED')
-connect.query(`INSERT INTO Records VALUES(?,?,?,?)
-`,[username,date,medical_data, prescription_data],(err,results)=>{
-connect.query(`UPDATE Customers SET medical_conditions = ?, prescription_drugs = ?
-WHERE username =?`,[medical_conditions,prescription_drugs,username],(err,results)=>{
-res.send(`
+connect.query(`SELECT COUNT(*) FROM Customers WHERE username = ? OR pasword = ?
+`,[username,pasword],(err,result)=>{
+if(result[0]["COUNT(*)"]>0){
+	res.send(`This account already exists`)
+}else{
+	res.send(`
 <html><head>
 <link href="https://fonts.googleapis.com/css2?family=Varela+Round&amp;display=swap" rel="stylesheet"><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -609,9 +607,9 @@ inp.value = returnString
 
 
 </body></html>
-`)
+`)}
 
-})}
+}
 	
 )})
 
