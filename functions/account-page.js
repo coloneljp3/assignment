@@ -253,10 +253,10 @@ width.style.width = '0px'}
 
 else{
 	connect.query(`Select * from Customers where username = ? and pasword = ?`,[username,pasword],(err,result)=>{
-res.send(result);var date = new Date();
+var resu = result;var date = new Date();
 var newDate = (date.getDay(),date.getMonth(),date.getYear)
 	connect.query(`Select * from Records where daily_dosage = ? AND username=?`,[newDate,username],(err,result)=>{
-		
+	res.send(resu)	
 	})
   
 })
