@@ -33,7 +33,7 @@ var new_medication = medication.replaceAll("%3B",",").split(',')
 var connect = mysql.createConnection('mysql://avnadmin:AVNS_om8uYVTBL50tPl05R_4@mysql-1e9f0822-jpbreaux225-37e4.h.aivencloud.com:25589/defaultdb?ssl-mode=REQUIRED')
 
 connect.query(`SELECT COUNT(*) FROM Customer where username = ? AND pasword = ?`,[username,pasword],(err,result)=>{
-
+res.send(result)
 if(result[0]["COUNT(*)"] != 0){res.send(`This account already exists.`)}
 
 else{
