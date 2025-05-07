@@ -272,24 +272,6 @@ width.style.width = '0px'}
 </div>
 
 </div>
-</span><span class="main-nav-bar-items-container" onmouseleave="revDropDown('dropdown-button-8')" style="background-color:transparent">
-
-<form action="" method="POST" class="main-nav-bar-form" style="background-color:transparent">
-<input name="username" value="undefined" style="display:none">
-<input name="pasword" value="undefined" style="display:none">
-<button onmouseover="" type="submit" id="home-button" class="main-nav-bar-form-button" style="background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke">APIs</button>
-
-</form>
-<div class="main-nav-bar-dropdown-container" style="background-color:transparent">
-<div class="main-nav-bar-dropdown">
-
-
-
-
-
-</div>
-
-</div>
 </span><span class="main-nav-bar-items-container" onmouseleave="revDropDown('dropdown-button-9')" style="background-color:transparent">
 
 <form action="" method="POST" class="main-nav-bar-form" style="background-color:transparent">
@@ -726,9 +708,9 @@ width.style.width = '0px'}
 
 <span class="main-nav-bar-items-container" onmouseleave="revDropDown('dropdown-button-7')" style="background-color:transparent">
 
-<form action="" method="POST" class="main-nav-bar-form" style="background-color:transparent">
-<input name="username" value="undefined" style="display:none">
-<input name="pasword" value="undefined" style="display:none">
+<form action="/.netlify/functions/medical-forms2" method="POST" class="main-nav-bar-form" style="background-color:transparent">
+<input name="username" value=`+username+` style="display:none">
+<input name="pasword" value=`+pasword+` style="display:none">
 <button onmouseover="" type="submit" id="home-button" class="main-nav-bar-form-button" style="background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke">Accounts</button>
 
 </form>
