@@ -28,7 +28,7 @@ return res['results'][0]['active_ingredient']
 }
 
 async function getDailyDosage(keyword){
-    var res = await fetch('https://api.fda.gov/drug/label.json?search='+drug+'').then(response=>response.json())
+    var res = await fetch('https://api.fda.gov/drug/label.json?search='+keyword+'').then(response=>response.json())
     return res['results'][0]['dosage_and_administration']
 }
 
