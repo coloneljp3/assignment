@@ -21,8 +21,8 @@ var pasword = body[1]
 var medical_conditions = body[2]
 //This will be used for medical conditions
 var conditions = [];var z = (medical_conditions).replaceAll('%7B','{').replaceAll('%2F','/').replaceAll('%25','"').replaceAll('+','%').replaceAll('%3A',':').replaceAll('%3B',';').replaceAll('%7D','}').replaceAll('%7C',',').replaceAll('%',' ').replaceAll('%','"').replaceAll('28','(').replaceAll('29',')').replaceAll('|',',').split(',')
+z.pop(z.length-1)
 for(let i = 0;i<z.length;i++){z[i] = z[i].replaceAll(';',',')}
-z = z.pop()
 var disease_list = [];var start_list = []; var end_list = [];for(let i of z){i=JSON.parse(i);disease_list.push(i.disease);start_list.push(i.start);end_list.push(i.end)}
 //This will be used for medical conditions
 var medication = body[3]
