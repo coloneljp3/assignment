@@ -232,20 +232,6 @@ border-style:solid}
 </style>
   
 
-<div style=" width: 120px;position:fixed;top:10px;left:50%"><svg id="search_icon" onclick="
-
-var width = document.getElementById('search');
-if(width.style.width == '0px'){
-width.style.width = '120px';
-}
-else{
-width.style.width = '0px'}
-
-
-" style="z-index:1;width:30px;height:20px;">
-<circle cx="8" cy="8" stroke-width="3" stroke="black" r="6"></circle>
-<polyline points="12 12 20 20 " stroke-width="3" stroke="black" fill="none"></polyline>
-</svg><input placeholder="Find Out More About Us" onkeyup="" id="search" type="search" style="width: 350px; float: left;"></div>
 
 <div style="position:relative"> 
     
@@ -291,8 +277,8 @@ width.style.width = '0px'}
 <span class="main-nav-bar-items-container" onmouseleave="revDropDown('dropdown-button-6')" style="background-color:transparent">
 
 <form action="" method="POST" class="main-nav-bar-form" style="background-color:transparent">
-<input name="username" value=`+username+`style="display:none">
-<input name="pasword" value="undefined" style="display:none">
+<input name="username" value="`+username+`"style="display:none">
+<input name="pasword" value="`+pasword+`" style="display:none">
 <button onmouseover="" type="submit" id="home-button" class="main-nav-bar-form-button" style="background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke">Medical Forms</button>
 
 </form>
@@ -313,9 +299,9 @@ width.style.width = '0px'}
 
 <span class="main-nav-bar-items-container" onmouseleave="revDropDown('dropdown-button-7')" style="background-color:transparent">
 
-<form action="" method="POST" class="main-nav-bar-form" style="background-color:transparent">
-<input name="username" value=`+username+` style="display:none">
-<input name="pasword" value=`+pasword+` style="display:none">
+<form action="/.netlify/functions/account-page" method="POST" class="main-nav-bar-form" style="background-color:transparent">
+<input name="username" value="`+username+`"style="display:none">
+<input name="pasword" value="`+pasword+`" style="display:none">
 <button onmouseover="" type="submit" id="home-button" class="main-nav-bar-form-button" style="background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke">Accounts</button>
 
 </form>
@@ -332,8 +318,8 @@ width.style.width = '0px'}
 </span><span class="main-nav-bar-items-container" onmouseleave="revDropDown('dropdown-button-9')" style="background-color:transparent">
 
 <form action="/.netlify/functions/home" method="POST" class="main-nav-bar-form" style="background-color:transparent">
-<input name="username" value="undefined" style="display:none">
-<input name="pasword" value="undefined" style="display:none">
+<input name="username" value="`+username+`"style="display:none">
+<input name="pasword" value="`+pasword+`" style="display:none">
 <button onmouseover="" type="submit" id="home-button" class="main-nav-bar-form-button" style="background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke">About</button>
 
 </form>
@@ -366,7 +352,7 @@ width.style.width = '0px'}
     }.h2_styles{background-color:#f6f6f6};.h4_styles{background-color:whitesmoke}
 </style>
 
-<div id="profile-container" style="height:700px;font-family:Raleway"><div id="image-container" style="display:inline-block;padding-right:40px"><img id="profile-picture" style="background-color:red;box-shadow: 0 200px #f55353 inset;border-radius:200px;width:200px;height:200px;opacity:40%;top:0px" src="/pic_1.jpg"><h4 style="text-align:center">John Doe</h4></div><div id="profile-info" style="float:right;display:inline-block">
+<div id="profile-container" style="height:700px;font-family:Raleway"><div id="image-container" style="display:inline-block;padding-right:40px"><img id="profile-picture" style="background-color:red;box-shadow: 0 200px #f55353 inset;border-radius:200px;width:200px;height:200px;opacity:40%;top:0px" src="/pic_1.jpg"><h4 style="text-align:center">`+username+`</h4></div><div id="profile-info" style="float:right;display:inline-block">
 <div class="profile-data-unit" style="" id="profile-name" onmouseover="propChange(this,'boxShadow','2px 2px 14px black')" onmouseleave="propChange(this,'boxShadow','1px 1px 1px 1px gray')"><h2 class="h2_styles">Profile Name</h2><h4 class="h4_styles">`+username+`</h4></div>
 
 
@@ -380,8 +366,7 @@ width.style.width = '0px'}
 </div>
 </div></div></div><body>
 
-    <p id="alldrugs"></p>
-    <p id="adverse_effects"></p>
+    
     <table id="medical_info_table">
       
 
