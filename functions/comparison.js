@@ -96,7 +96,7 @@ var drugs= (String(req.body)).replaceAll('drug_1=','').replace('&',',').replaceA
 
 let a = await compareDrugs(drugs[0],drugs[1])
     if(typeof drugs =="object"){
-res.send(drugs)
+res.send(a)
 }
 else{
 res.send(typeof drugs)
