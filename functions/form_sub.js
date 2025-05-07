@@ -13,7 +13,7 @@ var username = body[0]
 var daily_dosage = body[1]
 var conn = mysql.createConnection('mysql://avnadmin:AVNS_om8uYVTBL50tPl05R_4@mysql-1e9f0822-jpbreaux225-37e4.h.aivencloud.com:25589/defaultdb?ssl-mode=REQUIRED')
 conn.query(`INSERT INTO Records(username,daily_dosage) VALUES(?,?)`,[username,daily_dosage],(err,result)=>{
-res.send(body)
+res.send(err)
   
 }) 
 })
