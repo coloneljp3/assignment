@@ -388,96 +388,95 @@ width.style.width = '0px'}
 <input name="pasword" value=`+pasword+` style="display:none">
 
 
-
+<table>
 <tbody><tr>
     <td>Illness</td>
     <td>Have the Disease<br>(Yes or No)</td><td>Date of Diagnosis</td>
     <td>Date of Recovery(if no, type N/A)</td>
+    <td>Comments</td>
 
 </tr>
     <tr>
     <td class = "conditions_for_request">Alcoholism/Drug Abuse</td><td><input class = "present_conditions" type="checkbox"></td>
     <td><input value = "" class="start" placeholder="Type date of diagnosis"></td>
     <td><input value = "" class="end" placeholder="Type in date of recovery"></td>
-    <td style = "visibility:hidden"><input value = "" class="comments"></td>
-
-
+	<td><input value = "" class="comments"></td>
 </tr>
 <tr>
     <td class = "conditions_for_request">Asthma</td>
     <td><input  class = "present_conditions"  type="checkbox"></td><td><input class="start" value = "" placeholder="Type date of diagnosis"></td>
     <td><input value = "" class="end" placeholder="Type in date of recovery"></td>
-    <td style = "visibility:hidden"><input value = "" class="comments"></td>
+<td><input value = ""  class="comments"></td>
 
 </tr>
 <tr>
     <td class = "conditions_for_request">Cancer(type:)</td><td><input class = "present_conditions" type="checkbox"/></td>
     <td><input value = "" class="start" placeholder="Type date of diagnosis"></td>
     <td><input value = "" class="end" placeholder="Type in date of recovery"></td>
-    <td style = "visibility:hidden"><input value = "" class="comments"></td>
+<td><input value = ""  class="comments"></td>
 
 </tr>
 <tr>
     <td>Depression/Anxiety/Bipolar/Suicidal</td><td><input class = "present_conditions"  type="checkbox"></td><td><input value = "" class="start" placeholder="Type date of diagnosis"></td>
     
     <td><input value = "" class="end" placeholder="Type in date of recovery"></td>
-    <td style = "visibility:hidden"><input value = "" class="comments"></td>
+	<td><input value = "" class="comments"></td>
 
 </tr>
     <tr>
     <td class = "conditions_for_request">Diabetes</td><td><input class = "present_conditions"  type="checkbox"></td>
     <td><input value = "" class="start" placeholder="Type date of diagnosis"></td>
     <td><input value = ""  class="end" placeholder="Type in date of recovery"></td>
-    <td style = "visibility:hidden"><input value = "" class="comments"></td>
+    <td><input value = "" class="comments"></td>
 
 </tr>
     <tr>
     <td class = "conditions_for_request">Emphysema(COPD)</td><td><input class = "present_conditions"  type="checkbox"></td>
     <td><input value = "" class="start" placeholder="Type date of diagnosis"></td>
     <td><input value = ""  class="end" placeholder="Type in date of recovery"></td>
-    <td style = "visibility:hidden"><input value = "" class="comments"></td>
+    <td><input value = "" class="comments"></td>
 
 </tr>
     <tr>
     <td class = "conditions_for_request">Heart Disease</td><td><input class = "present_conditions" type="checkbox"></td>
     <td><input value = ""  class="start" placeholder="Type date of diagnosis"></td>
     <td><input value = ""  class="end" placeholder="Type in date of recovery"></td>
-    <td style = "visibility:hidden"><input value = "" class="comments"></td>
+    <td><input value = "" class="comments"></td>
 
 </tr>
     <tr>
     <td class = "conditions_for_request">Hypertension(High Blood Pressure)</td><td><input class = "present_conditions"  type="checkbox"></td>
     <td><input value = "" class="start" placeholder="Type date of diagnosis"></td>
     <td><input value = "" class="end" placeholder="Type in date of recovery"></td>
-    <td style = "visibility:hidden"><input value = "" class="comments"></td>
+	<td><input value = "" class="comments"></td>
 
 </tr>
     <tr>
     <td class = "conditions_for_request">High Cholesterol</td><td><input class = "present_conditions" type="checkbox"></td>
     <td><input value = "" class="start" placeholder="Type date of diagnosis"></td>
     <td><input value = ""  class="end" placeholder="Type in date of recovery"></td>
-    <td style = "visibility:hidden"><input value = "" class="comments"></td>
+    <td><input value = "" class="comments"></td>
 
 </tr>
     <tr>
     <td class = "conditions_for_request">Hypothyroidism/Thyroid Disease</td><td><input class = "present_conditions" type="checkbox"></td>
     <td><input value = "" class="start" placeholder="Type date of diagnosis"></td>
     <td><input value = "" class="end" placeholder="Type in date of recovery"></td>
-    <td style = "visibility:hidden"><input value = "" class="comments"></td>
+<td><input value = "" class="comments"></td>
 
 </tr>
     <tr>
     <td class = "conditions_for_request">Renal(kidney) Disease</td><td><input class = "present_conditions"  type="checkbox"></td>
     <td><input value = "" class="start" placeholder="Type date of diagnosis"></td>
     <td><input value = ""  class="end" placeholder="Type in date of recovery"></td>
-    <td style = "visibility:hidden"><input value = "" class="comments"></td>
+     <td><input value = "" class="comments"></td>
 
 </tr>
     <tr>
     <td class = "conditions_for_request">Migraine Headaches</td><td><input class = "present_conditions"  type="checkbox"></td>
     <td><input value = "" class="start" placeholder="Type date of diagnosis"></td>
     <td><input value = "" class="end" placeholder="Type in date of recovery"></td>
-    <td style = "visibility:hidden"><input value = "" class="comments"></td>
+    <td><input value = "" class="comments"></td>
 
 </tr>
    
