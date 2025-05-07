@@ -7,7 +7,11 @@ var bodyParser = require('body-parser')
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
     
-
+async function hi(){
+var x = fetch('https://github.com/coloneljp3/assignment/edit/main/functions/comparison.js')
+return x
+    
+}
 
 router.post('/', async (req,res)=>{
     
