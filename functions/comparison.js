@@ -8,7 +8,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
     
 async function hi(){
-var x = fetch('https://github.com/coloneljp3/assignment/edit/main/functions/comparison.js')
+var x = await fetch('https://github.com/coloneljp3/assignment/edit/main/functions/comparison.js')
 return x
     
 }
