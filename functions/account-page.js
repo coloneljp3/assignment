@@ -258,9 +258,9 @@ var newDate = (date.getDay(),date.getMonth(),date.getYear)
 	connect.query(`Select * from Records where daily_dosage = ? AND username=?`,[newDate,username],(err,result)=>{
 	var username = resu[0]["username"]
 	var pasword = resu[0]["pasword"]
-	var medication = (resu[0]["medical_conditions"]).replaceAll('%7B','{').replaceAll('%2F','/').replaceAll('%25','"').replaceAll('+','%').replaceAll('%3A',':').replaceAll('%3B',';').replaceAll('%7D','}').replaceAll('%7C',',').replaceAll('%',' ').replaceAll('28','(').replaceAll('29',')')
+	var medical_conditions = JSON.parse((resu[0]["medical_conditions"]).replaceAll('%7B','{').replaceAll('%2F','/').replaceAll('%25','"').replaceAll('+','%').replaceAll('%3A',':').replaceAll('%3B',';').replaceAll('%7D','}').replaceAll('%7C',',').replaceAll('%',' ').replaceAll('28','(').replaceAll('29',')'))
 	var prescription_drugs = (resu[0]["prescription_drugs"]).replaceAll("%3B",",").split(',')
-	res.send(result)	
+	if(result = ""){res.send(medical_conditions)}	
 	})
   
 })
