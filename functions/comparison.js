@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({extended:true}))
     
 
 
-router.post('/',async function(req,res)=>{
+router.post('/', async (req,res)=>{
     
 async function getDrugInteractions(keyword){
     var res = await fetch('https://api.fda.gov/drug/label.json?search='+keyword+'').then(response=>response.json());
