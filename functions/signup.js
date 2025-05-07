@@ -62,7 +62,6 @@ div.appendChild(end)
 root.appendChild(div)
 }
 }
-handleConditions(`+JSON.parse(conditions)+`,'conditions')
 var x = `+new_medication+`;
 var y = `+conditions+`
 </script>
