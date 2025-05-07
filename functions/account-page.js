@@ -604,7 +604,7 @@ border-style:solid}
     }
         xml.open('POST','/.netlify/functions/getDosage','true')
         xml.send('drug_1='+drug_1+'&amp;drug_2='+drug_2)">Get dosage information for the first prescription column</button>
-<button style="width:200px;height:60px;font-size:20px;border-style:none;border-bottom-style:solid;font-family:Helvetica" onclick=" var drug_1 = document.getElementById('drug_1').value
+<button style="width:200px;height:60px;font-size:20px;border-style:none;border-bottom-style:solid;font-family:Helvetica" onclick="window.alert('Routine logged');var drug_1 = document.getElementById('drug_1').value
     var drug_2 = document.getElementById('drug_2').value
     var xml = new XMLHttpRequest();
     xml.onreadystatechange = ()=>{
