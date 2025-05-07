@@ -7,11 +7,7 @@ var bodyParser = require('body-parser')
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
     
-async function hi(){
-var x = await fetch('https://github.com/coloneljp3/assignment/edit/main/functions/comparison.js')
-return x
-    
-}
+
 
 router.post('/', async (req,res)=>{
     
@@ -105,10 +101,21 @@ if(fd.includes(drug_2)){return true}
 if(sd.includes(drug_1)){return true}
 return false
 }
+
+async function compareDrugs(drug_1,drug_2){
+var first_drug = await getDrugInfo(drug_1);
+var second_drug = await getDrugInfo(drug_2)
+if(determineIfDrugInteract(drug_1,drug_2)){return drug_1 +"and"+drug_2 +" share negative interactions and are unsafe to use together."} 
+if(determineIfDrugIsAdverse(drug_1,drug_2)){return drug_1 +"and"+drug_2 +" share negative adverse effects and are unsafe to use together."}
+return "These drugs are safe to use together."
+
+
+
     
-var drugs= (String(req.body)).replaceAll('drugs=','').replaceAll('%5B','').replaceAll('%27','').replaceAll('2C',',').replaceAll('5D','').replaceAll('%','').split(',')
+}    
+var drugs= (String(req.body)).replaceAll('drug_1=','').replaceAll('&drug_2=').replaceAll('%5B','').replaceAll('%27','').replaceAll('2C',',').replaceAll('5D','').replaceAll('%','').split(',')
 if(typeof drugs =="object"){
-let d = await getDrugInteractions(drugs[0]);
+let d = await compareDrugs(drugs[0],drugs[1]);
 res.send(d)
 }
 else{
