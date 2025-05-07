@@ -268,7 +268,7 @@ var disease_list = [];var start_list = []; var end_list = [];for(let i of z){i=J
 	var drug_list = []
 	for(let i of prescription_drugs){
 	drug_list.push(i)};drug_list.pop();
-	res.send(result[0]["COUNT(*)"])
+	res.send(result)
 	})
   
 })
