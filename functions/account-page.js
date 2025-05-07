@@ -595,7 +595,16 @@ border-style:solid}
     <p id="total_drug_interactions"></p><p id="total_drug_components"></p><p id="total_intended_use"></p><p id="issues"></p>
      <input style="font-size:20px;border-style:none;border-bottom-style:solid;font-family:Helvetica" placeholder="Enter your prescription" id="drug_1"><input style="font-size:20px;border-style:none;border-bottom-style:solid;font-family:Helvetica
     " placeholder="Enter a prescription" id="drug_2">
-<button style="width:200px;height:40px;font-size:20px;border-style:none;border-bottom-style:solid;font-family:Helvetica" onclick=" var drug_1 = document.getElementById('drug_1').value
+    <button onclick = "var drug_1 = document.getElementById('drug_1').value
+    var drug_2 = document.getElementById('drug_2').value
+    var xml = new XMLHttpRequest();
+    xml.onreadystatechange = ()=>{
+    document.getElementById('prediction').innerHTML = xml.responseText        
+
+    }
+        xml.open('POST','/.netlify/functions/getDosage','true')
+        xml.send('drug_1='+drug_1+'&amp;drug_2='+drug_2)"></button>
+<button style="width:200px;height:60px;font-size:20px;border-style:none;border-bottom-style:solid;font-family:Helvetica" onclick=" var drug_1 = document.getElementById('drug_1').value
     var drug_2 = document.getElementById('drug_2').value
     var xml = new XMLHttpRequest();
     xml.onreadystatechange = ()=>{
@@ -612,7 +621,7 @@ return xml.responseText
 }
 
 xml.open('POST','/.netlify/functions/form_sub',true)
-xml.send('username='`+username+`'&daily_dosage='`+newDate+`)" style="width:200px;height:40px;font-size:20px;border-style:none;border-bottom-style:solid;font-family:Helvetica">Verify your prescription routine</button>
+xml.send('username='`+username+`'&daily_dosage='`+newDate+`)" style="width:200px;height:60px;font-size:20px;border-style:none;border-bottom-style:solid;font-family:Helvetica">Verify your prescription routine</button>
 </div>
 
 
