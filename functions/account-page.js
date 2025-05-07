@@ -255,7 +255,7 @@ else{
 	connect.query(`Select * from Customers where username = ? and pasword = ?`,[username,pasword],(err,result)=>{
 var resu = result;var date = new Date();
 var newDate = (date.getDay(),date.getMonth(),date.getYear)
-	connect.query(`Select * from Records where daily_dosage = ? AND username=?`,[newDate,username],(err,result)=>{
+	connect.query(`Select COUNT(*) from Records where daily_dosage = ? AND username=?`,[newDate,username],(err,result)=>{
 	var username = resu[0]["username"]
 	var pasword = resu[0]["pasword"]
 	var medical_conditions = resu[0]["medical_conditions"]
@@ -268,7 +268,7 @@ var disease_list = [];var start_list = []; var end_list = [];for(let i of z){i=J
 	var drug_list = []
 	for(let i of prescription_drugs){
 	drug_list.push(i)};drug_list.pop();
-	res.send(disease_list)
+	res.send(result[0]["COUNT(*)"])
 	})
   
 })
