@@ -375,10 +375,10 @@ border-style:solid}
     <table id="prescription_drugs_table">
     
     </table>
-    <p id="total_drug_interactions"></p><p id="total_drug_components"></p><p id="total_intended_use"></p><p id="issues"></p>
+    <h2 style = "font-family:Varela Round" id='prediction'></h2>
      <input style="font-size:20px;border-style:none;border-bottom-style:solid;font-family:Helvetica" placeholder="Enter your prescription" id="drug_1"><input style="font-size:20px;border-style:none;border-bottom-style:solid;font-family:Helvetica
     " placeholder="Enter a prescription" id="drug_2">
-<button style="width:200px;height:40px;font-size:20px;border-style:none;border-bottom-style:solid;font-family:Helvetica" onclick=" var drug_1 = document.getElementById('drug_1').value
+<button style="width:200px;height:60px;font-size:20px;border-style:none;border-bottom-style:solid;font-family:Helvetica" onclick=" var drug_1 = document.getElementById('drug_1').value
     var drug_2 = document.getElementById('drug_2').value
     var xml = new XMLHttpRequest();
     xml.onreadystatechange = ()=>{
@@ -386,12 +386,8 @@ border-style:solid}
 
     }
         xml.open('POST','/.netlify/functions/comparison','true')
-        xml.send('drug_1='+drug_1+'&amp;drug_2='+drug_2)">Enter<div id='prediction'></div>
-<div>
-    <h1>Drug Issues</h1>
-    <p id="drug_issues">No issues with any of the drugs.</p>
-    <h1 style="font-family:Helvetica">Look at the recommendations below
-</h1><p id="drug_suggestions"></p></div>
+        xml.send('drug_1='+drug_1+'&amp;drug_2='+drug_2)">Enter</button>
+
 </body>
     <br><style>
 .profile-data-unit{
