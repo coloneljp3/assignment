@@ -260,7 +260,7 @@ var newDate = (date.getDay(),date.getMonth(),date.getYear)
 	var pasword = resu[0]["pasword"]
 	var medication = (resu[0]["medical_conditions"]).replaceAll('%7B','{').replaceAll('%2F','/').replaceAll('%25','"').replaceAll('+','%').replaceAll('%3A',':').replaceAll('%3B',';').replaceAll('%7D','}').replaceAll('%7C',',').replaceAll('%',' ').replaceAll('28','(').replaceAll('29',')')
 	var prescription_drugs = (resu[0]["prescription_drugs"]).replaceAll("%3B",",").split(',')
-	res.send(resu + result+medication+prescription_drugs)	
+	res.send(result)	
 	})
   
 })
