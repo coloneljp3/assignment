@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({extended:true}))
     
 
 
-router.post('/',(req,res)=>{
+router.post('/',async function(req,res)=>{
     
 async function getDrugInteractions(keyword){
     var res = await fetch('https://api.fda.gov/drug/label.json?search='+keyword+'').then(response=>response.json());
@@ -104,7 +104,7 @@ return false
     
 var drugs= (String(req.body)).replaceAll('drugs=','').replaceAll('%5B','').replaceAll('%27','').replaceAll('2C',',').replaceAll('5D','').replaceAll('%','').split(',')
 if(typeof drugs =="object"){
-let d = await getDrugInteractions(drugs[0])
+let d = await getDrugInteractions(drugs[0]);
 res.send(d)
 }
 else{
