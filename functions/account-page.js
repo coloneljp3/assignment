@@ -258,9 +258,18 @@ var newDate = (date.getDay(),date.getMonth(),date.getYear)
 	connect.query(`Select * from Records where daily_dosage = ? AND username=?`,[newDate,username],(err,result)=>{
 	var username = resu[0]["username"]
 	var pasword = resu[0]["pasword"]
-	var medical_conditions = JSON.parse((resu[0]["medical_conditions"]).replaceAll('%7B','{').replaceAll('%2F','/').replaceAll('%25','"').replaceAll('+','%').replaceAll('%3A',':').replaceAll('%3B',';').replaceAll('%7D','}').replaceAll('%7C',',').replaceAll('%',' ').replaceAll('28','(').replaceAll('29',')'))
+	var medical_conditions = resu[0]["medical_conditions"]
+	var conditions = [];var z = (medical_conditions).replaceAll('%7B','{').replaceAll('%2F','/').replaceAll('%25','"').replaceAll('+','%').replaceAll('%3A',':').replaceAll('%3B',';').replaceAll('%7D','}').replaceAll('%7C',',').replaceAll('%',' ').replaceAll('%','"').replaceAll('28','(').replaceAll('29',')').replaceAll('|',',').split(',')
+z.pop(z.length-1)
+for(let i = 0;i<z.length;i++){z[i] = z[i].replaceAll(';',',')}
+var disease_list = [];var start_list = []; var end_list = [];for(let i of z){i=JSON.parse(i);disease_list.push(i.disease);start_list.push(i.start);end_list.push(i.end)}
+	
 	var prescription_drugs = (resu[0]["prescription_drugs"]).replaceAll("%3B",",").split(',')
-	if(result = ""){res.send(medical_conditions)}	
+	var drug_list = []
+	for(let i of prescription_drugs){
+	drug_list.push(i)};drug_list.pop();
+	if(result = ""){res.send(disease_list)}
+	else{res.send('No need for reminders')}
 	})
   
 })
