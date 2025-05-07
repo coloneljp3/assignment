@@ -51,7 +51,7 @@ var first_drug = await getDrugInfo(drug_1);
 var second_drug = await getDrugInfo(drug_2)
 if(determineIfDrugInteract(drug_1,drug_2) || determineIfDrugIsAdverse(drug_1,drug_2)){
     {}
-}
+}}
 //These
 async function determineIfDrugInteract(drug_1,drug_2){
 //If drug_1 or drug_1 components is mentioned in the drug_interactions of drug_2 and if drug_2 or drug_2 components is mentioned in the interactions od drug_1; either one, the functions will return true
@@ -82,10 +82,7 @@ if(fd.includes(drug_2)){return true}
 if(sd.includes(drug_1)){return true}
 return false
 }
-async function checkDrugComp(keyword,all_drugs){
-//Comapres to see if the keyword is included in all drugs, if it is, then it is a drug compoennt, otherwise it isn't useful
-    
-}
+
 
 async function determineIfDrugIsAdverse(drug_1,drug_2){
 //If drug_1 or drug_1 components is mentioned in the drug_adverse_effects of drug_2 and if drug_2 or drug_2 components is mentioned in the interactions od drug_1; either one, the functions will return true
@@ -102,10 +99,7 @@ if(sd.includes(drug_1)){return true}
 return false
 }
     
-async function checkDrugComp(keyword,all_drugs){
-//Comapres to see if the keyword is included in all drugs, if it is, then it is a drug compoennt, otherwise it isn't useful
     
-}
 
 
 router.post('/',(req,res)=>{
