@@ -103,8 +103,7 @@ return false
 }
 
 async function compareDrugs(drug_1,drug_2){
-var first_drug = await getDrugInfo(drug_1);
-var second_drug = await getDrugInfo(drug_2)
+
 if(determineIfDrugInteract(drug_1,drug_2)){return drug_1 +"and"+drug_2 +" share negative interactions and are unsafe to use together."} 
 if(determineIfDrugIsAdverse(drug_1,drug_2)){return drug_1 +"and"+drug_2 +" share negative adverse effects and are unsafe to use together."}
 return "These drugs are safe to use together."
