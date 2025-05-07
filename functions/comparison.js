@@ -105,8 +105,7 @@ return false
 var drugs= (String(req.body)).replaceAll('drugs=','').replaceAll('%5B','').replaceAll('%27','').replaceAll('2C',',').replaceAll('5D','').replaceAll('%','').split(',')
 if(typeof drugs =="object"){
 
-drugs = JSON.parse(drugs)
-res.send(drugs)
+res.send(drugs, drugs[0],drugs[1])
 }
 else{
 res.send(typeof drugs)
