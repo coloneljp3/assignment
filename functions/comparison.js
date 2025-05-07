@@ -103,7 +103,7 @@ return false
 }
     
 var drugs= (String(req.body)).replaceAll('drugs=','').replaceAll('%5B','[').replaceAll('%27','"').replaceAll('2C',',').replaceAll('5D',']').replaceAll('%','')
-res.send(drugs, JSON.parse(drugs))
+res.send(drugs[0], JSON.parse(drugs))
 
 });
 router.get('/',(req,res)=>{})
