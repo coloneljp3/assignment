@@ -94,7 +94,7 @@ if(res2){return drug_1 +"and"+drug_2 +" share negative adverse effects and are u
 
 var drugs= (String(req.body)).replaceAll('drug_1=','').replaceAll('&drug_2=').replaceAll('%5B','').replaceAll('%27','').replaceAll('2C',',').replaceAll('5D','').replaceAll('%','').split(',')
 if(typeof drugs =="object"){
-res.send([drugs[0],drugs[1]])
+res.send(drugs)
 }
 else{
 res.send(typeof drugs)
