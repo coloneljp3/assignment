@@ -1,5 +1,4 @@
 'use strict'
-var mysql = require('mysql')
 var express = require('express')
 var serverless = require('serverless-http')
 var app = express()
