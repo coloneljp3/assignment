@@ -109,7 +109,7 @@ drugs = JSON.parse(drugs)
 res.send(drugs)
 }
 else{
-typeof drugs
+res.send(typeof drugs)
     
 }
     
