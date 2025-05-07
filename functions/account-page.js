@@ -604,14 +604,7 @@ border-style:solid}
     }
         xml.open('POST','/.netlify/functions/comparison','true')
         xml.send('drug_1='+drug_1+'&amp;drug_2='+drug_2)">Enter<div id='prediction'></div>
-	<button onclick = "var xml = new XMLHttpRequest();
-xml.onreadystatechange=()=>{
-return xml.responseText
-    
-}
-
-xml.open('POST','/.netlify/functions/form_sub',true)
-xml.send('username='`+username+`'&daily_dosage='`+newDate+`)">Verify your prescription routine</button>
+	
 
 </body>
     <br><style>
