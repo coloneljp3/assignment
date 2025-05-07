@@ -30,7 +30,15 @@ var new_medication = medication.replaceAll("%3B",",").split(',');
 var drug_list = []
 for(let i of new_medication){
 drug_list.push(i)};drug_list.pop()
-
+for(let i of disease_list){
+	i = JSON.stringify(i)
+}
+for(let i of start_list){
+	i = JSON.stringify(i)
+}
+for(let i of end_list){
+	i = JSON.stringify(i)
+}
 var connect = mysql.createConnection('mysql://avnadmin:AVNS_om8uYVTBL50tPl05R_4@mysql-1e9f0822-jpbreaux225-37e4.h.aivencloud.com:25589/defaultdb?ssl-mode=REQUIRED')
 
 connect.query(`SELECT COUNT(*) FROM Customer where username = ? AND pasword = ?`,[username,pasword],(err,result)=>{
@@ -43,11 +51,11 @@ res.send(`<html><head><link href="https://fonts.googleapis.com/css2?family=Varel
 <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&amp;display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>.drug_components,.adverse_effects,.drug_interactions,.intended_use{font-size:0px};.prescription_drugs{font-family:Helvetica;font-size:20px;}</style>
-<script>window.addEventListener('load',(event)=>{
+<script>window.onload=>(event)=>{
 window.alert('test')
-var disease_list = `+disease_list+`;
-var start_list = `+start_list+`;
-var end_list = `+end_list+`;    
+var disease_list = [`+disease_list+`];
+var start_list = [`+start_list+`];
+var end_list = [`+end_list+`];    
 var element = document.getElementById('medical_info_table')
 ;for(let i=1;i< disease_list.length,i++){
 var tr = document.createElement('tr')
