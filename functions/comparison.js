@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 
 
 router.post('/', async (req,res)=>{
-    async function getDrugInteractions(keyword){
+async function getDrugInteractions(keyword){
     var res = await fetch('https://api.fda.gov/drug/label.json?search='+keyword+'').then(response=>response.json());
     var x=res['results'][0]['drug_interactions'];return x
 }
@@ -91,9 +91,9 @@ if(res2){return drug_1 +"and"+drug_2 +" share negative adverse effects and are u
     return "These two drugs are safe to use together"
 }    
 
+
 var drugs= (String(req.body)).replaceAll('drug_1=','').replaceAll('&drug_2=').replaceAll('%5B','').replaceAll('%27','').replaceAll('2C',',').replaceAll('5D','').replaceAll('%','').split(',')
 if(typeof drugs =="object"){
-let d = await compareDrugs(drugs[0],drugs[1]);
 res.send([drugs[0],drugs[1]])
 }
 else{
