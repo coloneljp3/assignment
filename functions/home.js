@@ -321,36 +321,21 @@ width.style.width = '0px'}
 </div>
 
 <div id="product-selection"></div>
-<div style="height:400px;background-color:white;"><h1 style="transition: background-color 0.5s, color 0.5s; text-align: center; font-family: Raleway; color: white; margin: auto; width: 100%; background-color: rgb(159, 0, 255); border-bottom-style: solid; border-bottom-color: blue;" onmouseover="this.style.backgroundColor = 'white';this.style.color = 'blue';this.style.borderBottomStyle = 'solid';this.style.borderBottomColor = 'blue'" onmouseleave="this.style.backgroundColor = '#9f00ff';this.style.color = 'white';this.style.borderBottomColor = white">For any other concerns, email us at medicator@email.com<br></h1><div style="background-color:white"><form method="POST" style="display:inline-block;margin:50px;background-color:rgb(159, 0, 255);height:100px;width:100px;border-radius:25px;" onmouseover="propChange(this,'borderRadius','0px');propChange(this,'height','120px');propChange(this,'textDecorationLine','underline')" onmouseleave="propChange(this,'borderRadius','25px');propChange(this,'height','100px');propChange(this,'textDecorationLine','none')" action="/"><input name="username" value="undefined" style="display:none">
+<div style="height:400px;background-color:white;"><h1 style="transition: background-color 0.5s, color 0.5s; text-align: center; font-family: Raleway; color: white; margin: auto; width: 100%; background-color: rgb(159, 0, 255); border-bottom-style: solid; border-bottom-color: blue;" onmouseover="this.style.backgroundColor = 'white';this.style.color = 'blue';this.style.borderBottomStyle = 'solid';this.style.borderBottomColor = 'blue'" onmouseleave="this.style.backgroundColor = '#9f00ff';this.style.color = 'white';this.style.borderBottomColor = white">For any other concerns, email us at medicator@email.com<br></h1><div style="background-color:white"><form method="POST" style="display:inline-block;margin:50px;background-color:rgb(159, 0, 255);height:100px;width:100px;border-radius:25px;" onmouseover="propChange(this,'borderRadius','0px');propChange(this,'height','120px');propChange(this,'textDecorationLine','underline')" onmouseleave="propChange(this,'borderRadius','25px');propChange(this,'height','100px');propChange(this,'textDecorationLine','none')" action="/">
+<input name="username" value="undefined" style="display:none">
 <input name="pasword" value="undefined" style="display:none">
+<button onmouseover="" type="submit" id="" class="main-nav-bar-form-button" style="background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke;margin-top:30%;width:100%;">About</button>
 
-<button onmouseover="" type="submit" id="" class="main-nav-bar-form-button" style="font-size:fit-content;background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke;margin-top:30%;width:100%;">CTA
+</form><form method="POST" style="display:inline-block;margin:50px;background-color:rgb(159, 0, 255);height:100px;width:100px;border-radius:25px;" onmouseover="propChange(this,'borderRadius','0px');propChange(this,'height','120px');propChange(this,'textDecorationLine','underline')" onmouseleave="propChange(this,'borderRadius','25px');propChange(this,'height','100px');propChange(this,'textDecorationLine','none')" action="/.netlify/functions/account-page">
+<input name="username" value="undefined" style="display:none">
+<input name="pasword" value="undefined" style="display:none">
+<button onmouseover="" type="submit" id="" class="main-nav-bar-form-button" style="background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke;margin-top:30%;width:100%;">Account
 </button>
 
-</form><form method="POST" style="display:inline-block;margin:50px;background-color:rgb(159, 0, 255);height:100px;width:100px;border-radius:25px;" onmouseover="propChange(this,'borderRadius','0px');propChange(this,'height','120px');propChange(this,'textDecorationLine','underline')" onmouseleave="propChange(this,'borderRadius','25px');propChange(this,'height','100px');propChange(this,'textDecorationLine','none')" action="/">
+</form><form method="POST" style="display:inline-block;margin:50px;background-color:rgb(159, 0, 255);height:100px;width:100px;border-radius:25px;" onmouseover="propChange(this,'borderRadius','0px');propChange(this,'height','120px');propChange(this,'textDecorationLine','underline')" onmouseleave="propChange(this,'borderRadius','25px');propChange(this,'height','100px');propChange(this,'textDecorationLine','none')" action="/.netlify/functions/medical-forms2">
 <input name="username" value="undefined" style="display:none">
 <input name="pasword" value="undefined" style="display:none">
-<button onmouseover="" type="submit" id="" class="main-nav-bar-form-button" style="background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke;margin-top:30%;width:100%;">CTA</button>
-
-</form><form method="POST" style="display:inline-block;margin:50px;background-color:rgb(159, 0, 255);height:100px;width:100px;border-radius:25px;" onmouseover="propChange(this,'borderRadius','0px');propChange(this,'height','120px');propChange(this,'textDecorationLine','underline')" onmouseleave="propChange(this,'borderRadius','25px');propChange(this,'height','100px');propChange(this,'textDecorationLine','none')" action="/">
-<input name="username" value="undefined" style="display:none">
-<input name="pasword" value="undefined" style="display:none">
-<button onmouseover="" type="submit" id="" class="main-nav-bar-form-button" style="background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke;margin-top:30%;width:100%;">CTA
-</button>
-
-</form><form method="POST" style="display:inline-block;margin:50px;background-color:rgb(159, 0, 255);height:100px;width:100px;border-radius:25px;" onmouseover="propChange(this,'borderRadius','0px');propChange(this,'height','120px');propChange(this,'textDecorationLine','underline')" onmouseleave="propChange(this,'borderRadius','25px');propChange(this,'height','100px');propChange(this,'textDecorationLine','none')" action="/">
-<input name="username" value="undefined" style="display:none">
-<input name="pasword" value="undefined" style="display:none">
-<button onmouseover="" type="submit" id="" class="main-nav-bar-form-button" style="background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke;margin-top:30%;width:100%;">CTA</button>
-
-</form><form method="POST" style="display:inline-block;margin:50px;background-color:rgb(159, 0, 255);height:100px;width:100px;border-radius:25px;" onmouseover="propChange(this,'borderRadius','0px');propChange(this,'height','120px');propChange(this,'textDecorationLine','underline')" onmouseleave="propChange(this,'borderRadius','25px');propChange(this,'height','100px');propChange(this,'textDecorationLine','none')" action="/">
-
-<button onmouseover="" type="submit" id="" class="main-nav-bar-form-button" style="background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke;margin-top:30%;width:100%;">CTA</button>
-<input name="username" value="undefined" style="display:none">
-<input name="pasword" value="undefined" style="display:none">
-</form><form method="POST" style="display:inline-block;margin:50px;background-color:rgb(159, 0, 255);height:100px;width:100px;border-radius:25px;" onmouseover="propChange(this,'borderRadius','0px');propChange(this,'height','120px');propChange(this,'textDecorationLine','underline')" onmouseleave="propChange(this,'borderRadius','25px');propChange(this,'height','100px');propChange(this,'textDecorationLine','none')" action="/">
-
-<button onmouseover="" type="submit" id="" class="main-nav-bar-form-button" style="background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke;margin-top:30%;width:100%;">CTA</button>
+<button onmouseover="" type="submit" id="" class="main-nav-bar-form-button" style="background-color:transparent;font-family:Helvetica;font-weight:lighter;color:whitesmoke;margin-top:30%;width:100%;">MedForm</button>
 
 </form></div></div>
 
