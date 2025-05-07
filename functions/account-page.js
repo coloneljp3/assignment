@@ -222,18 +222,7 @@ width.style.width = '0px'}
 
 
 </div></header>
-<div class="alert-item" id="special-offers" style="z-index:2;opacity:80%;background-color:black;width:80%;height:500px;right:10%;position:fixed;top:30px;margin:auto;color:white;text-align:center;visibility:visible">
-<span style="float:left;font-size:20px;font-family:Raleway;font-weight:bold" onclick="document.getElementById('special-offers').style.visibility = 'hidden'">X</span>
-<h1 style="font-family:Varela Round;font-size:3em">Reminder to Take Your Prescriptions</h1>
-<div class="product-images-container" id="product-images-container-1">
-  
-    <h2 style="font-weight:bold;font-family:Varela Round">You haven't taken your prescriptions yet today.</h2>
-  <br>
 
-    
-    
-    
-  </div></div>
 
 <div id="product-selection"></div>
 <div style="height:400px;background-color:white;"><h1 style="text-align:center;font-family:Varela Round">Please create an account below</h1>
@@ -477,7 +466,18 @@ border-style:solid}
 <nav id="main-nav-bar">
 
 <br>
+<div class="alert-item" id="special-offers" style="z-index:2;opacity:80%;background-color:black;width:80%;height:500px;right:10%;position:fixed;top:30px;margin:auto;color:white;text-align:center;visibility:visible">
+<span style="float:left;font-size:20px;font-family:Raleway;font-weight:bold" onclick="document.getElementById('special-offers').style.visibility = 'hidden'">X</span>
+<h1 style="font-family:Varela Round;font-size:3em">Reminder to Take Your Prescriptions</h1>
+<div class="product-images-container" id="product-images-container-1">
+  
+    <h2 style="font-weight:bold;font-family:Varela Round">You haven't taken your prescriptions yet today.</h2>
+  <br>
 
+    
+    
+    
+  </div></div>
 <div style="position:fixed;top:10px;right:50px">
 
 
