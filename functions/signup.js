@@ -27,7 +27,7 @@ var disease_list = [];var start_list = []; var end_list = [];for(let i of z){i=J
 //This will be used for medical conditions
 var medication = body[3]
 var new_medication = medication.replaceAll("%3B",",").split(',');
-drug_list = []
+var drug_list = []
 for(let i of new_medication){
 drug_list.push(i)};drug_list.pop()
 
