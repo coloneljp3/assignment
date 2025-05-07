@@ -33,7 +33,6 @@ var new_medication = medication.replaceAll("%3B",",").split(',')
 var connect = mysql.createConnection('mysql://avnadmin:AVNS_om8uYVTBL50tPl05R_4@mysql-1e9f0822-jpbreaux225-37e4.h.aivencloud.com:25589/defaultdb?ssl-mode=REQUIRED')
 
 connect.query(`SELECT COUNT(*) FROM Customer where username = ? AND pasword = ?`,[username,pasword],(err,result)=>{
-res.send(result)
 if(result[0]["COUNT(*)"] != 0){res.send(`This account already exists.`)}
 
 else{
@@ -64,108 +63,8 @@ root.appendChild(div)
 }
 }
 handleConditions(`+JSON.parse(conditions)+`,'conditions')
-function getAdverseEffects(drug,element){
-var request = new XMLHttpRequest()
-request.onreadystatechange=()=>{
-var adverse_reactions = JSON.parse(request.responseText)['results'][0]['adverse_reactions']
-element.innerHTML = adverse_reactions
-
-
-}
-
-
-request.open('GET','https://api.fda.gov/drug/label.json?search='+keyword+'ef=adverse_reactions','true')
-
-//This will be used to query the adverse effects of drugs
-
-request.send()
-
-}
-
-function getDrugComponents(drug,element){
-var request = new XMLHttpRequest()
-request.onreadystatechange=()=>{
-var active_ingredient = JSON.parse(request.responseText)['results'][0]['active_ingredient']
-element.innerHTML = active_ingredient
-    
-}
-request.open('GET','https://api.fda.gov/drug/label.json?search='+drug+'','true')
-request.send()
-}
-
-function getDrugInteractions(drug,element){
-var request = new XMLHttpRequest()
-request.onreadystatechange=()=>{
-var drug_interactions = JSON.parse(request.responseText)['results'][0]['drug_interactions']
-element.innerHTML = drug_interactions
-
-}
-
-
-request.open('GET','https://api.fda.gov/drug/label.json?search='+drug+'','true')
-
-//This will be used to find out the potentially harmful drug/drug and food/drug interactions
-request.send()
-
-}
-
-function getIntendedUse(drug,element){
-var request = new XMLHttpRequest()
-request.onreadystatechange=()=>{
-var resp = JSON.parse(request.responseText)["results"][0]["indications_and_usage"]
-element.innerHTML = resp
-}
-
-
-request.open('GET','https://api.fda.gov/drug/label.json?search='+drug+'','true')
-
-//This will be used to query information the intended use of drugs
-
-request.send()
-
-
-}
-
-
-function getDailyDosage(drug,element){
-var request = new XMLHttpRequest()
-request.onreadystatechange=()=>{
-var daily_dosage = JSON.parse(request.responseText)['results'][0]['daily_dosage']
-element.innerHTML = daily_dosage
-    
-}
-request.open('GET','https://api.fda.gov/drug/label.json?search='+drug+'','true')
-request.send()
-    
-}for(let drug of `+new_medication+`){
-var tr = document.createElement('tr')
-var tdName = document.createElement('td')
-var tdComp = document.createElement('td')
-var tdAdvEff = document.createElement('td')
-var tdDrInt = document.createElement('td')
-var tdIntUse = document.createElement('td')
-var DD = document.createElement('td')
-tr.className = "drug"
-tr.appendChild(tdName)
-tr.appendChild(tdComp)
-tr.appendChild(tdAdvEff)
-tr.appendChild(tdDrInt)
-tr.appendChild(tdIntUse)
-tr.appendCHuld(DD)
-tdName.className = 'prescription_drugs'
-tdComp.className = 'drug_components'
-tdAdvEff.className = 'adverse_effects'
-tdDrInt.className = 'drug_interactions'
-tdIntUse.className = 'intended_use'
-DD.className = 'daily_dosage'
-tdName.innerHTML = drug
-
-getAdverseEffects(drug,tdAdvEff)
-getDrugComponents(drug,tdComp)
-getDrugInteractions(drug,tdDrInt)
-getIntendedUse(drug,tdIntUse)
-getDailyDosage(drug,DD)
-    prescription_drugs_table.appendChild(tr)}
+var x = `+new_medication+`;
+var y = `+conditions+`
 </script>
 <style>
 @media(max-width:600px){html{font-family:Raleway}#review-slider{display:none}
@@ -1030,74 +929,7 @@ displayAllPersonalDrugInformation(`+ new_medication.pop(new_medication.length-1)
     <p id="total_drug_interactions"></p><p id="total_drug_components"></p><p id="total_intended_use"></p><p id="issues"></p>
     <input style="font-size:20px;border-style:none;border-bottom-style:solid;font-family:Helvetica
     " placeholder="Enter your prescription" id="input_drug">
-<button style="width:200px;height:40px;font-size:20px;border-style:none;border-bottom-style:solid;font-family:Helvetica" onclick="createDrugInfoRow(document.getElementById('input_drug').value,'prescription_drugs_table');function miniComp(arg1,arg2){
-var res=false;
-var keywords = ['this','these','the','an','a','am',
-'may','is','are','was','were','be','being','been','seem','appear','become','look','sound','feel','taste','remain','stay','grow','turn','prove','get','come','go','sound','look','prove']
-arg1 = arg1.split(' ');
-arg2= new String(arg2).split(' ')
-    for(let i of arg1){
-        if(keywords.includes(i.toLowerCase())||keywords.includes(i.toUpperCase())){
-                        arg1.splice(arg1.indexOf(i))         
-        }
-        
-    }
-
-    for(let i of arg2){
-        if(keywords.includes(i)){
-            arg2.slice(arg2.indexOf(i))
-            
-        }
-        
-    }
-for(let i of arg1){
-if(arg2.includes(i)){
-    res = true
-    break
-}
-else{continue}
-    
-    
-};console.log(arg1,arg2)
-    return res
-};
-
-function recommendationDrug(id_of_element_for_total_drugs,negative_interactions,og_intended_use,negative_drug_components){
-var drugs = document.getElementById(id_of_element_for_total_drugs).innerHTML.split('  ')
-var new_drug;
-for(let i of drugs){
-let interactions = document.getElementById('total_drug_interactions')
-let intended_use = document.getElementById('total_intended_use')
-let drug_components = document.getElementById('total_drug_components')
-getDrugInteractions(i,interactions)
-getIntendedUse(i,intended_use)
-getDrugComponents(i,drug_components)
-//set all of the positional arguments to lists separated using periods and use keywords such as warning, hazard, etc. to associate values 
-
-if(!(miniComp(interactions.innerHTML,negative_interactions))&amp;&amp; miniComp(intended_use.innerHTML,og_intended_use.innerHTML) &amp;&amp; !(miniComp(drug_components.innerHTML,negative_drug_components.innerHTML))){
-    new_drug = i
-    break
-}
-else{continue}
-
-    
-}
-return new_drug    
-};
-function compareDrugs(medical_conditions){
-var drugs = []
-for(let i of document.getElementsByClassName('prescription_drugs')){
-    drugs.push(i.innerHTML)
-}
-let issues = {}
-for(i=0;i<=drugs.length;i++){
-let interactions = document.getElementsByClassName('drug_interactions')[i]
-let intended_use = document.getElementsByClassName('intended_use')[i]
-let drug_components = document.getElementsByClassName('drug_components')[i]
-for(let drug of drugs.slice(i+1,drugs.length)){
-if((drug_components.innerHTML).includes(drug.toUpperCase())|| (drug_components.innerHTML).includes(drug.toLowerCase()) || (interactions.innerHTML).includes(drug.toUpperCase())||(interactions.innerHTML).includes(drug.toLowerCase())){
-
-issues[i] = 'this prescription may cause  harm  if  combined with='+drug' ">Enter
+<button style="width:200px;height:40px;font-size:20px;border-style:none;border-bottom-style:solid;font-family:Helvetica" onclick="">Enter
 </button>
 <div>
     <h1>Drug Issues</h1>
