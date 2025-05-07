@@ -93,8 +93,8 @@ if(res2){return drug_1 +"and"+drug_2 +" share negative adverse effects and are u
 
 
 var drugs= (String(req.body)).replaceAll('drug_1=','').replace('&',',').replaceAll('drug_2=','').replaceAll('%5B','').replaceAll('%27','').replaceAll('2C',',').replaceAll('5D','').replaceAll('%','').split(',')
-var d = drugs[0];
-d = d.replaceAll('undefined',',').split(',')
+
+let a = await compareDrugs(drugs[0],drugs[1])
     if(typeof drugs =="object"){
 res.send(drugs)
 }
