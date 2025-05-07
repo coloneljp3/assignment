@@ -1,0 +1,119 @@
+'use strict'
+var mysql = require('mysql')
+var express = require('express')
+var serverless = require('serverless-http')
+var app = express()
+var router= express.Router()
+var bodyParser = require('body-parser')
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended:true}))
+
+async function getDrugInteractions(keyword){
+    var res = await fetch('https://api.fda.gov/drug/label.json?search='+keyword+'').then(response=>response.json());
+    var x=res['results'][0]['drug_interactions'];return x
+}
+
+async function getDailyDosage(keyword){
+    var res = await fetch('https://api.fda.gov/drug/label.json?search='+keyword+'').then(response=>response.json())
+    return res['results'][0]['daily_dosage']
+    
+}
+
+async function getDrugComponents(keyword){
+var res = await fetch('https://api.fda.gov/drug/label.json?search='+keyword+'').then(response=>response.json())
+return res['results'][0]['active_ingredient']
+    
+}
+
+async function getDailyDosage(keyword){
+    var res = await fetch('https://api.fda.gov/drug/label.json?search='+drug+'').then(response=>response.json())
+    return res['results'][0]['dosage_and_administration']
+}
+
+async function getIntendedUse(keyword){
+var res = await fetch('https://api.fda.gov/drug/label.json?search='+keyword+'').then(response=>response.json())
+return res['results'][0]['indications_and_usage']
+}
+
+async function getDrugInfo(drug_name){
+let a,b,c,d;
+let z = []
+a = await getDrugComponents(drug_name)
+b = await getAdverseEffects(drug_name)
+c = await getDrugInteractions(drug_name)
+d = await getIntendedUse(drug_name)
+v = [a,b,c,d]
+for(let a of v){if(typeof a == 'object'){z.push(a[0])}else{z.push(a)}};
+return z
+}
+async function compareDrugs(drug_1,drug_2){
+var first_drug = await getDrugInfo(drug_1);
+var second_drug = await getDrugInfo(drug_2)
+if(determineIfDrugInteract(drug_1,drug_2) || determineIfDrugIsAdverse(drug_1,drug_2)){
+    {}
+}
+//These
+async function determineIfDrugInteract(drug_1,drug_2){
+//If drug_1 or drug_1 components is mentioned in the drug_interactions of drug_2 and if drug_2 or drug_2 components is mentioned in the interactions od drug_1; either one, the functions will return true
+let fd = getDrugInteractions(drug_1)
+let sd = getDrugInteractions(drug_1)
+if(typeof fd == 'object'){fd  =fd[0]};
+if(typeof sd == 'object'){sd = sd[0]};
+
+
+sd = sd.toLowerCase();fd = fd.toLowerCase();
+if(fd.includes(drug_2)){return true}
+    console.log(sd)
+if(sd.includes(drug_1)){return true}
+return false
+}
+
+async function determineIfDrugIsAdverse(drug_1,drug_2){
+//If drug_1 or drug_1 components is mentioned in the drug_adverse_effects of drug_2 and if drug_2 or drug_2 components is mentioned in the interactions od drug_1; either one, the functions will return true
+    let fd = await getAdverseEffects(drug_1)
+let sd = await getAdverseEffects(drug_1)
+if(typeof fd == 'object'){fd  =fd[0]};
+if(typeof sd == 'object'){sd = sd[0]};
+
+
+sd = sd.toLowerCase();fd = fd.toLowerCase();
+if(fd.includes(drug_2)){return true}
+    console.log(sd)
+if(sd.includes(drug_1)){return true}
+return false
+}
+async function checkDrugComp(keyword,all_drugs){
+//Comapres to see if the keyword is included in all drugs, if it is, then it is a drug compoennt, otherwise it isn't useful
+    
+}
+
+async function determineIfDrugIsAdverse(drug_1,drug_2){
+//If drug_1 or drug_1 components is mentioned in the drug_adverse_effects of drug_2 and if drug_2 or drug_2 components is mentioned in the interactions od drug_1; either one, the functions will return true
+    let fd = await getAdverseEffects(drug_1)
+let sd = await getAdverseEffects(drug_1)
+if(typeof fd == 'object'){fd  =fd[0]};
+if(typeof sd == 'object'){sd = sd[0]};
+
+
+sd = sd.toLowerCase();fd = fd.toLowerCase();
+if(fd.includes(drug_2)){return true}
+    console.log(sd)
+if(sd.includes(drug_1)){return true}
+return false
+}
+    
+async function checkDrugComp(keyword,all_drugs){
+//Comapres to see if the keyword is included in all drugs, if it is, then it is a drug compoennt, otherwise it isn't useful
+    
+}
+
+
+router.post('/',(req,res)=>{
+var drugs= (String(req.body)).replaceAll('drugs=','').replaceAll('%5B','[').replaceAll('%27',"'").replaceAll('2C',',').replaceAll('5D',']')
+res.send(drugs)
+
+});
+router.get('/',(req,res)=>{})
+
+app.use('/.netlify/functions/comparison',router)
+module.exports.handler = serverless(app)
