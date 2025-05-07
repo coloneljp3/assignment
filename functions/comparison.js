@@ -10,8 +10,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 
 
 router.post('/', async (req,res)=>{
-    
-async function getDrugInteractions(keyword){
+    async function getDrugInteractions(keyword){
     var res = await fetch('https://api.fda.gov/drug/label.json?search='+keyword+'').then(response=>response.json());
     var x=res['results'][0]['drug_interactions'];return x
 }
@@ -49,22 +48,16 @@ v = [a,b,c,d]
 for(let a of v){if(typeof a == 'object'){z.push(a[0])}else{z.push(a)}};
 return z
 }
-async function compareDrugs(drug_1,drug_2){
-var first_drug = await getDrugInfo(drug_1);
-var second_drug = await getDrugInfo(drug_2)
-if(determineIfDrugInteract(drug_1,drug_2) || determineIfDrugIsAdverse(drug_1,drug_2)){
-    {}
-}}
+
 //These
 async function determineIfDrugInteract(drug_1,drug_2){
 //If drug_1 or drug_1 components is mentioned in the drug_interactions of drug_2 and if drug_2 or drug_2 components is mentioned in the interactions od drug_1; either one, the functions will return true
-let fd = getDrugInteractions(drug_1)
-let sd = getDrugInteractions(drug_1)
+let fd = await getDrugInteractions(drug_1)
+let sd = await getDrugInteractions(drug_2)
 if(typeof fd == 'object'){fd  =fd[0]};
 if(typeof sd == 'object'){sd = sd[0]};
 
-
-sd = sd.toLowerCase();fd = fd.toLowerCase();
+if(typeof sd !="string"||typeof fd!="string"){return false};sd = sd.toLowerCase();fd = fd.toLowerCase();
 if(fd.includes(drug_2)){return true}
     console.log(sd)
 if(sd.includes(drug_1)){return true}
@@ -72,14 +65,14 @@ return false
 }
 
 async function determineIfDrugIsAdverse(drug_1,drug_2){
-//If drug_1 or drug_1 components is mentioned in the drug_adverse_effects of drug_2 and if drug_2 or drug_2 components is mentioned in the interactions od drug_1; either one, the functions will return true
-    let fd = await getAdverseEffects(drug_1)
-let sd = await getAdverseEffects(drug_1)
+//If drug_1 or drug_1 components is mentioned in the drug_interactions of drug_2 and if drug_2 or drug_2 components is mentioned in the interactions od drug_1; either one, the functions will return true
+let fd = await getDrugInteractions(drug_1)
+let sd = await getDrugInteractions(drug_2)
 if(typeof fd == 'object'){fd  =fd[0]};
 if(typeof sd == 'object'){sd = sd[0]};
 
 
-sd = sd.toLowerCase();fd = fd.toLowerCase();
+if(typeof sd !="string"||typeof fd!="string"){return false};sd = sd.toLowerCase();fd = fd.toLowerCase();
 if(fd.includes(drug_2)){return true}
     console.log(sd)
 if(sd.includes(drug_1)){return true}
@@ -87,31 +80,17 @@ return false
 }
 
 
-async function determineIfDrugIsAdverse(drug_1,drug_2){
-//If drug_1 or drug_1 components is mentioned in the drug_adverse_effects of drug_2 and if drug_2 or drug_2 components is mentioned in the interactions od drug_1; either one, the functions will return true
-    let fd = await getAdverseEffects(drug_1)
-let sd = await getAdverseEffects(drug_1)
-if(typeof fd == 'object'){fd  =fd[0]};
-if(typeof sd == 'object'){sd = sd[0]};
-
-
-sd = sd.toLowerCase();fd = fd.toLowerCase();
-if(fd.includes(drug_2)){return true}
-    console.log(sd)
-if(sd.includes(drug_1)){return true}
-return false
-}
 
 async function compareDrugs(drug_1,drug_2){
+let res1 = await determineIfDrugInteract(drug_1,drug_2);
+let res2 = await determineIfDrugIsAdverse(drug_1,drug_2)
+if(res1){return drug_1 +"and"+drug_2 +" share negative interactions and are unsafe to use together."} 
+if(res2){return drug_1 +"and"+drug_2 +" share negative adverse effects and are unsafe to use together."}
 
-if(determineIfDrugInteract(drug_1,drug_2)){return drug_1 +"and"+drug_2 +" share negative interactions and are unsafe to use together."} 
-if(determineIfDrugIsAdverse(drug_1,drug_2)){return drug_1 +"and"+drug_2 +" share negative adverse effects and are unsafe to use together."}
-return "These drugs are safe to use together."
 
-
-
-    
+    return "These two drugs are safe to use together"
 }    
+
 var drugs= (String(req.body)).replaceAll('drug_1=','').replaceAll('&drug_2=').replaceAll('%5B','').replaceAll('%27','').replaceAll('2C',',').replaceAll('5D','').replaceAll('%','').split(',')
 if(typeof drugs =="object"){
 let d = await compareDrugs(drugs[0],drugs[1]);
