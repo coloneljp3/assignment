@@ -238,7 +238,7 @@ width.style.width = '0px'}
 else{
 	connect.query(`Select * from Customers where username = ? and pasword = ?`,[username,pasword],(err,result)=>{
 var resu = result;var date = new Date();
-var newDate = (date.getDay(),date.getMonth(),date.getYear)
+var newDate = date.getDay(),date.getMonth(),date.getYear;
 	connect.query(`Select COUNT(*) from Records where daily_dosage = ? AND username=?`,[newDate,username],(err,result)=>{
 	var username = resu[0]["username"]
 	var pasword = resu[0]["pasword"]
@@ -604,11 +604,15 @@ border-style:solid}
     }
         xml.open('POST','/.netlify/functions/comparison','true')
         xml.send('drug_1='+drug_1+'&amp;drug_2='+drug_2)">Enter<div id='prediction'></div>
-<div>
-    <h1>Drug Issues</h1>
-    <p id="drug_issues">No issues with any of the drugs.</p>
-    <h1 style="font-family:Helvetica">Look at the recommendations below
-</h1><p id="drug_suggestions"></p></div>
+	<button onclick = "var xml = new XMLHttpRequest();
+xml.onreadystatechange=()=>{
+return xml.responseText
+    
+}
+
+xml.open('POST','/.netlify/functions/form_sub',true)
+xml.send('username='`+username+`'&daily_dosage='`+newDate+`)">Verify your prescription routine</button>
+
 </body>
     <br><style>
 .profile-data-unit{
