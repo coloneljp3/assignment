@@ -84,8 +84,8 @@ return false
 async function compareDrugs(drug_1,drug_2){
 let res1 = await determineIfDrugInteract(drug_1,drug_2);
 let res2 = await determineIfDrugIsAdverse(drug_1,drug_2)
-if(res1){return drug_1 +"and"+drug_2 +" share negative interactions and are unsafe to use together."} 
-if(res2){return drug_1 +"and"+drug_2 +" share negative adverse effects and are unsafe to use together."}
+if(res1){return drug_1 +" and "+drug_2 +" share negative interactions and are unsafe to use together."} 
+if(res2){return drug_1 +" and "+drug_2 +" share negative adverse effects and are unsafe to use together."}
 
 
     return "These two drugs are safe to use together"
