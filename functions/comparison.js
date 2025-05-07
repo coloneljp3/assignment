@@ -104,8 +104,8 @@ return false
     
 var drugs= (String(req.body)).replaceAll('drugs=','').replaceAll('%5B','').replaceAll('%27','').replaceAll('2C',',').replaceAll('5D','').replaceAll('%','').split(',')
 if(typeof drugs =="object"){
-
-res.send(drugs[0])
+let d = await getDrugInteractions(drugs[0])
+res.send(d)
 }
 else{
 res.send(typeof drugs)
