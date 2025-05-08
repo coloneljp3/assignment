@@ -13,7 +13,7 @@ router.post('/', async (req,res)=>{
 
 async function getDailyDosage(keyword){
     var res = await fetch('https://api.fda.gov/drug/label.json?search='+keyword+'').then(response=>response.json())
-    return res['results'][0]['daily_dosage']
+    return res['results'][0]['dosage_and_administration']
     
 }
 
@@ -21,10 +21,10 @@ async function getDailyDosage(keyword){
 var drugs= (String(req.body)).replaceAll('drug_1=','').replace('&',',').replaceAll('drug_2=','').replaceAll('%5B','').replaceAll('%27','').replaceAll('2C',',').replaceAll('5D','').replaceAll('%','').split(',')
 let a = await getDailyDosage(drugs[0])
     if(typeof a =="object"){
-res.send(a[0])
+res.send(a)
 }
 else{
-res.send(a)
+res.send(typeof a)
     
 }
     
