@@ -19,13 +19,12 @@ async function getDailyDosage(keyword){
 
 
 var drugs= (String(req.body)).replaceAll('drug_1=','').replace('&',',').replaceAll('drug_2=','').replaceAll('%5B','').replaceAll('%27','').replaceAll('2C',',').replaceAll('5D','').replaceAll('%','').split(',')
-
 let a = await getDailyDosage(drugs[0])
-    if(typeof drugs =="object"){
-res.send(a)
+    if(typeof a =="object"){
+res.send(a[0])
 }
 else{
-res.send(typeof drugs)
+res.send(a)
     
 }
     
